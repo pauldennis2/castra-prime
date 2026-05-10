@@ -39,7 +39,7 @@ data:extend({
     {
         type = "radar",
         name = "jammer-radar",
-        icon = "__castra__/graphics/icons/jammer-radar.png",
+        icon = "__castra-prime__/graphics/icons/jammer-radar.png",
         flags = { "placeable-player", "player-creation" },
         minable = { mining_time = 0.1, result = "jammer-radar" },
         fast_replaceable_group = "radar",
@@ -72,7 +72,7 @@ data:extend({
         energy_usage = "1000kW",
         integration_patch =
         {
-            filename = "__castra__/graphics/entity/jammer-radar/radar-integration.png",
+            filename = "__castra-prime__/graphics/entity/jammer-radar/radar-integration.png",
             priority = "low",
             width = 238,
             height = 216,
@@ -84,7 +84,7 @@ data:extend({
             layers =
             {
                 {
-                    filename = "__castra__/graphics/entity/jammer-radar/jammer-radar.png",
+                    filename = "__castra-prime__/graphics/entity/jammer-radar/jammer-radar.png",
                     priority = "low",
                     width = 196,
                     height = 254,
@@ -95,7 +95,7 @@ data:extend({
                     scale = 0.5
                 },
                 {
-                    filename = "__castra__/graphics/entity/jammer-radar/radar-shadow.png",
+                    filename = "__castra-prime__/graphics/entity/jammer-radar/radar-shadow.png",
                     priority = "low",
                     width = 336,
                     height = 170,
@@ -121,7 +121,7 @@ data:extend({
         {
             pictures =
             {
-                filename = "__castra__/graphics/entity/jammer-radar/radar-reflection.png",
+                filename = "__castra-prime__/graphics/entity/jammer-radar/radar-reflection.png",
                 priority = "extra-high",
                 width = 28,
                 height = 32,
@@ -140,7 +140,7 @@ data:extend({
     {
         type = "item",
         name = "jammer-radar",
-        icon = "__castra__/graphics/icons/jammer-radar.png",
+        icon = "__castra-prime__/graphics/icons/jammer-radar.png",
         subgroup = "defensive-structure",
         order = "d[radar]-d[jammer-radar]",
         inventory_move_sound = item_sounds.metal_large_inventory_move,

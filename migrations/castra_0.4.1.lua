@@ -1,4 +1,4 @@
-local item_cache = require("__castra__.castra-cache")
+local item_cache = require("__castra-prime__.castra-cache")
 
 -- Convert enemy entities on "castra" to their castra variant
 -- flamethrower, laser-turret, railgun-turret

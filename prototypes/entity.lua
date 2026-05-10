@@ -23,7 +23,7 @@ local function createDataCollectorSpawn(item_name, icon)
         {
             -- data collector as the main icon and the icon as the sub
             {
-                icon = "__castra__/graphics/fusion-reactor/fusion-reactor-icon.png",
+                icon = "__castra-prime__/graphics/fusion-reactor/fusion-reactor-icon.png",
                 scale = 0.7,
                 shift = { 0, -10 }
             },
@@ -105,7 +105,7 @@ data:extend({
     {
         type = "assembling-machine",
         name = "forge",
-        icon = "__castra__/graphics/atom-forge/atom-forge-icon.png",
+        icon = "__castra-prime__/graphics/atom-forge/atom-forge-icon.png",
         icon_size = 64,
         collision_box = { { -2.7, -2.7 }, { 2.7, 2.7 } },
         selection_box = { { -3, -3 }, { 3, 3 } },
@@ -139,7 +139,7 @@ data:extend({
             animation = {
                 layers = {
                     {
-                        filename = "__castra__/graphics/atom-forge/atom-forge-hr-shadow.png",
+                        filename = "__castra-prime__/graphics/atom-forge/atom-forge-hr-shadow.png",
                         priority = "high",
                         width = 900,
                         height = 500,
@@ -157,7 +157,7 @@ data:extend({
                         height = 480,
                         animation_speed = 0.3,
                         scale = 0.5,
-                        filename = "__castra__/graphics/atom-forge/atom-forge-hr-animation-1.png",
+                        filename = "__castra-prime__/graphics/atom-forge/atom-forge-hr-animation-1.png",
                         frame_count = 64,
                         line_length = 8,
                         shift = { 0, -1 }
@@ -199,7 +199,7 @@ data:extend({
     {
         type = "unit-spawner",
         name = "data-collector",
-        icon = "__castra__/graphics/fusion-reactor/fusion-reactor-icon.png",
+        icon = "__castra-prime__/graphics/fusion-reactor/fusion-reactor-icon.png",
         flags = { "placeable-player", "placeable-enemy", "not-repairable" },
         max_health = 12000,
         order = "f-g-b",
@@ -249,7 +249,7 @@ data:extend({
                 {
                     layers = {
                         {
-                            filename = "__castra__/graphics/fusion-reactor/fusion-reactor-hr-shadow.png",
+                            filename = "__castra-prime__/graphics/fusion-reactor/fusion-reactor-hr-shadow.png",
                             priority = "high",
                             width = 700,
                             height = 600,
@@ -267,7 +267,7 @@ data:extend({
                             animation_speed = 0.3,
                             scale = 0.5,
                             filename =
-                            "__castra__/graphics/fusion-reactor/fusion-reactor-hr-animation.png",
+                            "__castra-prime__/graphics/fusion-reactor/fusion-reactor-hr-animation.png",
                             frame_count = 60,
                             line_length = 8
                         },
@@ -278,7 +278,7 @@ data:extend({
                             animation_speed = 0.3,
                             scale = 0.5,
                             filename =
-                            "__castra__/graphics/fusion-reactor/fusion-reactor-hr-animation-emission.png",
+                            "__castra-prime__/graphics/fusion-reactor/fusion-reactor-hr-animation-emission.png",
                             frame_count = 60,
                             line_length = 8,
                             draw_as_glow = true,
@@ -342,16 +342,16 @@ data:extend({
     },
     createDataCollectorSpawn("electronic-circuit", "__base__/graphics/icons/electronic-circuit.png"),
     createDataCollectorSpawn("advanced-circuit", "__base__/graphics/icons/advanced-circuit.png"),
-    createDataCollectorSpawn("millerite", "__castra__/graphics/icons/millerite.png"),
-    createDataCollectorSpawn("gunpowder", "__castra__/graphics/icons/gunpowder.png"),
+    createDataCollectorSpawn("millerite", "__castra-prime__/graphics/icons/millerite.png"),
+    createDataCollectorSpawn("gunpowder", "__castra-prime__/graphics/icons/gunpowder.png"),
     createDataCollectorSpawn("low-density-structure", "__base__/graphics/icons/low-density-structure.png"),
     createDataCollectorSpawn("electric-engine-unit", "__base__/graphics/icons/electric-engine-unit.png"),
-    createDataCollectorSpawn("castra-data", "__castra__/graphics/icons/castra-data.png"),
+    createDataCollectorSpawn("castra-data", "__castra-prime__/graphics/icons/castra-data.png"),
     {
         -- combat-roboport
         type = "container",
         name = "combat-roboport",
-        icon = "__castra__/graphics/icons/combat-roboport.png",
+        icon = "__castra-prime__/graphics/icons/combat-roboport.png",
         flags = { "placeable-player", "player-creation" },
         minable = { hardness = 0.2, mining_time = 1, result = "combat-roboport" },
         max_health = 2000,
@@ -399,7 +399,7 @@ data:extend({
         picture = {
             layers = {
                 {
-                    filename = "__castra__/graphics/fusion-reactor/fusion-reactor-hr-shadow.png",
+                    filename = "__castra-prime__/graphics/fusion-reactor/fusion-reactor-hr-shadow.png",
                     priority = "high",
                     width = 700,
                     height = 600,
@@ -417,7 +417,7 @@ data:extend({
                     animation_speed = 0.3,
                     scale = 0.5,
                     filename =
-                    "__castra__/graphics/fusion-reactor/fusion-reactor-hr-animation.png",
+                    "__castra-prime__/graphics/fusion-reactor/fusion-reactor-hr-animation.png",
                     frame_count = 60,
                     line_length = 8
                 },
@@ -428,7 +428,7 @@ data:extend({
                     animation_speed = 0.3,
                     scale = 0.5,
                     filename =
-                    "__castra__/graphics/entity/combat-roboport/combat-roboport-hr-animation-emission.png",
+                    "__castra-prime__/graphics/entity/combat-roboport/combat-roboport-hr-animation-emission.png",
                     frame_count = 60,
                     line_length = 8,
                     draw_as_glow = true,
@@ -448,10 +448,10 @@ data:extend({
         name = "jammed-data-collector",
         icons = {
             {
-                icon = "__castra__/graphics/fusion-reactor/fusion-reactor-icon.png"
+                icon = "__castra-prime__/graphics/fusion-reactor/fusion-reactor-icon.png"
             },
             {
-                icon = "__castra__/graphics/fusion-reactor/fusion-reactor-icon.png",
+                icon = "__castra-prime__/graphics/fusion-reactor/fusion-reactor-icon.png",
                 tint = { r = 0.5, g = 0.1, b = 0.5, a = 0.3 }
             }
         },
@@ -512,7 +512,7 @@ data:extend({
             animation = {
                 layers = {
                     {
-                        filename = "__castra__/graphics/fusion-reactor/fusion-reactor-hr-shadow.png",
+                        filename = "__castra-prime__/graphics/fusion-reactor/fusion-reactor-hr-shadow.png",
                         priority = "high",
                         width = 700,
                         height = 600,
@@ -530,7 +530,7 @@ data:extend({
                         animation_speed = 0.3,
                         scale = 0.5,
                         filename =
-                        "__castra__/graphics/fusion-reactor/fusion-reactor-hr-animation.png",
+                        "__castra-prime__/graphics/fusion-reactor/fusion-reactor-hr-animation.png",
                         frame_count = 60,
                         line_length = 8
                     },
@@ -541,7 +541,7 @@ data:extend({
                         animation_speed = 0.3,
                         scale = 0.5,
                         filename =
-                        "__castra__/graphics/fusion-reactor/fusion-reactor-hr-animation.png",
+                        "__castra-prime__/graphics/fusion-reactor/fusion-reactor-hr-animation.png",
                         frame_count = 60,
                         line_length = 8,
                         tint = { r = 0.5, g = 0.1, b = 0.5, a = 0.3 }
@@ -553,7 +553,7 @@ data:extend({
                         animation_speed = 0.3,
                         scale = 0.5,
                         filename =
-                        "__castra__/graphics/fusion-reactor/fusion-reactor-hr-animation-emission.png",
+                        "__castra-prime__/graphics/fusion-reactor/fusion-reactor-hr-animation-emission.png",
                         frame_count = 60,
                         line_length = 8,
                         draw_as_glow = true,

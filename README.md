@@ -6,6 +6,10 @@ A community fork of [Planet Castra](https://mods.factorio.com/mod/Castra) by **B
 
 Licensed under [GPL 3.0](LICENSE.md) in accordance with the original mod.
 
+## Working Notes
+
+Buffed forge option is just for easy testing, but it does feel a little underwhelming for its size.
+
 ---
 
 ## What is Castra?
