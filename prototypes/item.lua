@@ -16,7 +16,7 @@ data:extend({
     {
         type = "item",
         name = "forge",
-        icon = "__castra__/graphics/atom-forge/atom-forge-icon.png",
+        icon = "__castra-prime__/graphics/atom-forge/atom-forge-icon.png",
         subgroup = "production-machine",
         order = "i[forge]",
         inventory_move_sound = item_sounds.steam_inventory_move,
@@ -30,13 +30,13 @@ data:extend({
     {
         type = "item",
         name = "millerite",
-        icon = "__castra__/graphics/icons/millerite.png",
+        icon = "__castra-prime__/graphics/icons/millerite.png",
         pictures =
         {
-            { size = 64, filename = "__castra__/graphics/icons/millerite.png",   scale = 0.5, mipmap_count = 4 },
-            { size = 64, filename = "__castra__/graphics/icons/millerite-1.png", scale = 0.5, mipmap_count = 4 },
-            { size = 64, filename = "__castra__/graphics/icons/millerite-2.png", scale = 0.5, mipmap_count = 4 },
-            { size = 64, filename = "__castra__/graphics/icons/millerite-3.png", scale = 0.5, mipmap_count = 4 }
+            { size = 64, filename = "__castra-prime__/graphics/icons/millerite.png",   scale = 0.5, mipmap_count = 4 },
+            { size = 64, filename = "__castra-prime__/graphics/icons/millerite-1.png", scale = 0.5, mipmap_count = 4 },
+            { size = 64, filename = "__castra-prime__/graphics/icons/millerite-2.png", scale = 0.5, mipmap_count = 4 },
+            { size = 64, filename = "__castra-prime__/graphics/icons/millerite-3.png", scale = 0.5, mipmap_count = 4 }
         },
         subgroup = "castra-processes",
         color_hint = { text = "T" },
@@ -51,7 +51,7 @@ data:extend({
     {
       type = "item",
       name = "nickel-plate",
-      icon = "__castra__/graphics/icons/nickel-plate.png",
+      icon = "__castra-prime__/graphics/icons/nickel-plate.png",
       subgroup = "castra-processes",
       order = "c[millerite]-c[nickel-plate]",
       inventory_move_sound = item_sounds.metal_small_inventory_move,
@@ -64,7 +64,7 @@ data:extend({
     {
       type = "item",
       name = "gunpowder",
-      icon = "__castra__/graphics/icons/gunpowder.png",
+      icon = "__castra-prime__/graphics/icons/gunpowder.png",
       subgroup = "castra-processes",
       order = "c[gunpowder]",
       inventory_move_sound = item_sounds.metal_small_inventory_move,
@@ -78,7 +78,7 @@ data:extend({
       type = "tool",
       name = "battlefield-science-pack",
       localised_description = {"item-description.science-pack"},
-      icon = "__castra__/graphics/icons/battlefield-science-pack.png",
+      icon = "__castra-prime__/graphics/icons/battlefield-science-pack.png",
       subgroup = "science-pack",
       color_hint = { text = "B" },
       order = "j",
@@ -97,7 +97,7 @@ data:extend({
     {
         type = "item",
         name = "castra-data",
-        icon = "__castra__/graphics/icons/castra-data.png",
+        icon = "__castra-prime__/graphics/icons/castra-data.png",
         subgroup = "castra-processes",
         order = "n",
         stack_size = 100,
@@ -108,7 +108,7 @@ data:extend({
     {
         type = "item",
         name = "lithium-battery",
-        icon = "__castra__/graphics/icons/lithium-battery.png",
+        icon = "__castra-prime__/graphics/icons/lithium-battery.png",
         subgroup = "castra-processes",
         order = "n",
         stack_size = 100,
@@ -118,7 +118,7 @@ data:extend({
     {
         type = "item",
         name = "combat-roboport",
-        icon = "__castra__/graphics/icons/combat-roboport.png",
+        icon = "__castra-prime__/graphics/icons/combat-roboport.png",
         icon_size = 64,
         subgroup = "turret",
         order = "f[combat-roboport]",
@@ -130,7 +130,7 @@ data:extend({
     {
       type = "item",
       name = "military-transport-belt",
-      icon = "__castra__/graphics/icons/military-transport-belt.png",
+      icon = "__castra-prime__/graphics/icons/military-transport-belt.png",
       subgroup = "belt",
       color_hint = { text = "5" },
       order = "a[transport-belt]-e[military-transport-belt]",
@@ -145,7 +145,7 @@ data:extend({
     {
       type = "item",
       name = "military-underground-belt",
-      icon = "__castra__/graphics/icons/military-underground-belt.png",
+      icon = "__castra-prime__/graphics/icons/military-underground-belt.png",
       subgroup = "belt",
       color_hint = { text = "5" },
       order = "b[underground-belt]-e[military-underground-belt]",
@@ -160,7 +160,7 @@ data:extend({
     {
       type = "item",
       name = "military-splitter",
-      icon = "__castra__/graphics/icons/military-splitter.png",
+      icon = "__castra-prime__/graphics/icons/military-splitter.png",
       subgroup = "belt",
       color_hint = { text = "5" },
       order = "c[splitter]-e[military-splitter]",
@@ -175,7 +175,7 @@ data:extend({
     {
       type = "item",
       name = "military-loader",
-      icon = "__castra__/graphics/icons/military-loader.png",
+      icon = "__castra-prime__/graphics/icons/military-loader.png",
       hidden = true,
       subgroup = "belt",
       color_hint = { text = "4" },
@@ -189,7 +189,7 @@ data:extend({
     {
       type = "item",
       name = "carbon-fiber-wall",
-      icon = "__castra__/graphics/icons/carbon-fiber-wall.png",
+      icon = "__castra-prime__/graphics/icons/carbon-fiber-wall.png",
       subgroup = "defensive-structure",
       order = "a[stone-wall]-c[carbon-fiber-wall]",
       inventory_move_sound = item_sounds.concrete_inventory_move,
@@ -203,7 +203,7 @@ data:extend({
 
 local shield_mk3 = table.deepcopy(data.raw["item"]["energy-shield-mk2-equipment"])
 shield_mk3.name = "energy-shield-mk3-equipment"
-shield_mk3.icon = "__castra__/graphics/icons/energy-shield-mk3-equipment.png"
+shield_mk3.icon = "__castra-prime__/graphics/icons/energy-shield-mk3-equipment.png"
 shield_mk3.place_as_equipment_result = "energy-shield-mk3-equipment"
 order = "a[shield]-c[energy-shield-mk3-equipment]"
 data:extend({ shield_mk3 })

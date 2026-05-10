@@ -5,7 +5,7 @@ data:extend({
     {
         type = "wall",
         name = "carbon-fiber-wall",
-        icon = "__castra__/graphics/icons/carbon-fiber-wall.png",
+        icon = "__castra-prime__/graphics/icons/carbon-fiber-wall.png",
         flags = { "placeable-neutral", "player-creation" },
         collision_box = { { -0.29, -0.29 }, { 0.29, 0.29 } },
         selection_box = { { -0.5, -0.5 }, { 0.5, 0.5 } },
@@ -89,7 +89,7 @@ data:extend({
                 layers =
                 {
                     {
-                        filename = "__castra__/graphics/entity/wall/wall-single.png",
+                        filename = "__castra-prime__/graphics/entity/wall/wall-single.png",
                         priority = "extra-high",
                         width = 64,
                         height = 86,
@@ -99,7 +99,7 @@ data:extend({
                         scale = 0.5
                     },
                     {
-                        filename = "__castra__/graphics/entity/wall/wall-single-shadow.png",
+                        filename = "__castra-prime__/graphics/entity/wall/wall-single-shadow.png",
                         priority = "extra-high",
                         width = 98,
                         height = 60,
@@ -115,7 +115,7 @@ data:extend({
                 layers =
                 {
                     {
-                        filename = "__castra__/graphics/entity/wall/wall-vertical.png",
+                        filename = "__castra-prime__/graphics/entity/wall/wall-vertical.png",
                         priority = "extra-high",
                         width = 64,
                         height = 134,
@@ -125,7 +125,7 @@ data:extend({
                         scale = 0.5
                     },
                     {
-                        filename = "__castra__/graphics/entity/wall/wall-vertical-shadow.png",
+                        filename = "__castra-prime__/graphics/entity/wall/wall-vertical-shadow.png",
                         priority = "extra-high",
                         width = 98,
                         height = 110,
@@ -141,7 +141,7 @@ data:extend({
                 layers =
                 {
                     {
-                        filename = "__castra__/graphics/entity/wall/wall-horizontal.png",
+                        filename = "__castra-prime__/graphics/entity/wall/wall-horizontal.png",
                         priority = "extra-high",
                         width = 64,
                         height = 92,
@@ -151,7 +151,7 @@ data:extend({
                         scale = 0.5
                     },
                     {
-                        filename = "__castra__/graphics/entity/wall/wall-horizontal-shadow.png",
+                        filename = "__castra-prime__/graphics/entity/wall/wall-horizontal-shadow.png",
                         priority = "extra-high",
                         width = 124,
                         height = 68,
@@ -167,7 +167,7 @@ data:extend({
                 layers =
                 {
                     {
-                        filename = "__castra__/graphics/entity/wall/wall-corner-right.png",
+                        filename = "__castra-prime__/graphics/entity/wall/wall-corner-right.png",
                         priority = "extra-high",
                         width = 64,
                         height = 128,
@@ -177,7 +177,7 @@ data:extend({
                         scale = 0.5
                     },
                     {
-                        filename = "__castra__/graphics/entity/wall/wall-corner-right-shadow.png",
+                        filename = "__castra-prime__/graphics/entity/wall/wall-corner-right-shadow.png",
                         priority = "extra-high",
                         width = 124,
                         height = 120,
@@ -193,7 +193,7 @@ data:extend({
                 layers =
                 {
                     {
-                        filename = "__castra__/graphics/entity/wall/wall-corner-left.png",
+                        filename = "__castra-prime__/graphics/entity/wall/wall-corner-left.png",
                         priority = "extra-high",
                         width = 64,
                         height = 134,
@@ -203,7 +203,7 @@ data:extend({
                         scale = 0.5
                     },
                     {
-                        filename = "__castra__/graphics/entity/wall/wall-corner-left-shadow.png",
+                        filename = "__castra-prime__/graphics/entity/wall/wall-corner-left-shadow.png",
                         priority = "extra-high",
                         width = 102,
                         height = 120,
@@ -219,7 +219,7 @@ data:extend({
                 layers =
                 {
                     {
-                        filename = "__castra__/graphics/entity/wall/wall-t.png",
+                        filename = "__castra-prime__/graphics/entity/wall/wall-t.png",
                         priority = "extra-high",
                         width = 64,
                         height = 134,
@@ -229,7 +229,7 @@ data:extend({
                         scale = 0.5
                     },
                     {
-                        filename = "__castra__/graphics/entity/wall/wall-t-shadow.png",
+                        filename = "__castra-prime__/graphics/entity/wall/wall-t-shadow.png",
                         priority = "extra-high",
                         width = 124,
                         height = 120,
@@ -245,7 +245,7 @@ data:extend({
                 layers =
                 {
                     {
-                        filename = "__castra__/graphics/entity/wall/wall-ending-right.png",
+                        filename = "__castra-prime__/graphics/entity/wall/wall-ending-right.png",
                         priority = "extra-high",
                         width = 64,
                         height = 92,
@@ -255,7 +255,7 @@ data:extend({
                         scale = 0.5
                     },
                     {
-                        filename = "__castra__/graphics/entity/wall/wall-ending-right-shadow.png",
+                        filename = "__castra-prime__/graphics/entity/wall/wall-ending-right-shadow.png",
                         priority = "extra-high",
                         width = 124,
                         height = 68,
@@ -271,7 +271,7 @@ data:extend({
                 layers =
                 {
                     {
-                        filename = "__castra__/graphics/entity/wall/wall-ending-left.png",
+                        filename = "__castra-prime__/graphics/entity/wall/wall-ending-left.png",
                         priority = "extra-high",
                         width = 64,
                         height = 92,
@@ -281,7 +281,7 @@ data:extend({
                         scale = 0.5
                     },
                     {
-                        filename = "__castra__/graphics/entity/wall/wall-ending-left-shadow.png",
+                        filename = "__castra-prime__/graphics/entity/wall/wall-ending-left-shadow.png",
                         priority = "extra-high",
                         width = 102,
                         height = 68,
@@ -294,7 +294,7 @@ data:extend({
             },
             filling =
             {
-                filename = "__castra__/graphics/entity/wall/wall-filling.png",
+                filename = "__castra-prime__/graphics/entity/wall/wall-filling.png",
                 priority = "extra-high",
                 width = 48,
                 height = 56,
@@ -308,7 +308,7 @@ data:extend({
                 sheets =
                 {
                     {
-                        filename = "__castra__/graphics/entity/wall/wall-patch.png",
+                        filename = "__castra-prime__/graphics/entity/wall/wall-patch.png",
                         priority = "extra-high",
                         width = 116,
                         height = 128,
@@ -316,7 +316,7 @@ data:extend({
                         scale = 0.5
                     },
                     {
-                        filename = "__castra__/graphics/entity/wall/wall-patch-shadow.png",
+                        filename = "__castra-prime__/graphics/entity/wall/wall-patch-shadow.png",
                         priority = "extra-high",
                         width = 144,
                         height = 100,
@@ -331,7 +331,7 @@ data:extend({
                 sheets =
                 {
                     {
-                        filename = "__castra__/graphics/entity/wall/wall-gate.png",
+                        filename = "__castra-prime__/graphics/entity/wall/wall-gate.png",
                         priority = "extra-high",
                         width = 82,
                         height = 108,
@@ -339,7 +339,7 @@ data:extend({
                         scale = 0.5
                     },
                     {
-                        filename = "__castra__/graphics/entity/wall/wall-gate-shadow.png",
+                        filename = "__castra-prime__/graphics/entity/wall/wall-gate-shadow.png",
                         priority = "extra-high",
                         width = 130,
                         height = 78,
@@ -355,7 +355,7 @@ data:extend({
         {
             sheet =
             {
-                filename = "__castra__/graphics/entity/wall/wall-diode-green.png",
+                filename = "__castra-prime__/graphics/entity/wall/wall-diode-green.png",
                 priority = "extra-high",
                 width = 72,
                 height = 44,
@@ -402,7 +402,7 @@ data:extend({
         {
             sheet =
             {
-                filename = "__castra__/graphics/entity/wall/wall-diode-red.png",
+                filename = "__castra-prime__/graphics/entity/wall/wall-diode-red.png",
                 priority = "extra-high",
                 width = 72,
                 height = 44,
