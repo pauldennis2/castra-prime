@@ -52,8 +52,8 @@ data:extend(
   {
     type = "planet",
     name = "castra",
-    icon = "__castra-prime__/graphics/icons/castra.png",
-    starmap_icon = "__castra-prime__/graphics/icons/starmap-planet-castra.png",
+    icon = "__castra__/graphics/icons/castra.png",
+    starmap_icon = "__castra__/graphics/icons/starmap-planet-castra.png",
     starmap_icon_size = 512,
     gravity_pull = 15,
     distance = 21,

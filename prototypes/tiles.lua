@@ -17,7 +17,7 @@ light_oil_ocean_deep.effect_color = { 240, 170, 40 }
 light_oil_ocean_deep.effect_color_secondary = { 110, 76, 5 }
 light_oil_ocean_deep.map_color = { 214/256, 127/256, 13/256 }
 light_oil_ocean_deep.variants = tile_variations_template_with_transitions(
-    "__castra-prime__/graphics/terrain/light-oil-ocean-deep.png",
+    "__castra__/graphics/terrain/light-oil-ocean-deep.png",
     {
         max_size = 4,
         [1] = { weights = { 0.085, 0.085, 0.085, 0.085, 0.087, 0.085, 0.065, 0.085, 0.045, 0.045, 0.045, 0.045, 0.005, 0.025, 0.045, 0.045 } },

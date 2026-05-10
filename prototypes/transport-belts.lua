@@ -9,7 +9,7 @@ local military_belt_animation_set =
   alternate = true,
   animation_set =
   {
-    filename = "__castra-prime__/graphics/entity/military-transport-belt/military-transport-belt.png",
+    filename = "__castra__/graphics/entity/military-transport-belt/military-transport-belt.png",
     priority = "extra-high",
     size = 128,
     scale = 0.5,
@@ -17,7 +17,7 @@ local military_belt_animation_set =
     direction_count = 20
   },
   frozen_patch = {
-    filename = "__castra-prime__/graphics/entity/military-transport-belt/military-transport-belt-frozen.png",
+    filename = "__castra__/graphics/entity/military-transport-belt/military-transport-belt-frozen.png",
     priority = "extra-high",
     size = 128,
     scale = 0.5,
@@ -33,7 +33,7 @@ data:extend
   {
     type = "transport-belt",
     name = "military-transport-belt",
-    icon = "__castra-prime__/graphics/icons/military-transport-belt.png",
+    icon = "__castra__/graphics/icons/military-transport-belt.png",
     flags = {"placeable-neutral", "player-creation"},
     minable = {mining_time = 0.1, result = "military-transport-belt"},
     max_health = 920,
@@ -78,7 +78,7 @@ data:extend
   {
     type = "underground-belt",
     name = "military-underground-belt",
-    icon = "__castra-prime__/graphics/icons/military-underground-belt.png",
+    icon = "__castra__/graphics/icons/military-underground-belt.png",
     flags = {"placeable-neutral", "player-creation"},
     minable = {mining_time = 0.1, result = "military-underground-belt"},
     max_health = 920,
@@ -147,7 +147,7 @@ data:extend
       {
         sheet =
         {
-          filename = "__castra-prime__/graphics/entity/military-underground-belt/military-underground-belt-structure.png",
+          filename = "__castra__/graphics/entity/military-underground-belt/military-underground-belt-structure.png",
           priority = "extra-high",
           width = 192,
           height = 192,
@@ -159,7 +159,7 @@ data:extend
       {
         sheet =
         {
-          filename = "__castra-prime__/graphics/entity/military-underground-belt/military-underground-belt-structure.png",
+          filename = "__castra__/graphics/entity/military-underground-belt/military-underground-belt-structure.png",
           priority = "extra-high",
           width = 192,
           height =192,
@@ -170,7 +170,7 @@ data:extend
       {
         sheet =
         {
-          filename = "__castra-prime__/graphics/entity/military-underground-belt/military-underground-belt-structure.png",
+          filename = "__castra__/graphics/entity/military-underground-belt/military-underground-belt-structure.png",
           priority = "extra-high",
           width = 192,
           height = 192,
@@ -182,7 +182,7 @@ data:extend
       {
         sheet =
         {
-          filename = "__castra-prime__/graphics/entity/military-underground-belt/military-underground-belt-structure.png",
+          filename = "__castra__/graphics/entity/military-underground-belt/military-underground-belt-structure.png",
           priority = "extra-high",
           width = 192,
           height = 192,
@@ -194,7 +194,7 @@ data:extend
       {
         sheet =
         {
-          filename = "__castra-prime__/graphics/entity/military-underground-belt/military-underground-belt-structure-back-patch.png",
+          filename = "__castra__/graphics/entity/military-underground-belt/military-underground-belt-structure-back-patch.png",
           priority = "extra-high",
           width = 192,
           height = 192,
@@ -205,7 +205,7 @@ data:extend
       {
         sheet =
         {
-          filename = "__castra-prime__/graphics/entity/military-underground-belt/military-underground-belt-structure-front-patch.png",
+          filename = "__castra__/graphics/entity/military-underground-belt/military-underground-belt-structure-front-patch.png",
           priority = "extra-high",
           width = 192,
           height = 192,
@@ -240,7 +240,7 @@ data:extend
   {
     type = "splitter",
     name = "military-splitter",
-    icon = "__castra-prime__/graphics/icons/military-splitter.png",
+    icon = "__castra__/graphics/icons/military-splitter.png",
     flags = {"placeable-neutral", "player-creation"},
     minable = {mining_time = 0.1, result = "military-splitter"},
     max_health = 1000,
@@ -279,7 +279,7 @@ data:extend
     structure =
     {
       north =
-      util.sprite_load("__castra-prime__/graphics/entity/military-splitter/military-splitter-north",
+      util.sprite_load("__castra__/graphics/entity/military-splitter/military-splitter-north",
         {
           frame_count = 32,
           priority = "extra-high",
@@ -287,7 +287,7 @@ data:extend
         }
       ),
       east =
-      util.sprite_load("__castra-prime__/graphics/entity/military-splitter/military-splitter-east",
+      util.sprite_load("__castra__/graphics/entity/military-splitter/military-splitter-east",
         {
           frame_count = 32,
           priority = "extra-high",
@@ -295,7 +295,7 @@ data:extend
         }
       ),
       south =
-      util.sprite_load("__castra-prime__/graphics/entity/military-splitter/military-splitter-south",
+      util.sprite_load("__castra__/graphics/entity/military-splitter/military-splitter-south",
         {
           frame_count = 32,
           priority = "extra-high",
@@ -303,7 +303,7 @@ data:extend
         }
       ),
       west =
-      util.sprite_load("__castra-prime__/graphics/entity/military-splitter/military-splitter-west",
+      util.sprite_load("__castra__/graphics/entity/military-splitter/military-splitter-west",
         {
           frame_count = 32,
           priority = "extra-high",
@@ -315,7 +315,7 @@ data:extend
     {
       north = util.empty_sprite(),
       east =
-      util.sprite_load("__castra-prime__/graphics/entity/military-splitter/military-splitter-east-top_patch",
+      util.sprite_load("__castra__/graphics/entity/military-splitter/military-splitter-east-top_patch",
         {
           frame_count = 32,
           priority = "extra-high",
@@ -324,7 +324,7 @@ data:extend
       ),
       south = util.empty_sprite(),
       west =
-      util.sprite_load("__castra-prime__/graphics/entity/military-splitter/military-splitter-west-top_patch",
+      util.sprite_load("__castra__/graphics/entity/military-splitter/military-splitter-west-top_patch",
         {
           frame_count = 32,
           priority = "extra-high",
@@ -374,7 +374,7 @@ data:extend
   {
     type = "loader",
     name = "military-loader",
-    icon = "__castra-prime__/graphics/icons/military-loader.png",
+    icon = "__castra__/graphics/icons/military-loader.png",
     flags = {"placeable-neutral", "player-creation"},
     hidden = true,
     minable = {mining_time = 0.1, result = "military-loader"},
@@ -442,7 +442,7 @@ data:extend({
   {
     type = "corpse",
     name = "military-transport-belt-remnants",
-    icon = "__castra-prime__/graphics/icons/military-transport-belt.png",
+    icon = "__castra__/graphics/icons/military-transport-belt.png",
     flags = {"placeable-neutral", "not-on-map"},
     hidden_in_factoriopedia = true,
     subgroup = "belt-remnants",
@@ -457,7 +457,7 @@ data:extend({
     remove_on_tile_placement = false,
     animation =  make_rotated_animation_variations_from_sheet (2,
     {
-      filename = "__castra-prime__/graphics/entity/military-transport-belt/remnants/military-transport-belt-remnants.png",
+      filename = "__castra__/graphics/entity/military-transport-belt/remnants/military-transport-belt-remnants.png",
       line_length = 1,
       width = 106,
       height = 102,
@@ -469,7 +469,7 @@ data:extend({
   {
     type = "corpse",
     name = "military-splitter-remnants",
-    icon = "__castra-prime__/graphics/icons/military-splitter.png",
+    icon = "__castra__/graphics/icons/military-splitter.png",
     flags = {"placeable-neutral", "not-on-map"},
     hidden_in_factoriopedia = true,
     subgroup = "belt-remnants",
@@ -484,7 +484,7 @@ data:extend({
     remove_on_tile_placement = false,
     animation =
     {
-      filename = "__castra-prime__/graphics/entity/military-splitter/remnants/military-splitter-remnants.png",
+      filename = "__castra__/graphics/entity/military-splitter/remnants/military-splitter-remnants.png",
       line_length = 1,
       width = 190,
       height = 190,
@@ -496,7 +496,7 @@ data:extend({
   {
     type = "corpse",
     name = "military-underground-belt-remnants",
-    icon = "__castra-prime__/graphics/icons/military-underground-belt.png",
+    icon = "__castra__/graphics/icons/military-underground-belt.png",
     flags = {"placeable-neutral", "not-on-map", "building-direction-8-way"},
     hidden_in_factoriopedia = true,
     subgroup = "belt-remnants",
@@ -511,7 +511,7 @@ data:extend({
     remove_on_tile_placement = false,
     animation =
     {
-      filename = "__castra-prime__/graphics/entity/military-underground-belt/remnants/military-underground-belt-remnants.png",
+      filename = "__castra__/graphics/entity/military-underground-belt/remnants/military-underground-belt-remnants.png",
       line_length = 1,
       width = 156,
       height = 144,
