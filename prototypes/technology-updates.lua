@@ -17,15 +17,23 @@ if data.raw["technology"]["railgun-damage-1"] and data.raw["technology"]["railgu
 end
 
 if data.raw["technology"]["promethium-science-pack"] then
-    if data.raw["technology"]["promethium-science-pack"].unit and data.raw["technology"]["promethium-science-pack"].unit.ingredients then
-        table.insert(data.raw["technology"]["promethium-science-pack"].unit.ingredients,
-            { "battlefield-science-pack", 1 })
+    if settings.startup["castra-prime-include-promsci"].value then
+        if data.raw["technology"]["promethium-science-pack"].unit and 
+           data.raw["technology"]["promethium-science-pack"].unit.ingredients then
+            table.insert(data.raw["technology"]["promethium-science-pack"].unit.ingredients,
+                { "battlefield-science-pack", 1 })
+        end
+        table.insert(data.raw["technology"]["promethium-science-pack"].prerequisites, "lithium-battery")
     end
-    table.insert(data.raw["technology"]["promethium-science-pack"].prerequisites, "lithium-battery")
 end
 
-if data.raw["technology"]["research-productivity"] and data.raw["technology"]["research-productivity"].unit and data.raw["technology"]["research-productivity"].unit and data.raw["technology"]["research-productivity"].unit.ingredients then
-    table.insert(data.raw["technology"]["research-productivity"].unit.ingredients, { "battlefield-science-pack", 1 })
+if settings.startup["castra-prime-include-promsci"].value then
+    if data.raw["technology"]["research-productivity"] and 
+       data.raw["technology"]["research-productivity"].unit and 
+       data.raw["technology"]["research-productivity"].unit.ingredients then
+        table.insert(data.raw["technology"]["research-productivity"].unit.ingredients, 
+            { "battlefield-science-pack", 1 })
+    end
 end
 
 -- Move atomic bomb and flamethrowers to battlefield-science-pack

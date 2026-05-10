@@ -1,4 +1,13 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.6.1
+Date: 2026-05-10
+  First actual changes.
+  Features:
+    - Added configurable setting for whether Battlefield Sci added to Promethium science
+    - Added setting to buff the Forge (mainly for test purposes)
+    - Added setting to prevent enemy artillery from spawning
+
+---------------------------------------------------------------------------------------------------
 Version: 0.6.0
 Date: 2026-05-10
   Starting a clean version, bringing in 0.5.4 changes. Added Readme, updated info.

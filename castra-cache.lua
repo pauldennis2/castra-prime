@@ -196,6 +196,8 @@ local function update_castra_enemy_data()
     enemy_storage.construction_robot = has_castra_researched_item("construction-robot")
     enemy_storage.tank = has_castra_researched_item("tank")
     enemy_storage.artillery_turret = has_castra_researched_item("artillery-turret")
+    enemy_storage.artillery_turret = not settings.startup["castra-prime-disable-artillery"].value 
+        and has_castra_researched_item("artillery-turret")
     enemy_storage.spidertron = has_castra_researched_item("spidertron")
     enemy_storage.land_mine = has_castra_researched_item("land-mine")
     enemy_storage.tesla_turret = has_castra_researched_item("tesla-turret")
