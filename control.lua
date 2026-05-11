@@ -2,6 +2,32 @@ local item_cache = require("castra-cache")
 local base_gen = require("base-generator")
 local base_upgrades = require("base-upgrades")
 
+-- **Research Speed Explanation, by Claude**
+-- TODO verify
+-- Calculates the enemy research speed in research units per minute.
+-- Formula builds multiplicatively from a base rate, modified by several factors:
+--
+-- Base rate: evolution_factor * 90
+--   At 100% evolution, enemies research at 90 units/minute before modifiers.
+--   At 0% evolution, the floor of 5 units/minute applies instead.
+--
+-- Multiplied by:
+--   (1 + laboratory_speed_modifier)      -- from enemy lab speed research
+--   (1 + laboratory_productivity_bonus)  -- from enemy lab productivity research
+--   (1 + 2^(speed_tier-1) * 0.05)       -- speed module tier: T1=5%, T2=10%, T3=20%
+--   (1 + 2^(speed_tier-1) * 0.02)       -- productivity module tier bonus
+--                                        -- NOTE: bug in original code uses speed_tier
+--                                        -- instead of productivity_tier here
+--   (1 + quality_level * 0.08)          -- quality tier: each level adds 8%
+--
+-- Divided by:
+--   (log2(ingredient_count) + 1)        -- complexity penalty: more science packs = slower
+--
+-- Minimum: 5 units/minute regardless of evolution
+--
+-- Example: at 50% evolution, no modules, normal quality:
+--   0.5 * 90 = 45 units/minute (before lab modifiers)
+
 -- Event: on_chunk_generated
 script.on_event(defines.events.on_chunk_generated, function(event)
     local surface = event.surface
@@ -308,9 +334,11 @@ local function update_castra_research_progress(event)
         if current_research_units > 0 then
             local progress = enemy_force.research_progress * current_research_units + research_speed
             if progress / current_research_units >= 1 then
-                game.forces["player"].print("Castra enemies have completed [technology=" ..
-                    enemy_force.current_research.name .. ",level=" .. enemy_force.current_research.level .. "]")
-                enemy_force.current_research.researched = true
+                if not settings.runtime_global["castra-prime-suppress-research-msg"].value then
+                    game.forces["player"].print("Castra enemies have completed [technology=" ..
+                        enemy_force.current_research.name .. ",level=" .. enemy_force.current_research.level .. "]")
+                end
+                    enemy_force.current_research.researched = true
                 -- Infinite techs will not be cleared so we need to manually clear the progress
                 if enemy_force.current_research then
                     enemy_force.research_progress = 0
@@ -420,8 +448,10 @@ local function update_castra_research_progress(event)
             if trigger_research and not completed_tech then
                 local progress = nextResearch.saved_progress * 10 + research_speed
                 if progress >= 10 then
-                    game.forces["player"].print("Castra enemies have completed [technology=" ..
-                        nextResearch.name .. ",level=" .. nextResearch.level .. "]")
+                    if not settings.runtime_global["castra-prime-suppress-research-msg"].value then
+                        game.forces["player"].print("Castra enemies have completed [technology=" ..
+                            nextResearch.name .. ",level=" .. nextResearch.level .. "]")
+                    end
                     nextResearch.researched = true
                     item_cache.update_castra_enemy_data()
                     trigger_research = nil
@@ -435,8 +465,10 @@ local function update_castra_research_progress(event)
                     game.forces["player"].technologies and
                     game.forces["player"].technologies["castra-enemy-research"] and
                     game.forces["player"].technologies["castra-enemy-research"].researched then
-                    game.forces["player"].print("Castra enemies have started [technology=" ..
-                        nextResearch.name .. ",level=" .. nextResearch.level .. "]")
+                    if not settings.runtime_global["castra-prime-suppress-research-msg"].value then
+                        game.forces["player"].print("Castra enemies have started [technology=" ..
+                            nextResearch.name .. ",level=" .. nextResearch.level .. "]")
+                    end
                 end
             end
         end
