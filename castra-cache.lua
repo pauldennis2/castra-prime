@@ -58,150 +58,110 @@ local sorted_ammo_types = {
     artillery_shell = {"artillery-shell", "cerys-neutron-bomb", "maraxsis-fat-man" },
 }
 
+-- Returns the highest tier of a module type the enemy has researched
+local function get_module_tier(module_type)
+    local tier = 0
+    for i = 1, get_highest_module_tier(module_type) do
+        if (i == 1 and has_castra_researched_item(module_type)) or
+           has_castra_researched_item(module_type .. "-" .. i) then
+            tier = i
+        end
+    end
+    return tier
+end
+
+-- Returns the highest tier item from an ordered list that the enemy has researched
+local function get_best_tier(tier_list)
+    local best = nil
+    for _, item in ipairs(tier_list) do
+        if has_castra_researched_item(item) then
+            best = item
+        end
+    end
+    return best
+end
+
+-- Returns true if the enemy has researched any item that places an entity of the given type
+local function has_any_entity_type(entity_type)
+    for item_name, _ in pairs(has_item_cache) do
+        local entity = prototypes.entity[item_name]
+        if entity and entity.type == entity_type then
+            return true
+        end
+    end
+    return false
+end
+-- Configuration table defining what the enemy can research and use.
+-- Each entry: { key, check_fn, disabled_setting }
+-- key: storage key (snake_case)
+-- check_fn: function returning true if enemy has access
+-- disabled_setting: optional startup setting name that blocks this
+local enemy_capabilities = {
+    -- Modules
+    { key = "speed_module_tier",        check_fn = function() return get_module_tier("speed-module") end },
+    { key = "productivity_module_tier", check_fn = function() return get_module_tier("productivity-module") end },
+    { key = "quality_module_tier",      check_fn = function() return get_module_tier("quality-module") end },
+
+    -- Power
+    { key = "best_power_pole", check_fn = function() return get_best_tier(power_pole_tiers) end },
+
+    -- Walls
+    { key = "wall_tier", check_fn = function() return get_best_tier(wall_tiers) end },
+
+    -- Ammo
+    { key = "ammo_tier",      check_fn = function() return get_best_tier(sorted_ammo_types.bullet) end },
+    { key = "rocket_tier",    check_fn = function() return get_best_tier(sorted_ammo_types.rocket) end },
+    { key = "railgun_tier",   check_fn = function() return get_best_tier(sorted_ammo_types.railgun) end },
+    { key = "artillery_tier", check_fn = function() return get_best_tier(sorted_ammo_types.artillery_shell) end },
+
+    -- Combat robots
+    { key = "combat_robot", check_fn = function() return get_best_tier(combat_robot_tiers) end },
+
+    -- Simple entity flags
+    { key = "gun_turret",        check_fn = function() return has_castra_researched_item("gun-turret") end },
+    { key = "laser_turret",      check_fn = function() return has_castra_researched_item("laser-turret") end },
+    { key = "flamethrower_turret", check_fn = function() return has_castra_researched_item("flamethrower-turret") end },
+    { key = "rocket_turret",     check_fn = function() return has_castra_researched_item("rocket-turret") end },
+    { key = "railgun_turret",    check_fn = function() return has_castra_researched_item("railgun-turret") end },
+    { key = "solar_panel",       check_fn = function() return has_castra_researched_item("solar-panel") end },
+    { key = "repair_pack",       check_fn = function() return has_castra_researched_item("repair-pack") end },
+    { key = "roboport",          check_fn = function() return has_castra_researched_item("roboport") end },
+    { key = "construction_robot", check_fn = function() return has_castra_researched_item("construction-robot") end },
+    { key = "tank",              check_fn = function() return has_castra_researched_item("tank") end },
+    { key = "spidertron",        check_fn = function() return has_castra_researched_item("spidertron") end },
+    { key = "tesla_turret",      check_fn = function() return has_castra_researched_item("tesla-turret") end },
+    { key = "combat_roboport",   check_fn = function() return has_castra_researched_item("combat-roboport") end },
+    { key = "big_electric_pole", check_fn = function() return has_castra_researched_item("big-electric-pole") end },
+
+    -- Settings-gated entries
+    { key = "artillery_turret", check_fn = function() return has_castra_researched_item("artillery-turret") end,
+      disabled_setting = "castra-prime-disable-artillery" },
+    { key = "land_mine",        check_fn = function() return has_any_entity_type("land-mine") end,
+      disabled_setting = "castra-prime-disable-land-mines" },
+}
+
 local function update_castra_enemy_data()
     storage.castra = storage.castra or {}
-    local enemy_storage = storage.castra.enemy or {}
+    local enemy_storage = {}
 
     update_item_cache()
 
-    -- Update the highest tier of speed module unlocked by checking recipes
-    local speed_module_tier = 0
-    for i = 1, get_highest_module_tier("speed-module") do
-        if i == 1 and has_castra_researched_item("speed-module") then
-            speed_module_tier = i
-        end
-        if has_castra_researched_item("speed-module-" .. i) then
-            speed_module_tier = i
-        end
+    for _, capability in ipairs(enemy_capabilities) do
+        local disabled = capability.disabled_setting and
+                        settings.startup[capability.disabled_setting] and
+                        settings.startup[capability.disabled_setting].value
+        enemy_storage[capability.key] = disabled and false or capability.check_fn()
     end
-    enemy_storage.speed_module_tier = speed_module_tier
 
-    -- Update the highest tier of productivity module unlocked by checking recipes
-    local productivity_module_tier = 0
-    for i = 1, get_highest_module_tier("productivity-module") do
-        if i == 1 and has_castra_researched_item("productivity-module") then
-            productivity_module_tier = i
-        end
-        if has_castra_researched_item("productivity-module-" .. i) then
-            productivity_module_tier = i
-        end
-    end
-    enemy_storage.productivity_module_tier = productivity_module_tier
-
-    -- Update highest tier of quality module
-    local quality_module_tier = 0
-    for i = 1, get_highest_module_tier("quality-module") do
-        if i == 1 and has_castra_researched_item("quality-module") then
-            quality_module_tier = i
-        end
-        if has_castra_researched_item("quality-module-" .. i) then
-            quality_module_tier = i
-        end
-    end
-    enemy_storage.quality_module_tier = quality_module_tier
-
-    -- Check for the best power pole: none > small > medium > substation
-    local best_power_pole = nil
-    if has_castra_researched_item("small-electric-pole") then
-        best_power_pole = "small-electric-pole"
-    end
-    if has_castra_researched_item("medium-electric-pole") then
-        best_power_pole = "medium-electric-pole"
-    end
-    if has_castra_researched_item("substation") then
-        best_power_pole = "substation"
-    end
-    enemy_storage.best_power_pole = best_power_pole
-
-    -- Check highest tier of wall
-    local wall_tier = nil
-    if has_castra_researched_item("stone-wall") then
-        wall_tier = "stone-wall"
-    end
-    if has_castra_researched_item("carbon-fiber-wall") then
-        wall_tier = "carbon-fiber-wall"
-    end
-    enemy_storage.wall_tier = wall_tier
-
-    -- Check highest tier of ammo
-    local ammo_tier = nil
-    for _, ammo in pairs(sorted_ammo_types.bullet) do
-        if has_castra_researched_item(ammo) then
-            ammo_tier = ammo
-        end
-    end
-    enemy_storage.ammo_tier = ammo_tier
-
-    -- Check highest tier of rocket
-    local rocket_tier = nil
-    for _, rocket in pairs(sorted_ammo_types.rocket) do
-        if has_castra_researched_item(rocket) then
-            rocket_tier = rocket
-        end
-    end
-    enemy_storage.rocket_tier = rocket_tier
-
-    -- Check highest tier of railgun ammo
-    local railgun_tier = nil
-    for _, railgun in pairs(sorted_ammo_types.railgun) do
-        if has_castra_researched_item(railgun) then
-            railgun_tier = railgun
-        end
-    end
-    enemy_storage.railgun_tier = railgun_tier
-
-    -- Check highest tier of artillery-shell
-    local artillery_tier = nil
-    for _, artillery in pairs(sorted_ammo_types.artillery_shell) do
-        if has_castra_researched_item(artillery) then
-            artillery_tier = artillery
-        end
-    end
-    enemy_storage.artillery_tier = artillery_tier
-
-    -- Check highest tier of combat robot
-    local combat_robot = nil
-    if has_castra_researched_item("defender-capsule") then
-        combat_robot = "defender-capsule"
-    end
-    if has_castra_researched_item("distractor-capsule") then
-        combat_robot = "distractor-capsule"
-    end
-    if has_castra_researched_item("destroyer-capsule") then
-        combat_robot = "destroyer-capsule"
-    end
-    enemy_storage.combat_robot = combat_robot
-
-    -- Check highest quality tier unlocked
-    local quality_tier = prototypes.quality["normal"]
+    -- Quality tier requires special handling (iterates prototypes, not items)
+    enemy_storage.quality_tier = prototypes.quality["normal"]
     for _, quality in pairs(prototypes.quality) do
-        if quality and not quality.hidden and game.forces["enemy"].is_quality_unlocked(quality) then
-            if quality.level > quality_tier.level then
-                quality_tier = quality
-            end
+        if quality and not quality.hidden and
+           game.forces["enemy"].is_quality_unlocked(quality) and
+           quality.level > enemy_storage.quality_tier.level then
+            enemy_storage.quality_tier = quality
         end
     end
-    enemy_storage.quality_tier = quality_tier
-
-    -- Check turrets and other misc buildings
-    enemy_storage.gun_turret = has_castra_researched_item("gun-turret")
-    enemy_storage.laser_turret = has_castra_researched_item("laser-turret")
-    enemy_storage.flamethrower_turret = has_castra_researched_item("flamethrower-turret")
-    enemy_storage.rocket_turret = has_castra_researched_item("rocket-turret")
-    enemy_storage.railgun_turret = has_castra_researched_item("railgun-turret")
-    enemy_storage.solar_panel = has_castra_researched_item("solar-panel")
-    enemy_storage.repair_pack = has_castra_researched_item("repair-pack")
-    enemy_storage.big_electric_pole = has_castra_researched_item("big-electric-pole")
-    enemy_storage.roboport = has_castra_researched_item("roboport")
-    enemy_storage.construction_robot = has_castra_researched_item("construction-robot")
-    enemy_storage.tank = has_castra_researched_item("tank")
-    enemy_storage.artillery_turret = has_castra_researched_item("artillery-turret")
-    enemy_storage.artillery_turret = not settings.startup["castra-prime-disable-artillery"].value 
-        and has_castra_researched_item("artillery-turret")
-    enemy_storage.spidertron = has_castra_researched_item("spidertron")
-    enemy_storage.land_mine = has_castra_researched_item("land-mine")
-    enemy_storage.tesla_turret = has_castra_researched_item("tesla-turret")
-    enemy_storage.combat_roboport = has_castra_researched_item("combat-roboport")
 
     storage.castra.enemy = enemy_storage
 end

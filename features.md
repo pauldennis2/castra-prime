@@ -55,6 +55,16 @@ This would be a bigger project, but thinking about some kind of restrictions on 
 
 Potential feature to be able to configure (maybe even stop?) the rate of enemy research.
 
+In general the concept of blanket tech-copy presents intractable balance problems but also seems core to the mod.
+
+### Review of Addons
+
+Tuning/usefulness of military belts, carbon fiber wall, mk3 battery, mk3 shield.
+
+### Make Other Castra Tech Tree Changes Optional
+
+Right now it's modifying a bunch of stuff including railgun, nukes. It looks like in some cases it's substituting battlefield science for something else like Gleba's Ag science.
+
 ### Resource Patch Fix
 
 Players sometimes report struggling to find particular resources - I think I remember the nearest serviceable patches of some things being pretty far away. 

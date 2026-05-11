@@ -37,6 +37,13 @@ data:extend({
         minimum_value = 0.01,
         maximum_value = 100.0,
         order = "c"
+    },
+    {
+        type = "bool-setting",
+        name = "castra-prime-disable-land-mines",
+        setting_type = "startup",
+        default_value = false,
+        order = "c"
     }
 })
 

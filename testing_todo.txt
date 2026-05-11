@@ -4,3 +4,12 @@ Building up a bit of testing tech debt since my sandbox isn't on Castra
 -Test enemy research rate (easier)
 -Test enemy research messages suppressed properly (easy)
 -Test new version of Forge building; should be fine just tweaked values
+
+Slow mines - are these coming from Bobs?
+Can enemies use the weird "speed mods" from Moshine AI?
+
+Add credits from original mod (art assets, etc)
+
+Small fixes todos
+Fix mod name on portal
+Change mod listing to group with other planet mods using the planet/circle symbol
