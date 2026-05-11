@@ -30,6 +30,14 @@ This fork aims to preserve everything that makes Castra interesting — the tech
 
 ---
 
+## My Views as a Mod Author
+
+First, I want to respect the creativity and work put in by the original authors, primarily Bartz24. It was their (sorry, I don't know gender) vision and creativity. I can't know fully what they intended, but I am trying to provide some frequently-requested fixes/improvements.
+
+At least to start, **any type of balance or feature change should be optional**. I don't intend to add new technologies/entities at this time. The various "enemy nerfs" will be configurable as settings, which is a frequently requested feature. This means that anyone who wants to experience Castra with the original difficulty, just with bug fixes, should be able to.
+
+Big disclaimer: this mod is not gonna be for everyone, and I'm not promising to fix everyone's gripes. I want to preserve most of the difficulty of the original mod, while making it more fair in the late-game. There may be a nerf that you request that I don't think is needed. At the end of the day, you're always free to fork this mod and make your own changes.
+
 ## Compatibility
 
 - Factorio **2.0+** with **Space Age**

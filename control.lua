@@ -292,6 +292,9 @@ local function get_castra_research_speed()
         research_speed = 5
     end
 
+    -- Apply player-configured rate multiplier last
+    research_speed = research_speed * settings.runtime_global["castra-prime-research-rate-multiplier"].value
+
     return research_speed
 end
 

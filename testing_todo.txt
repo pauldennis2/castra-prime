@@ -1,0 +1,6 @@
+Building up a bit of testing tech debt since my sandbox isn't on Castra
+
+-Test enemy creation of artillery (difficult)
+-Test enemy research rate (easier)
+-Test enemy research messages suppressed properly (easy)
+-Test new version of Forge building; should be fine just tweaked values

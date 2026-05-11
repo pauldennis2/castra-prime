@@ -4,7 +4,7 @@ data:extend({
     {
         type = "bool-setting",
         name = "castra-prime-disable-artillery",
-        setting_type = "runtime-global", -- Todo likely  change to startup
+        setting_type = "startup",
         default_value = false,
         order = "a"
     },
