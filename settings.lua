@@ -44,6 +44,13 @@ data:extend({
         setting_type = "startup",
         default_value = false,
         order = "c"
+    },
+    {
+        type = "bool-setting",
+        name = "castra-prime-nerf-enemy-bases",
+        setting_type = "startup",
+        default_value = false,
+        order = "c"
     }
 })
 

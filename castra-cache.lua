@@ -4,6 +4,21 @@ end
 
 local has_item_cache = nil
 
+local power_pole_tiers = {
+    "small-electric-pole",
+    "medium-electric-pole", 
+    "big-electric-pole",
+    "substation"
+}
+
+local wall_tiers = { "stone-wall", "carbon-fiber-wall" }
+
+local combat_robot_tiers = {
+    "defender-capsule",
+    "distractor-capsule",
+    "destroyer-capsule"
+}
+
 local function update_item_cache()
     has_item_cache = {}
     for _, recipe in pairs(game.forces["enemy"].recipes) do

@@ -167,3 +167,13 @@ But I also ran into this and it is annoying.
 
 https://mods.factorio.com/mod/castra/discussion/68916885d0e50c47357a910d
 Incompatible for some ammo related reason. 2 players reported this so would love to fix it, but involves figuring out an interaction with a mod I've never used.
+
+### Enemy Base Health
+
+I believe enemy base health scales with evolution factor, which can make for some crazy high numbers at high evo factor - I saw one with 148k. I don't *think* this was the intent, so I'm calling this a bug and will take a look at how to change this without nerfing it to the ground. 
+
+## Ideas
+
+### Enemy Tanks
+
+I always thought this looked a little weird/placeholder-y. Maybe switching to a mini spidertron would be cooler and more thematic? Or a massive UPS headache because of legs?
