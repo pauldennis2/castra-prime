@@ -59,7 +59,23 @@ In general the concept of blanket tech-copy presents intractable balance problem
 
 ### Review of Addons
 
-Tuning/usefulness of military belts, carbon fiber wall, mk3 battery, mk3 shield.
+Notes:
+Shield HP mk1/mk2/mk3 (new): 50/150/275, rate 12/12/16
+The rate jump is cool but this is a lower percentage jump. Certainly compared to Bob's warfare it feels underwhelming.
+
+Also consider for battery and shield changing them from mk3 to be something Castra specific to be more distinct from Bobs or other mods that add mk3?
+
+Battery: 20/100/250 MJ of storage, again smaller % increase and blown away by Bob's. 
+
+The carbon fiber wall is pricey at 5 carbon fiber each, but the health jump from 350 for the basic wall to 1200 for CF wall is notable and it gains more resistances.
+
+Military belts: They are slower than the highest tier of unmodded belts but:
+1. Relatively cheap to build, at least on Castra
+2. Have around 5x as much health
+3. Go further underground
+Seems balanced as is. More of a convenience for this planet, since they're probably much easier to make than blue belts?
+
+Combat roboport - it would be nice if quality did something.
 
 ### Make Other Castra Tech Tree Changes Optional
 

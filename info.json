@@ -2,9 +2,9 @@
   "name": "castra-prime",
   "version": "0.6.0",
   "title": "Castra",
-  "author": "Bartz24, LogicDolphin, pauldennis2",
+  "author": "erronius",
   "factorio_version": "2.0",
   "space_travel_required": true,
   "dependencies": ["base >= 2.0.30", "space-age", "? alien-biomes", "? landing-pad-research", "? maraxsis", "? planet-muluna", "? Cerys-Moon-of-Fulgora", "? modules-t4", "! castra"],
-  "description": "Fork of Castra, military planet, to fix balance issues."
+  "description": "Fork of Castra, originally by Bartz24 and LogicDolphin, to fix balance issues."
 }
