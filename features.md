@@ -77,6 +77,19 @@ Seems balanced as is. More of a convenience for this planet, since they're proba
 
 Combat roboport - it would be nice if quality did something.
 
+Quality supposedly increases number of robots; to be tested, but isn't documented/visible to user.
+
+1st changes with the feature "Buff Castra equipment" setting on:
+The Mk3 Battery goes from 250->300MJ
+The Mk3 shield has
+HP increased 275->450
+Regen rate 16->18
+Power consumption 800kw -> 300kw
+
+The balance goal is to make these feel like more meaningful upgrades. In particular, I wanted them to be somewhat better than the equivalent Bob's Equipment mk3s, but still substantially below the mk6s.
+
+My eventual goal is to differentiate at least one piece of Castra gear to be more niche, likely the shield - possibly a smaller (or larger) size, lower HP but increased regen. 
+
 ### Make Other Castra Tech Tree Changes Optional
 
 Right now it's modifying a bunch of stuff including railgun, nukes. It looks like in some cases it's substituting battlefield science for something else like Gleba's Ag science.

@@ -9,6 +9,20 @@ if settings.startup["castra-prime-buffed-forge"].value then
     end
 end
 
+if settings.startup["castra-prime-buff-equipment"].value then
+    local battery = data.raw["battery-equipment"]["battery-mk3-equipment"]
+    if battery then
+        battery.energy_source.buffer_capacity = "300MJ"
+    end
+
+    local shield = data.raw["energy-shield-equipment"]["energy-shield-mk3-equipment"]
+    if shield then
+        shield.max_shield_value = 450
+        shield.energy_source.input_flow_limit = "300kW"
+        shield.energy_per_shield = "16667J"
+    end
+end
+
 local base_nerf_rate = 0.5
 if settings.startup["castra-prime-nerf-enemy-bases"].value then
     local dc = data.raw["unit-spawner"]["data-collector"]

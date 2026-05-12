@@ -14,19 +14,21 @@ Buffed forge option is just for easy testing, but it does feel a little underwhe
 
 ---
 
-## What is Castra?
+## What is Castra (Originally)?
 
-Castra is a mod planet for Factorio (Space Age). Its defining mechanic is a "tech copying" enemy faction that researches technologies independently of the player — and does so aggressively. Castra is the sole source of **nickel batteries**, which are required for promethium science pack production, making it a necessary destination for late-game progression.
+Castra is a mod planet for Factorio (Space Age) by **Bartz24**. Its defining mechanic is a "tech copying" enemy faction that researches technologies independently of the player — and does so aggressively. Castra is the sole source of **nickel batteries**, which are required for promethium science pack production, making it a necessary destination for late-game progression.
 
 The original mod is currently unmaintained.
 
 ---
 
-## Why This Fork?
+## Why Castra Prime (This Fork)?
 
 The original Castra mod has a well-documented late-game balance problem: the enemy faction's research is uncapped and unrestricted, leading to situations where enemies possess artillery with arbitrarily high range, nuclear weapons, and dense landmine fields that make both base defense and personal combat non-viable. Community feedback confirms this renders the mod unplayable for some users in longer games.
 
 This fork aims to preserve everything that makes Castra interesting — the tech-copying enemies, the unique challenge, the nickel battery resource — while fixing the mechanics that make it unfair rather than difficult.
+
+OK, that was Claude's machine description. As a player, I've had a lot of love but a lot of frustrations that I saw shared by other players. Letting the game run overnight to come back and find your entire expensive base is destroyed sucks.
 
 ---
 
@@ -41,7 +43,7 @@ Big disclaimer: this mod is not gonna be for everyone, and I'm not promising to 
 ## Compatibility
 
 - Factorio **2.0+** with **Space Age**
-- Designed to be save-compatible with existing Planet Castra saves, provided prototype names are unchanged (see migration notes below)
+- Designed to be save-compatible with existing Planet Castra saves, provided prototype names are unchanged (see migration notes below). Right now this is very hopeful and not tested.
 
 ### Upgrading from Planet Castra
 
