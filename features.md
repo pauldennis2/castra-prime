@@ -105,6 +105,10 @@ https://mods.factorio.com/mod/castra/discussion/67fe7100d2422549284bacd3
 A help page is requested. There is a "planetary briefing" but it's pretty sparse. I remember struggling to figure out how everything worked when I arrived.
 https://mods.factorio.com/mod/castra/discussion/68f3c3400c9f0aea6b244556
 
+### Consider expanding planet briefing
+
+Add screenshot/animation, perhaps be a little more expositive, maybe with spoiler tags.
+
 ### German Localization
 
 There was a PR for this from Schlumpf and he created his own mod. If this mod is taken up, it would make sense to merge that in.

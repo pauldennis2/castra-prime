@@ -970,6 +970,19 @@ script.on_event(defines.events.on_selected_entity_changed, function(event)
     end
 end)
 
+-- Usage: /castra-spawn-base
+commands.add_command("castra-spawn-base", "[DEBUG] Spawn an enemy base at your position on Castra", function(event)
+    local player = game.players[event.player_index]
+    if not player.surface or player.surface.name ~= "castra" then
+        player.print("Must be on Castra to use this command.")
+        return
+    end
+    local pos = player.position
+    local area = { left_top = { x = pos.x - 16, y = pos.y - 16 }, right_bottom = { x = pos.x + 16, y = pos.y + 16 } }
+    base_gen.create_enemy_base(area)
+    player.print("Spawned enemy base at current position.")
+end)
+
 -- Usage: /castra-debug
 commands.add_command("castra-debug", "Print Castra Prime debug info", function(event)
     local player = game.players[event.player_index]
