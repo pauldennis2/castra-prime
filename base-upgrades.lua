@@ -34,6 +34,11 @@ local function find_missing_powered_entities(data_collector)
     return missing_powered_entities
 end
 
+-- TODO: potential bug - calls create_enemy_base (spawns a full new base nearby) instead of
+-- build_enemy_wall (traces walls around existing entities). The clusters of data collectors
+-- seen in-game may be caused by this. Fix would be:
+--   base_gen.build_enemy_wall(get_search_area_size(data_collector, config.BASE_CHECK_RADIUS), data_collector.position)
+-- Leaving as-is until behavior is confirmed intentional or unintentional.
 local function add_walls(data_collector)
     -- Get 20x20 area around the collector
     local area = get_search_area(data_collector)

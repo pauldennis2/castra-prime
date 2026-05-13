@@ -222,31 +222,27 @@ local function place_solar(chunk_area)
     return nil
 end
 
-local function find_closest_entity(filters)
-    local surface = game.surfaces["castra"]
-    local enemy_force = game.forces["enemy"]
-    local entities = surface.find_entities_filtered(filters)
+local function find_closest_entity(filters, reference_pos)
+    local entities = game.surfaces["castra"].find_entities_filtered(filters)
     local closest_entity = nil
     local closest_distance = math.huge
+    local ref = reference_pos or { x = 0, y = 0 }
 
     for _, entity in pairs(entities) do
-        -- Ignore entity at this position
-        if not entity.valid or (filters.position and entity.position.x == filters.position.x and entity.position.y == filters.position.y) then
-            goto continue_entity
-        end
-
-        local distance = entity.position.x ^ 2 + entity.position.y ^ 2
+        if not entity.valid then goto continue_entity end
+        local distance = (entity.position.x - ref.x) ^ 2 + (entity.position.y - ref.y) ^ 2
         if distance < closest_distance then
             closest_entity = entity
             closest_distance = distance
         end
-
         ::continue_entity::
     end
 
     return closest_entity
 end
 
+-- For each unpowered entity, places a pole nearby then draws a line of poles toward the
+-- nearest solar panel to bridge the gap to the power network.
 local function place_power_poles(chunk_area, powered_entities)
     item_cache.build_cache_if_needed()
     if not powered_entities or #powered_entities == 0 or not storage.castra.enemy.solar_panel then
@@ -286,7 +282,7 @@ local function place_power_poles(chunk_area, powered_entities)
         local pole_reach = prototypes.entity[power_type].get_max_wire_distance(quality)
         
         -- Find where the solar panels are and add power poles to connect them
-        local solar_panel = find_closest_entity { area = { top_left = { entity.position.x - 50, entity.position.y - 50 }, bottom_right = { entity.position.x + 50, entity.position.y + 50 } }, type = "solar-panel" }
+        local solar_panel = find_closest_entity({ area = { top_left = { entity.position.x - 50, entity.position.y - 50 }, bottom_right = { entity.position.x + 50, entity.position.y + 50 } }, type = "solar-panel" }, power_pole_pos)
         if solar_panel then
             -- Draw a line of poles based on the pole's max distance
             local pole_distance = math.floor(math.sqrt((power_pole_pos.x - solar_panel.position.x) ^ 2 + (power_pole_pos.y - solar_panel.position.y) ^ 2))
@@ -353,14 +349,12 @@ local function place_turrets(data_collector_pos, type)
     else
         turret_types = { type }
     end
-    -- Remove any turrets that art researched
+    -- Remove any turrets that are not researched
     for i = #turret_types, 1, -1 do
         if not storage.castra.enemy[hyphen_to_underscore(turret_types[i])] or not get_corresponding_ammo(turret_types[i]) then
             table.remove(turret_types, i)
-        end
-
-        -- Remove power based turrets if solar panels are not researched
-        if not storage.castra.enemy.solar_panel and (turret_types[i] == "laser-turret" or turret_types[i] == "railgun-turret" or turret_types[i] == "tesla-turret") then
+        -- Remove power-based turrets if solar panels are not researched
+        elseif not storage.castra.enemy.solar_panel and (turret_types[i] == "laser-turret" or turret_types[i] == "railgun-turret" or turret_types[i] == "tesla-turret") then
             table.remove(turret_types, i)
         end
     end
