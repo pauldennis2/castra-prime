@@ -631,6 +631,7 @@ local function built_event(event)
 
             -- Find enemy data collectors in box range
             storage.castra.data_collectors_jammers = storage.castra.data_collectors_jammers or {}
+            storage.castra.jammed_data_collectors_jammers = storage.castra.jammed_data_collectors_jammers or {}
             local dataCollectors = storage.castra.dataCollectors or {}
             for _, dataCollector in pairs(dataCollectors) do
                 add_jammer_to_data_collector(dataCollector, event.entity)

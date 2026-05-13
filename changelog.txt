@@ -3,6 +3,8 @@ Version: 0.7.0
 Date: 2026-05-13
   Fixed issue with starting area resource gen? 
   Bugfixes:
+    - Fixed crash when placing a jammer radar while jammed data collectors already existed in
+      storage; jammed_data_collectors_jammers table was not initialized in the jammer built handler
     - Fixed pollution cache variable typo that wiped data collector pollution readings on every
       collector destroyed, causing data drop rates to be permanently suppressed
     - Fixed turret upgrade filtering: enemy turrets were always skipped due to checking the wrong
