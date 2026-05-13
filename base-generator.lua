@@ -1,231 +1,22 @@
+-- Handles spawning of new enemy bases and placement of individual base components on Castra.
+--
+-- Entry point: create_enemy_base(chunk_area), called from control.lua on_chunk_generated.
+-- Orchestrates a full base spawn: data collector, turrets, solar/roboport/power poles,
+-- walls (50% chance), and land mines (40% chance).
+--
+-- Individual placement functions (place_turrets, place_solar, place_roboport, etc.) are also
+-- called directly by base-upgrades.lua to incrementally upgrade existing bases.
+
 local item_cache = require("castra-cache")
 local config = require("castra-config")
+local geom = require("wall-geometry")
 
--- Define a point as a table with x and y coordinates
-local function createPoint(x, y)
-    return { x = x, y = y }
-end
-
--- Function to negate the y-coordinates of a list of points
-local function negateYCoordinates(points)
-    local transformed = {}
-    for _, p in ipairs(points) do
-        table.insert(transformed, createPoint(p.x, -p.y))
-    end
-    return transformed
-end
-
--- Function to restore the original y-coordinates
-local function restoreYCoordinates(points)
-    local restored = {}
-    for _, p in ipairs(points) do
-        table.insert(restored, createPoint(p.x, -p.y))
-    end
-    return restored
-end
-
--- Function to determine the orientation of the triplet (p, q, r)
--- Returns:
--- 0 if p, q, and r are collinear
--- 1 if Clockwise
--- 2 if Counter-clockwise
-local function orientation(p, q, r)
-    local val = (q.y - p.y) * (r.x - q.x) - (q.x - p.x) * (r.y - q.y)
-    if val == 0 then
-        return 0
-    elseif val > 0 then
-        return 1
-    else
-        return 2
-    end
-end
-
--- Function to compute the squared distance between two points
-local function distanceSquared(p1, p2)
-    return (p1.x - p2.x) ^ 2 + (p1.y - p2.y) ^ 2
-end
-
--- Function to sort points with respect to the starting point
-local function sortByPolarAngle(points, start)
-    table.sort(points, function(a, b)
-        local o = orientation(start, a, b)
-        if o == 0 then
-            return distanceSquared(start, a) < distanceSquared(start, b)
-        else
-            return o == 2
-        end
-    end)
-end
-
--- Function to implement Graham's Scan algorithm
-local function grahamScan(points)
-    -- Step 1: Find the starting point
-    local n = #points
-    local ymin = points[1].y
-    local min = 1
-    for i = 2, n do
-        local y = points[i].y
-        if (y < ymin) or (y == ymin and points[i].x < points[min].x) then
-            ymin = points[i].y
-            min = i
-        end
-    end
-
-    -- Place the starting point at the first position
-    points[1], points[min] = points[min], points[1]
-    local start = points[1]
-
-    -- Step 2: Sort the remaining points based on polar angle
-    sortByPolarAngle(points, start)
-
-    -- Step 3: Initialize the convex hull stack
-    local stack = { points[1], points[2], points[3] }
-
-    -- Step 4: Process the remaining points
-    for i = 4, n do
-        while #stack >= 2 and orientation(stack[#stack - 1], stack[#stack], points[i]) ~= 2 do
-            table.remove(stack)
-        end
-        table.insert(stack, points[i])
-    end
-
-    return stack
-end
-
--- Function to subtract two points
-local function subtractPoints(p1, p2)
-    return { x = p1.x - p2.x, y = p1.y - p2.y }
-end
-
--- Function to add two points
-local function addPoints(p1, p2)
-    return { x = p1.x + p2.x, y = p1.y + p2.y }
-end
-
--- Function to multiply a point by a scalar
-local function multiplyPoint(p, scalar)
-    return { x = p.x * scalar, y = p.y * scalar }
-end
-
--- Function to compute the length of a vector
-local function vectorLength(v)
-    return math.sqrt(v.x * v.x + v.y * v.y)
-end
-
--- Function to normalize a vector
-local function normalizeVector(v)
-    local length = vectorLength(v)
-    return { x = v.x / length, y = v.y / length }
-end
-
--- Function to compute the outward normal of an edge defined by two points
-local function outwardNormal(p1, p2)
-    local edge = subtractPoints(p2, p1)
-    local normal = { x = -edge.y, y = edge.x }
-    return normalizeVector(normal)
-end
-
--- Function to expand a convex polygon by distance N
-local function expandConvexHull(polygon, N)
-    local expandedPolygon = {}
-    local numVertices = #polygon
-
-    for i = 1, numVertices do
-        local prevIndex = (i - 2) % numVertices + 1
-        local nextIndex = i % numVertices + 1
-
-        local prevVertex = polygon[prevIndex]
-        local currVertex = polygon[i]
-        local nextVertex = polygon[nextIndex]
-
-        local normal1 = outwardNormal(prevVertex, currVertex)
-        local normal2 = outwardNormal(currVertex, nextVertex)
-
-        local averageNormal = normalizeVector(addPoints(normal1, normal2))
-        local translation = multiplyPoint(averageNormal, N)
-        -- Round the translation to the nearest integer
-        translation = { x = math.floor(translation.x + 0.5), y = math.floor(translation.y + 0.5) }
-
-        local expandedVertex = addPoints(currVertex, translation)
-        table.insert(expandedPolygon, expandedVertex)
-    end
-
-    return expandedPolygon
-end
-
-local function plotLine(x0, y0, x1, y1)
-    local points = {}
-    local dx = x1 - x0
-    local dy = y1 - y0
-    local nx = math.abs(dx)
-    local ny = math.abs(dy)
-    local sign_x = dx > 0 and 1 or -1
-    local sign_y = dy > 0 and 1 or -1
-
-    local px, py = x0, y0
-    table.insert(points, { x = px, y = py })
-
-    local ix, iy = 0, 0
-    while ix < nx or iy < ny do
-        if (0.5 + ix) / nx < (0.5 + iy) / ny then
-            -- Next step is horizontal
-            px = px + sign_x
-            ix = ix + 1
-        else
-            -- Next step is vertical
-            py = py + sign_y
-            iy = iy + 1
-        end
-        table.insert(points, { x = px, y = py })
-    end
-
-    return points
-end
-
-local function isPointInPolygon(polygon, point)
-    local x, y = point.x, point.y
-    local inside = false
-    local n = #polygon
-
-    for i = 1, n do
-        local j = i % n + 1
-        local xi, yi = polygon[i].x, polygon[i].y
-        local xj, yj = polygon[j].x, polygon[j].y
-
-        if ((yi > y) ~= (yj > y)) and
-            (x < (xj - xi) * (y - yi) / (yj - yi) + xi) then
-            inside = not inside
-        end
-    end
-
-    return inside
-end
-
-local function floodFill(hull, x, y)
-    -- Stack to hold the points to be processed
-    local stack = { { x, y } }
-
-    local setPositions = {}
-
-    while #stack > 0 do
-        -- Pop the last point from the stack
-        local point = table.remove(stack)
-        local px, py = point[1], point[2]
-
-        -- Check if the point is inside the convex hull and not yet filled
-        if isPointInPolygon(hull, { x = px, y = py }) and not setPositions[px .. "," .. py] then
-            -- Set to concrete
-            game.surfaces["castra"].set_tiles({ { name = "concrete", position = { px, py } } })
-            setPositions[px .. "," .. py] = true
-
-            -- Add neighboring points to the stack
-            table.insert(stack, { px + 1, py }) -- Right
-            table.insert(stack, { px - 1, py }) -- Left
-            table.insert(stack, { px, py + 1 }) -- Down
-            table.insert(stack, { px, py - 1 }) -- Up
-        end
-    end
-end
+local createPoint         = geom.createPoint
+local negateYCoordinates  = geom.negateYCoordinates
+local restoreYCoordinates = geom.restoreYCoordinates
+local grahamScan          = geom.grahamScan
+local expandConvexHull    = geom.expandConvexHull
+local plotLine            = geom.plotLine
 
 local function select_random_quality_max(max_quality_in)
     item_cache.build_cache_if_needed()
@@ -538,9 +329,7 @@ local function get_corresponding_ammo(turret_type)
     end
 end
 
-local function hyphen_to_underscore(str)
-    return string.gsub(str, "-", "_")
-end
+local hyphen_to_underscore = config.hyphen_to_underscore
 
 local function get_enemy_variant(name)
     if name == "flamethrower-turret" then

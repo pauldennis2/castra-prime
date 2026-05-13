@@ -45,9 +45,7 @@ local function add_walls(data_collector)
     base_gen.create_enemy_base(area)
 end
 
-local function hyphen_to_underscore(str)
-    return string.gsub(str, "-", "_")
-end
+local hyphen_to_underscore = config.hyphen_to_underscore
 
 local function add_turrets(data_collector)
     item_cache.build_cache_if_needed()
@@ -116,6 +114,11 @@ local function fill_roboports(data_collector)
     end
 end
 
+-- TODO: add_land_mines, add_solar, and add_roboport are structurally identical and could be
+-- collapsed into a single add_entity(data_collector, entry) driven by a config table in
+-- placeable_entities. Each entry holds: key, entity_type, cap (default 5), needs_power
+-- (default false), and a place function. solar and roboport set needs_power = true to trigger
+-- the place_power_poles call. See conversation history for drafted implementation.
 local function add_land_mines(data_collector)
     item_cache.build_cache_if_needed()
 
