@@ -1,13 +1,20 @@
 ---------------------------------------------------------------------------------------------------
 Version: 0.6.2
 Date: 2026-05-12
+  First version I feel good enough to post on Discord - still alpha/WIP though!
+  Features:
+   - Added enemy research rate slider (multiplier value)
+   - Added option to suppress enemy research messages
+   - Added option to reduce toughness of enemy bases 50%
+   - Added option to prevent enemy bases from spawning land mines (untested)
+   - Added option to buff the "Mk3" equipment upgrades on Castra
 ---------------------------------------------------------------------------------------------------
 Version: 0.6.1
 Date: 2026-05-10
   First actual changes.
   Features:
     - Added configurable setting for whether Battlefield Sci added to Promethium science
-    - Added setting to buff the Forge (mainly for test purposes)
+    - Added setting to buff the Forge (partly for test purposes)
     - Added setting to prevent enemy artillery from spawning
 
 ---------------------------------------------------------------------------------------------------
