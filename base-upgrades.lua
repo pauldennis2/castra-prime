@@ -1,5 +1,15 @@
+-- Handles incremental upgrades to existing enemy bases on Castra.
+-- Entry point: randomly_upgrade_base() in control.lua, once per minute, picks one random
+-- data collector and one randomly selected upgrade function and applies it.
+-- fill_turrets and fill_roboports are always called afterwards to restock the base.
+--
+-- Placement functions share a common pattern: check density cap, then place.
+-- Research gating is handled upstream in get_available_upgrades() (control.lua);
+-- capability checks inside each function here are defensive guards.
+
 local item_cache = require("castra-cache")
 local base_gen = require("base-generator")
+local config = require("castra-config")
 
 local function get_search_area_size(data_collector, size)
     return {
@@ -9,11 +19,11 @@ local function get_search_area_size(data_collector, size)
 end
 
 local function get_search_area(data_collector)
-    return get_search_area_size(data_collector, 10)
+    return get_search_area_size(data_collector, config.BASE_PLACE_RADIUS)
 end
 
 local function find_missing_powered_entities(data_collector)
-    local area = get_search_area_size(data_collector, 30)
+    local area = get_search_area_size(data_collector, config.BASE_CHECK_RADIUS)
     local entities = data_collector.surface.find_entities_filtered { area = area, force = "enemy" }
     local missing_powered_entities = {}
     for _, entity in pairs(entities) do
@@ -28,7 +38,7 @@ local function add_walls(data_collector)
     -- Get 20x20 area around the collector
     local area = get_search_area(data_collector)
     -- If there are over 20 walls, don't add more
-    if #data_collector.surface.find_entities_filtered { area = get_search_area_size(data_collector, 30), type = "wall" } > 20 then
+    if #data_collector.surface.find_entities_filtered { area = get_search_area_size(data_collector, config.BASE_CHECK_RADIUS), type = "wall" } > 20 then
         return
     end
 
@@ -42,8 +52,7 @@ end
 local function add_turrets(data_collector)
     item_cache.build_cache_if_needed()
     -- Select a random turret type
-    local turret_types = { "gun-turret", "laser-turret", "rocket-turret", "railgun-turret",
-    "tesla-turret", "combat-roboport", "flamethrower-turret", "artillery-turret" }
+    local turret_types = { table.unpack(config.TURRET_TYPES) }
 
     -- Remove any unresearched turrets
     for i = #turret_types, 1, -1 do
@@ -58,19 +67,17 @@ local function add_turrets(data_collector)
 
     local turret_type = turret_types[math.random(1, #turret_types)]
     -- Check if this turret type is already present with > 3
-    if #data_collector.surface.find_entities_filtered { area = get_search_area_size(data_collector, 30), type = turret_type } > 3 then
+    if #data_collector.surface.find_entities_filtered { area = get_search_area_size(data_collector, config.BASE_CHECK_RADIUS), type = turret_type } > 3 then
         return
     end
 
     local powered = base_gen.place_turrets(data_collector.position, turret_type)
-    base_gen.place_power_poles(get_search_area_size(data_collector, 30), powered)
+    base_gen.place_power_poles(get_search_area_size(data_collector, config.BASE_CHECK_RADIUS), powered)
 end
 
 local function fill_turrets(data_collector)
-    -- Fill all turrets in the area with ammo
-    local area = get_search_area_size(data_collector, 20)
-    local turret_types = { "gun-turret", "laser-turret", "rocket-turret", "railgun-turret",
-        "tesla-turret", "combat-roboport", "flamethrower-turret", "artillery-turret" }
+    local area = get_search_area_size(data_collector, config.TURRET_FILL_RADIUS)
+    local turret_types = config.TURRET_TYPES
     for _, turret_type in pairs(turret_types) do
         for _, turret in pairs(data_collector.surface.find_entities_filtered { area = area, type = base_gen.get_enemy_variant(turret_type), force = "enemy" }) do
             if turret.valid then
@@ -90,7 +97,7 @@ end
 local function fill_roboports(data_collector)
     item_cache.build_cache_if_needed()
     -- Stock up on construction bots and repair packs if available
-    local area = get_search_area_size(data_collector, 30)
+    local area = get_search_area_size(data_collector, config.BASE_CHECK_RADIUS)
     for _, roboport in pairs(data_collector.surface.find_entities_filtered { area = area, type = "roboport", force = "enemy" }) do
         if roboport.valid then
             if storage.castra.enemy.construction_robot then
@@ -117,7 +124,7 @@ local function add_land_mines(data_collector)
     end
 
     -- Check if there are already land mines in the area
-    if #data_collector.surface.find_entities_filtered { area = get_search_area_size(data_collector, 30), type = "land-mine" } > 5 then
+    if #data_collector.surface.find_entities_filtered { area = get_search_area_size(data_collector, config.BASE_CHECK_RADIUS), type = "land-mine" } > 5 then
         return
     end
 
@@ -132,13 +139,13 @@ local function add_solar(data_collector)
     end
 
     -- Check if there are already solar panels in the area
-    if #data_collector.surface.find_entities_filtered { area = get_search_area_size(data_collector, 30), type = "solar-panel" } > 5 then
+    if #data_collector.surface.find_entities_filtered { area = get_search_area_size(data_collector, config.BASE_CHECK_RADIUS), type = "solar-panel" } > 5 then
         return
     end
 
     local area = get_search_area(data_collector)
     base_gen.place_solar(area)
-    base_gen.place_power_poles(get_search_area_size(data_collector, 30), find_missing_powered_entities(data_collector))
+    base_gen.place_power_poles(get_search_area_size(data_collector, config.BASE_CHECK_RADIUS), find_missing_powered_entities(data_collector))
 end
 
 local function add_roboport(data_collector)
@@ -149,13 +156,13 @@ local function add_roboport(data_collector)
     end
 
     -- Check if there are already roboports in the area
-    if #data_collector.surface.find_entities_filtered { area = get_search_area_size(data_collector, 30), type = "roboport" } > 5 then
+    if #data_collector.surface.find_entities_filtered { area = get_search_area_size(data_collector, config.BASE_CHECK_RADIUS), type = "roboport" } > 5 then
         return
     end
 
     local area = get_search_area(data_collector)
     base_gen.place_roboport(area, data_collector.position)
-    base_gen.place_power_poles(get_search_area_size(data_collector, 30), find_missing_powered_entities(data_collector))
+    base_gen.place_power_poles(get_search_area_size(data_collector, config.BASE_CHECK_RADIUS), find_missing_powered_entities(data_collector))
 end
 
 local function containsValue(array, value)
@@ -176,7 +183,7 @@ local function upgrade_quality(data_collector)
     local random_quality = base_gen.select_random_quality()
 
     -- Find any enemy entities in 30x30 area
-    local area = get_search_area_size(data_collector, 30)
+    local area = get_search_area_size(data_collector, config.BASE_CHECK_RADIUS)
     local entities = data_collector.surface.find_entities_filtered { area = area, force = "enemy" }
 
     local valid_entities = {"gun-turret", base_gen.get_enemy_variant("laser-turret"), "rocket-turret", base_gen.get_enemy_variant("railgun-turret"),

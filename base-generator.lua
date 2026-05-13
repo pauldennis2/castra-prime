@@ -1,4 +1,5 @@
 local item_cache = require("castra-cache")
+local config = require("castra-config")
 
 -- Define a point as a table with x and y coordinates
 local function createPoint(x, y)
@@ -559,8 +560,7 @@ local function place_turrets(data_collector_pos, type)
     local turret_types = nil
     if not type then
         -- Select a random turret type from the available turrets
-        turret_types = { "gun-turret", "laser-turret", "rocket-turret", "railgun-turret",
-            "tesla-turret", "combat-roboport", "flamethrower-turret", "artillery-turret" }
+        turret_types = { table.unpack(config.TURRET_TYPES) }
     else
         turret_types = { type }
     end
