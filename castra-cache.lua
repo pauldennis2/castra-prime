@@ -150,9 +150,9 @@ local enemy_capabilities = {
 
     -- Settings-gated entries
     { key = "artillery_turret", check_fn = function() return has_castra_researched_item("artillery-turret") end,
-      disabled_setting = "castra-prime-disable-artillery" },
+      disabled_setting = "castra-prime-disable-artillery", tech_name = "artillery" },
     { key = "land_mine",        check_fn = function() return has_any_entity_type("land-mine") end,
-      disabled_setting = "castra-prime-disable-land-mines" },
+      disabled_setting = "castra-prime-disable-land-mines", tech_name = "land-mine" },
 }
 
 local function update_castra_enemy_data()
@@ -165,7 +165,25 @@ local function update_castra_enemy_data()
         local disabled = capability.disabled_setting and
                         settings.startup[capability.disabled_setting] and
                         settings.startup[capability.disabled_setting].value
+        -- BELT AND SUSPENDERS: placement is also blocked in base-generator/base-upgrades via this cache value.
+        -- Primary block is now the tech disable below.
         enemy_storage[capability.key] = disabled and false or capability.check_fn()
+    end
+
+    -- Block disabled capabilities at the source: prevent enemy from researching or keeping the tech
+    for _, capability in ipairs(enemy_capabilities) do
+        if capability.disabled_setting and capability.tech_name then
+            local disabled = capability.disabled_setting and
+                            settings.startup[capability.disabled_setting] and
+                            settings.startup[capability.disabled_setting].value
+            if disabled then
+                local tech = game.forces["enemy"].technologies[capability.tech_name]
+                if tech then
+                    if tech.researched then tech.researched = false end
+                    tech.enabled = false
+                end
+            end
+        end
     end
 
     -- Quality tier requires special handling (iterates prototypes, not items)
