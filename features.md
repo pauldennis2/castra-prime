@@ -2,6 +2,21 @@
 
 Document to describe potential changes (features and bug fixes) of the mod.
 
+## Non-Configurable Balance/Behavior Changes
+
+Changes made from the original mod that affect gameplay and are not toggleable by settings.
+Listed here so they can be documented, justified, or reverted if needed.
+
+- **Forge prerequisites**: Removed `quality-module-2` requirement. The forge grants a built-in
+  quality bonus, so this might have been the reasoning. Requiring quality modules does not seem balance-crucial, and may have created issues with the trigger tech.
+
+## Known Limitations / Won't Fix
+
+- **Third-party achievement popups from enemy research**: When Castra enemies research a
+  technology, this may trigger achievements and planetary briefings. So far, this seems like an inherent limitation of the Castra concept that cannot be fixed without compromising the mod.
+- **Current Gamestate**: There are a few issues of current game-state I'm not ready to tackle, including resource generation and potential removal of existing artillery and land mines (e.g.). These features should be improved for fresh games.
+  
+
 ## Features
 
 There's a strong general sense that the military aspect of the original mod is not well-balanced in the late-game. 
@@ -100,6 +115,8 @@ Players sometimes report struggling to find particular resources - I think I rem
 
 https://mods.factorio.com/mod/castra/discussion/67fe7100d2422549284bacd3
 
+Update: hopefully addressed for new games, to be tested
+
 ### Mod Ease of Use
 
 A help page is requested. There is a "planetary briefing" but it's pretty sparse. I remember struggling to figure out how everything worked when I arrived.
@@ -112,6 +129,9 @@ Add screenshot/animation, perhaps be a little more expositive, maybe with spoile
 ### German Localization
 
 There was a PR for this from Schlumpf and he created his own mod. If this mod is taken up, it would make sense to merge that in.
+
+
+### Visuals of tech tree
 
 ### Spoilability of Battlefield Data
 
@@ -149,24 +169,37 @@ https://mods.factorio.com/mod/castra/discussion/681377305edc99508351d51d
 ### Asset Separation
 
 Possibly separate the assets out into their own mod, especially convenient if we're doing frequent updates. It's a pain to have to redownload the same assets. Mod isn't gigantic though and is largely using existing assets, I think?
+Update:done
 
 ## Bug Fixes
+
+### Voidcraft
+
+https://mods.factorio.com/mod/castra/discussion/67c9c4ff6ae0b4a9e813439f
+
+This generated a lot of discussion, so probably a lot of people use this 
 
 ### Igrys
 
 https://mods.factorio.com/mod/castra/discussion/698c369e258fc50a00824e83
 Sounds like a weird potential interaction because Igrys has exclusive tech paths? Low prio but on the list.
 
+Update: loaded Igrys, no immediate crash (expected). Hope to circle back soon.
+
 ### Trigger tech
 
 https://mods.factorio.com/mod/castra/discussion/69865ac748e1dd9239e738a6
 Trigger tech refusing to fire?
+
+Update: likely solved?
 
 ### Battlefield Data missing
 https://mods.factorio.com/mod/castra/discussion/694f51a82e325adf887d9713
 "Battlefield Data Packets in item lists it appears to be missing. It'll show in recipes, but in places like setting a logistics request it will not."
 
 I think I ran into this myself - I worked around by using a constant combinator.
+
+Update: looks fixed
 
 ### Fatal Crash with jammer radar
 https://mods.factorio.com/mod/castra/discussion/692df0452d36c7c294803e2a
@@ -187,7 +220,19 @@ Incompatible for some ammo related reason. 2 players reported this so would love
 
 ### Enemy Base Health
 
-I believe enemy base health scales with evolution factor, which can make for some crazy high numbers at high evo factor - I saw one with 148k. I don't *think* this was the intent, so I'm calling this a bug and will take a look at how to change this without nerfing it to the ground. 
+I believe enemy base health scales with evolution factor, which can make for some crazy high numbers at high evo factor - I saw one with 148k. I don't *think* this was the intent, so I'm calling this a bug and will take a look at how to change this without nerfing it to the ground.
+
+Update: setting change to reduce health and all resistances by 50%
+
+### Lag Situation?
+Translated from simple Chinese by google translate: 
+Is anyone else experiencing stuttering? Ever since landing on a planet—regardless of which one—the game stutters every two seconds. Even starting a brand-new save and flying directly here results in the same lag.
+
+https://mods.factorio.com/mod/castra/discussion/6a02b26ef5fdeaa6102cc4ff
+
+Update: investigated, nothing obvious found. Hope to circle back.
+
+### Castra landing animation feels different
 
 ## Ideas
 

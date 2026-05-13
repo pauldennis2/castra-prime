@@ -147,7 +147,7 @@
       name = "forge",
       icon = "__castra-prime-assets__/graphics/technology/atom-forge.png",
       icon_size = 256,
-      prerequisites = { "millerite-processing", "hydrogen-sulfide-processing", "gunpowder-processing", "quality-module-2" },
+      prerequisites = { "millerite-processing", "hydrogen-sulfide-processing", "gunpowder-processing" },
       effects =
       {
         {

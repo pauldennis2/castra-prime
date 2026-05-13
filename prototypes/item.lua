@@ -123,6 +123,7 @@ data:extend({
         subgroup = "castra-processes",
         order = "n",
         stack_size = 100,
+        flags = {"always-show"},
         default_import_location = "castra",
         weight = 5 * kg,
         spoil_ticks = 1 * minute

@@ -1,4 +1,34 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.7.0
+Date: 2026-05-13
+  Fixed issue with starting area resource gen? 
+  Bugfixes:
+    - Fixed pollution cache variable typo that wiped data collector pollution readings on every
+      collector destroyed, causing data drop rates to be permanently suppressed
+    - Fixed turret upgrade filtering: enemy turrets were always skipped due to checking the wrong
+      table, so upgrades never actually placed new turrets
+    - Fixed productivity module tier: enemy research speed bonus for productivity modules was
+      reading the speed module tier instead of the productivity module tier
+    - Fixed find_closest_entity: distance was calculated from the world origin instead of the
+      reference position, causing power poles to connect to wrong entities
+    - Fixed place_turrets: a double-remove bug could skip entities when filtering turret lists
+
+  Balance changes:
+    - Removed quality-module-2 as a prerequisite for the forge technology. The built-in quality
+      bonus on the forge made requiring quality research a soft circular dependency, and blocked
+      the craft-item research trigger entirely for players without quality techs unlocked.
+
+  Ease of use:
+    - Battlefield data packets (castra-data) can now be requested through the logistic network
+      and set as logistic filters. Previously the item was invisible to filter UIs because it
+      has no unlocked producing recipe.
+
+  Code:
+    - Extracted shared constants (radii, turret list, hyphen_to_underscore) to castra-config.lua
+    - Extracted convex hull and wall geometry math to wall-geometry.lua
+    - Added documented TODOs for two known architectural issues in base-upgrades.lua
+
+---------------------------------------------------------------------------------------------------
 Version: 0.6.2
 Date: 2026-05-12
   First version I feel good enough to post on Discord - still alpha/WIP though!
