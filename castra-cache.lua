@@ -167,7 +167,12 @@ local function update_castra_enemy_data()
                         settings.startup[capability.disabled_setting].value
         -- BELT AND SUSPENDERS: placement is also blocked in base-generator/base-upgrades via this cache value.
         -- Primary block is now the tech disable below.
-        enemy_storage[capability.key] = disabled and false or capability.check_fn()
+        -- Note: cannot use "disabled and false or check_fn()" here — Lua's ternary idiom breaks when the truthy branch is `false`.
+        if disabled then
+            enemy_storage[capability.key] = false
+        else
+            enemy_storage[capability.key] = capability.check_fn()
+        end
     end
 
     -- BELT AND SUSPENDERS (primary block): disable the tech entirely so the enemy never researches it.

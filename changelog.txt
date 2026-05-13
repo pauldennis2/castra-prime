@@ -2,6 +2,9 @@
 Version: 0.6.2
 Date: 2026-05-12
   First version I feel good enough to post on Discord - still alpha/WIP though!
+
+  Mod architecture: split out mod graphical assets into castra-prime-assets
+
   Features:
    - Added enemy research rate slider (multiplier value)
    - Added option to suppress enemy research messages

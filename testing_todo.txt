@@ -1,11 +1,5 @@
-Building up a bit of testing tech debt since my sandbox isn't on Castra
 
--Test enemy creation of artillery (difficult)
-
-Slow mines - are these coming from Bobs?
 Can enemies use the weird "speed mods" from Moshine AI?
 
-Add credits from original mod (art assets, etc)
 
-Small fixes todos
-Figure out current combat roboport design, fix the in-game info to document qvality
+Add note about research speed limits

@@ -970,9 +970,13 @@ script.on_event(defines.events.on_selected_entity_changed, function(event)
     end
 end)
 
--- Usage: /castra-spawn-base
+-- Usage: /castra-spawn-base (admin only)
 commands.add_command("castra-spawn-base", "[DEBUG] Spawn an enemy base at your position on Castra", function(event)
     local player = game.players[event.player_index]
+    if not player.admin then
+        player.print("This command requires admin privileges.")
+        return
+    end
     if not player.surface or player.surface.name ~= "castra" then
         player.print("Must be on Castra to use this command.")
         return
@@ -980,7 +984,16 @@ commands.add_command("castra-spawn-base", "[DEBUG] Spawn an enemy base at your p
     local pos = player.position
     local area = { left_top = { x = pos.x - 16, y = pos.y - 16 }, right_bottom = { x = pos.x + 16, y = pos.y + 16 } }
     base_gen.create_enemy_base(area)
-    player.print("Spawned enemy base at current position.")
+
+    -- Provide infinite power for testing so electric turrets actually fire
+    local substation = player.surface.create_entity { name = "substation", position = { x = pos.x + 4, y = pos.y + 4 }, force = "enemy", raise_built = true }
+    local eei = player.surface.create_entity { name = "electric-energy-interface", position = { x = pos.x + 4, y = pos.y + 6 }, force = "enemy", raise_built = true }
+    if eei then
+        eei.power_production = 10000000  -- 10 MW, more than enough
+        eei.energy = eei.electric_buffer_size
+    end
+
+    player.print("Spawned enemy base with power at current position.")
 end)
 
 -- Usage: /castra-debug
