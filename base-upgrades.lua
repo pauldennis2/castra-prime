@@ -46,10 +46,8 @@ local function add_turrets(data_collector)
     "tesla-turret", "combat-roboport", "flamethrower-turret", "artillery-turret" }
 
     -- Remove any unresearched turrets
-    -- TODO: bug - item_cache is the module object, not storage; always removes all turrets and returns early
-    -- fix: replace item_cache[...] with storage.castra.enemy[...]
     for i = #turret_types, 1, -1 do
-        if not item_cache[hyphen_to_underscore(turret_types[i])] then
+        if not storage.castra.enemy[hyphen_to_underscore(turret_types[i])] then
             table.remove(turret_types, i)
         end
     end

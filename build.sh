@@ -14,7 +14,7 @@ DIST_DIR="$SCRIPT_DIR/dist"
 mkdir -p "$DIST_DIR"
 
 echo "Building $ZIP_NAME from HEAD..."
-git archive --format=zip --prefix="${MOD_NAME}_${VERSION}/" HEAD -o "$DIST_DIR/$ZIP_NAME"
+git archive --format=zip --prefix="${MOD_NAME}/" HEAD -o "$DIST_DIR/$ZIP_NAME"
 echo "Built: $DIST_DIR/$ZIP_NAME"
 
 if [[ "${1:-}" == "--install" ]]; then

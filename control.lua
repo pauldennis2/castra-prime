@@ -268,11 +268,9 @@ local function get_castra_research_speed()
         research_speed = research_speed * (1 + math.pow(2, storage.castra.enemy.speed_module_tier - 1) * 0.05)
     end
 
-    -- Include les a bonus based on productivity module tier: 1 = 2%, 2 = 4%, 3 = 8%
-    -- TODO: bug - reads speed_module_tier instead of productivity_module_tier
-    -- fix: replace speed_module_tier with productivity_module_tier on the line below
+    -- Include a bonus based on productivity module tier: 1 = 2%, 2 = 4%, 3 = 8%
     if storage.castra.enemy.productivity_module_tier then
-        research_speed = research_speed * (1 + math.pow(2, storage.castra.enemy.speed_module_tier - 1) * 0.02)
+        research_speed = research_speed * (1 + math.pow(2, storage.castra.enemy.productivity_module_tier - 1) * 0.02)
     end
 
     -- Include bonus from quality
@@ -692,8 +690,7 @@ local function destroyed_event(event)
             storage.castra.data_collectors_jammers[event.entity.unit_number] = nil
 
             -- Clear pollution storage for this entity
-            -- TODO: typo "caectorsPollution" should be "dataCollectorsPollution" - may reset entire pollution cache on each destroy
-            storage.castra.dataCollectorsPollution = storage.caectorsPollution or {}
+            storage.castra.dataCollectorsPollution = storage.castra.dataCollectorsPollution or {}
             storage.castra.dataCollectorsPollution[event.entity.unit_number] = nil
         end
 
