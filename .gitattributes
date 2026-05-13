@@ -1,0 +1,5 @@
+features.md export-ignore
+testing_todo.txt export-ignore
+build.sh export-ignore
+.gitattributes export-ignore
+.gitignore export-ignore
