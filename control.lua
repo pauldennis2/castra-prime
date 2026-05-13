@@ -311,6 +311,10 @@ local function unlock_research_up_to(technology_name)
     end
 end
 
+-- Trigger techs (research_trigger field) are unlocked by in-game actions (craft-item,
+-- mine-entity, etc.) and cannot be queued via add_research(). We track the pending trigger
+-- tech here and simulate its progress manually using saved_progress scaled to 10 units,
+-- advancing it each tick the same way normal research is advanced.
 local trigger_research = nil
 
 --on_tick update enemy research progress based on the evolution on castra

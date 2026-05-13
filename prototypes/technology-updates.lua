@@ -18,6 +18,8 @@ if data.raw["technology"]["railgun-damage-1"] and data.raw["technology"]["railgu
     end
 end
 
+-- gates-progression also gates lithium battery in railgun, railgun-turret, and
+-- promethium-science-pack recipe ingredients; see prototypes/recipe-updates.lua for those changes.
 if data.raw["technology"]["promethium-science-pack"] then
     if settings.startup["castra-prime-gates-progression"].value then
         if data.raw["technology"]["promethium-science-pack"].unit and 

@@ -65,7 +65,9 @@ local function get_highest_module_tier(module_type)
     return i - 1
 end
 
--- Dictionary of lists of ammo types, sorted by damage value
+-- List order defines tier: get_best_tier() walks forward and returns the last match,
+-- so items must be ordered weakest → strongest. Reordering silently breaks tier caps
+-- (e.g. the disable-enemy-nukes setting relies on atomic-bomb and hydrogen-bomb being last).
 local sorted_ammo_types = {
     bullet = {"firearm-magazine", "piercing-rounds-magazine", "uranium-rounds-magazine", "plutonium-rounds-magazine"},
     rocket = {"rocket", "explosive-rocket", "atomic-bomb", "hydrogen-bomb"},

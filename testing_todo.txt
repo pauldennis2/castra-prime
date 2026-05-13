@@ -4,3 +4,4 @@ Review planet briefing in-game
 Test starting area resource gen
 Add note about research speed limits
 Test no enemies is ignored
+Test landing animation

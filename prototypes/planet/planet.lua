@@ -68,8 +68,8 @@ data:extend(
     asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.vulcanus_castra, 0.9),
   planet_procession_set =
     {
-      arrival = {"default-b"},
-      departure = {"default-rocket-a"}
+      arrival = {"platform-to-planet-b"},
+      departure = {"planet-to-platform-a"}
     },
     surface_properties =
     {

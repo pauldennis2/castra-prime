@@ -289,7 +289,7 @@ data:extend({
             },
             reset_animation_when_frozen = true
         },
-        peaceful_unit_spawn_factor = 1,
+        peaceful_unit_spawn_factor = 1, -- default is 0.0, which suppresses all spawning in peaceful mode; Castra is intended as a combat challenge regardless of map settings
         spawning_cooldown = { 480, 960 },
         spawning_radius = 6,
         spawning_spacing = 2,

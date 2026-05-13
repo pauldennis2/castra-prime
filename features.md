@@ -29,9 +29,13 @@ Enemy artillery, land mines, and nukes are generally seen as the most problemati
 
 This fits with the uranium on the planet, but particularly in combination with invisible mines that root you, these just feel unfair. Probably will be a configurable option to disable enemy nukes.
 
+Update: setting added.
+
 ### Enemy Land Mines Nerfs
 
 These seem to be everywhere, invisible, and completely root you. Potential fixes: remove entirely; make them visible; change the root to a % slow.
+
+Update: changing the mine root would be changing a Factorio base entity, definitely out of scope. Added setting to prevent mines from spawning.
 
 ### Enemy Artillery Nerfs
 
@@ -39,10 +43,14 @@ Added a setting flag to prevent enemy from having artillery. Solution for existi
 
 Also possibly setting a cap on range and damage research.
 
+Update: added setting to prevent artillery from being researched/deployed
+
 ### Enemy Railgun Nerfs
 
 Also mentioned as a problem. Fundamentally the players defenses have no way of scaling infinitely but the enemy damage does. The long range and projectile travel speed make these a dangerous obstacle.
 Possible cap on damage research.
+
+Update: leaving this alone for now. Plenty of enemy nerfs so far 
 
 ### Forge Buff
 

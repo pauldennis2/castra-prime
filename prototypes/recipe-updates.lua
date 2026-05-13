@@ -140,6 +140,8 @@ end
 table.insert(data.raw.lab["lab"].inputs, "battlefield-science-pack")
 table.insert(data.raw.lab["biolab"].inputs, "battlefield-science-pack")
 
+-- gates-progression also gates battlefield science in promethium and research-productivity
+-- tech ingredients; see prototypes/technology-updates.lua for those changes.
 if settings.startup["castra-prime-gates-progression"].value then
     -- Add lithium battery to railgun and railgun turret
     table.insert(data.raw["recipe"]["railgun"].ingredients, { type="item", name="lithium-battery", amount=5 })
