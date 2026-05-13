@@ -2,7 +2,9 @@ if data.raw["technology"]["railgun"] then
     if data.raw["technology"]["railgun"].unit and data.raw["technology"]["railgun"].unit.ingredients then
         table.insert(data.raw["technology"]["railgun"].unit.ingredients, { "battlefield-science-pack", 1 })
     end
-    table.insert(data.raw["technology"]["railgun"].prerequisites, "lithium-battery")
+    if settings.startup["castra-prime-gates-progression"].value then
+        table.insert(data.raw["technology"]["railgun"].prerequisites, "lithium-battery")
+    end
 end
 
 if data.raw["technology"]["railgun-damage-1"] and data.raw["technology"]["railgun-damage-1"].unit and data.raw["technology"]["railgun-damage-1"].unit.ingredients then
@@ -17,7 +19,7 @@ if data.raw["technology"]["railgun-damage-1"] and data.raw["technology"]["railgu
 end
 
 if data.raw["technology"]["promethium-science-pack"] then
-    if settings.startup["castra-prime-include-promsci"].value then
+    if settings.startup["castra-prime-gates-progression"].value then
         if data.raw["technology"]["promethium-science-pack"].unit and 
            data.raw["technology"]["promethium-science-pack"].unit.ingredients then
             table.insert(data.raw["technology"]["promethium-science-pack"].unit.ingredients,
@@ -27,7 +29,7 @@ if data.raw["technology"]["promethium-science-pack"] then
     end
 end
 
-if settings.startup["castra-prime-include-promsci"].value then
+if settings.startup["castra-prime-gates-progression"].value then
     if data.raw["technology"]["research-productivity"] and 
        data.raw["technology"]["research-productivity"].unit and 
        data.raw["technology"]["research-productivity"].unit.ingredients then

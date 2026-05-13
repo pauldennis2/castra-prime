@@ -19,6 +19,14 @@ Date: 2026-05-13
     - Removed quality-module-2 as a prerequisite for the forge technology. The built-in quality
       bonus on the forge made requiring quality research a soft circular dependency, and blocked
       the craft-item research trigger entirely for players without quality techs unlocked.
+    - Added option to prevent enemy rocket turrets from loading nuclear ammo (atomic/hydrogen
+      bombs). Existing nuclear ammo in turrets will remain until fired.
+    - Replaced "Include Battlefield in Research Prod" setting with "Castra Gates Late-Game
+      Progression" (on by default). When disabled, lithium batteries are no longer required
+      for railgun and promethium science pack recipes, and battlefield science is not required
+      for promethium science or research productivity research.
+    - Fixed: lithium battery was always required in the promethium-science-pack recipe even
+      when the old include-promsci setting was off.
 
   Ease of use:
     - Battlefield data packets (castra-data) can now be requested through the logistic network

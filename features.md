@@ -154,10 +154,10 @@ OK, I tend to think that if the other issues with the mod are fixed, this is les
 Other mods having compatibility issues will then be able to set it in their own recipes, which would help to solve this problem and potentially others."
 https://mods.factorio.com/mod/castra/discussion/67f56c326247759f06f690c9
 
-Relates to Voidcraft?
+Update: fixed/in
 
 ### Voidcraft Compatibility
-
+Relates to Voidcraft?
 https://mods.factorio.com/mod/voidcraft-planetary-compatibility
 https://mods.factorio.com/mod/castra/discussion/67c9c4ff6ae0b4a9e813439f
 
@@ -165,6 +165,8 @@ https://mods.factorio.com/mod/castra/discussion/67c9c4ff6ae0b4a9e813439f
 
 Apparently this game setting can make it impossible to access planet's resources (enemy based). Mixed feels here; this is a military planet. Potentially could make it so that the mod attempts to override the setting for Castra only, so that someone who wants to add the planet can, but they'll need to bring their turrets.
 https://mods.factorio.com/mod/castra/discussion/681377305edc99508351d51d
+
+Update: should be addressed; need to test
 
 ### Asset Separation
 
@@ -206,12 +208,16 @@ https://mods.factorio.com/mod/castra/discussion/692df0452d36c7c294803e2a
 
 Fatal is bad.
 
+Update: should be solved
+
 ### Enemy Research Triggers Achievements and Briefings
 
 Honestly not my highest prio because modded achievements...
 https://mods.factorio.com/mod/castra/discussion/69387c80ae76b3cf2f8aee29
 
 But I also ran into this and it is annoying.
+
+Update: likely won't fix, see notes at top
 
 ### Krastorio Compatibility
 

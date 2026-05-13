@@ -140,12 +140,14 @@ end
 table.insert(data.raw.lab["lab"].inputs, "battlefield-science-pack")
 table.insert(data.raw.lab["biolab"].inputs, "battlefield-science-pack")
 
--- Add lithium battery to railgun and railgun turret
-table.insert(data.raw["recipe"]["railgun"].ingredients, { type="item", name="lithium-battery", amount=5 })
-table.insert(data.raw["recipe"]["railgun-turret"].ingredients, { type="item", name="lithium-battery", amount=20 })
+if settings.startup["castra-prime-gates-progression"].value then
+    -- Add lithium battery to railgun and railgun turret
+    table.insert(data.raw["recipe"]["railgun"].ingredients, { type="item", name="lithium-battery", amount=5 })
+    table.insert(data.raw["recipe"]["railgun-turret"].ingredients, { type="item", name="lithium-battery", amount=20 })
 
--- Add lithium battery to the promethium-science-pack recipe
-table.insert(data.raw["recipe"]["promethium-science-pack"].ingredients, { type="item", name="lithium-battery", amount=1 })
+    -- Add lithium battery to the promethium-science-pack recipe
+    table.insert(data.raw["recipe"]["promethium-science-pack"].ingredients, { type="item", name="lithium-battery", amount=1 })
+end
 
 -- Replace battery-mk3-equipment supercapacitor with lithium battery
 for _, recipe in pairs(data.raw["recipe"]) do

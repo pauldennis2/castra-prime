@@ -17,7 +17,7 @@ data:extend({
     },
     {
         type = "bool-setting",
-        name = "castra-prime-include-promsci",
+        name = "castra-prime-gates-progression",
         setting_type = "startup",
         default_value = true,
         order = "b"
@@ -36,6 +36,13 @@ data:extend({
         default_value = 1.0,
         minimum_value = 0.01,
         maximum_value = 100.0,
+        order = "c"
+    },
+    {
+        type = "bool-setting",
+        name = "castra-prime-disable-enemy-nukes",
+        setting_type = "startup",
+        default_value = false,
         order = "c"
     },
     {
