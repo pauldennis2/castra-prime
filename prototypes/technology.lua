@@ -1,9 +1,9 @@
-data:extend(
+﻿data:extend(
   {
     {
       type = "technology",
       name = "planet-discovery-castra",
-      icons = util.technology_icon_constant_planet("__castra-prime__/graphics/icons/technology-castra.png"),
+      icons = util.technology_icon_constant_planet("__castra-prime-assets__/graphics/icons/technology-castra.png"),
       icon_size = 256,
       essential = true,
       effects =
@@ -44,7 +44,7 @@ data:extend(
     {
       type = "technology",
       name = "millerite-processing",
-      icon = "__castra-prime__/graphics/technology/millerite.png",
+      icon = "__castra-prime-assets__/graphics/technology/millerite.png",
       icon_size = 256,
       prerequisites = { "planet-discovery-castra" },
       research_trigger =
@@ -83,7 +83,7 @@ data:extend(
     {
       type = "technology",
       name = "hydrogen-sulfide-processing",
-      icon = "__castra-prime__/graphics/technology/hydrogen-sulfide-vent.png",
+      icon = "__castra-prime-assets__/graphics/technology/hydrogen-sulfide-vent.png",
       icon_size = 256,
       prerequisites = { "planet-discovery-castra" },
       research_trigger =
@@ -114,7 +114,7 @@ data:extend(
     {
       type = "technology",
       name = "gunpowder-processing",
-      icon = "__castra-prime__/graphics/technology/gunpowder.png",
+      icon = "__castra-prime-assets__/graphics/technology/gunpowder.png",
       icon_size = 256,
       prerequisites = { "planet-discovery-castra" },
       research_trigger =
@@ -145,7 +145,7 @@ data:extend(
     {
       type = "technology",
       name = "forge",
-      icon = "__castra-prime__/graphics/technology/atom-forge.png",
+      icon = "__castra-prime-assets__/graphics/technology/atom-forge.png",
       icon_size = 256,
       prerequisites = { "millerite-processing", "hydrogen-sulfide-processing", "gunpowder-processing", "quality-module-2" },
       effects =
@@ -164,7 +164,7 @@ data:extend(
     {
       type = "technology",
       name = "battlefield-science-pack",
-      icon = "__castra-prime__/graphics/technology/battlefield-science-pack.png",
+      icon = "__castra-prime-assets__/graphics/technology/battlefield-science-pack.png",
       icon_size = 256,
       prerequisites = { "forge", "tank", "uranium-ammo" },
       effects =
@@ -196,7 +196,7 @@ data:extend(
           shift = { 10, -10 }
         },
         {
-          icon = "__castra-prime__/graphics/icons/millerite.png",
+          icon = "__castra-prime-assets__/graphics/icons/millerite.png",
           scale = 0.5,
           shift = { -10, -10 }
         },
@@ -241,7 +241,7 @@ data:extend(
       icons =
       {
         {
-          icon = "__castra-prime__/graphics/icons/nickel-plate.png",
+          icon = "__castra-prime-assets__/graphics/icons/nickel-plate.png",
           scale = 0.7,
           shift = { 0, -10 }
         },
@@ -283,7 +283,7 @@ data:extend(
     {
       type = "technology",
       name = "lithium-battery",
-      icon = "__castra-prime__/graphics/technology/lithium-battery.png",
+      icon = "__castra-prime-assets__/graphics/technology/lithium-battery.png",
       icon_size = 256,
       prerequisites = { "battlefield-science-pack", "cryogenic-science-pack" },
       effects =
@@ -311,7 +311,7 @@ data:extend(
     {
       type = "technology",
       name = "holmium-catalyzing",
-      icon = "__castra-prime__/graphics/technology/holmium-catalyzing.png",
+      icon = "__castra-prime-assets__/graphics/technology/holmium-catalyzing.png",
       icon_size = 256,
       prerequisites = { "battlefield-science-pack", "electromagnetic-science-pack" },
       effects =
@@ -339,7 +339,7 @@ data:extend(
     {
       type = "technology",
       name = "energy-shield-mk3-equipment",
-      icon = "__castra-prime__/graphics/technology/energy-shield-mk3-equipment.png",
+      icon = "__castra-prime-assets__/graphics/technology/energy-shield-mk3-equipment.png",
       icon_size = 256,
       prerequisites = { "lithium-battery", "quantum-processor", "energy-shield-mk2-equipment" },
       effects =
@@ -372,7 +372,7 @@ data:extend(
     {
       type = "technology",
       name = "combat-roboport",
-      icon = "__castra-prime__/graphics/technology/combat-roboport.png",
+      icon = "__castra-prime-assets__/graphics/technology/combat-roboport.png",
       icon_size = 256,
       prerequisites = { "battlefield-science-pack", "defender" },
       effects =
@@ -697,7 +697,7 @@ data:extend(
     {
       type = "technology",
       name = "castra-enemy-research",
-      icon = "__castra-prime__/graphics/icons/technology-castra-enemy-research.png",
+      icon = "__castra-prime-assets__/graphics/icons/technology-castra-enemy-research.png",
       icon_size = 256,
       prerequisites = { "battlefield-science-pack", "radar" },
       effects =
@@ -725,7 +725,7 @@ data:extend(
     {
       type = "technology",
       name = "military-transport-belt",
-      icon = "__castra-prime__/graphics/technology/military-transport-belt.png",
+      icon = "__castra-prime-assets__/graphics/technology/military-transport-belt.png",
       icon_size = 256,
       effects =
       {
@@ -761,7 +761,7 @@ data:extend(
     {
       type = "technology",
       name = "carbon-fiber-wall",
-      icon = "__castra-prime__/graphics/technology/carbon-fiber-wall.png",
+      icon = "__castra-prime-assets__/graphics/technology/carbon-fiber-wall.png",
       icon_size = 256,
       effects =
       {
@@ -790,7 +790,7 @@ data:extend(
     {
       type = "technology",
       name = "jammer-radar",
-      icon = "__castra-prime__/graphics/technology/jammer-radar.png",
+      icon = "__castra-prime-assets__/graphics/technology/jammer-radar.png",
       icon_size = 256,
       effects =
       {
@@ -821,11 +821,11 @@ data:extend(
       name = "jammed-data-collector",
       icons = {
         {
-          icon = "__castra-prime__/graphics/technology/combat-roboport.png",
+          icon = "__castra-prime-assets__/graphics/technology/combat-roboport.png",
           icon_size = 256,
         },
         {
-          icon = "__castra-prime__/graphics/technology/combat-roboport.png",
+          icon = "__castra-prime-assets__/graphics/technology/combat-roboport.png",
           icon_size = 256,
           tint = { r = 0.5, g = 0.0, b = 0.5, a = 0.3 }
         }

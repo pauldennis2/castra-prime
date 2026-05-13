@@ -1,4 +1,4 @@
-local effects = require("__core__/lualib/surface-render-parameter-effects")
+﻿local effects = require("__core__/lualib/surface-render-parameter-effects")
 local planet_map_gen = require("planet-map-gen")
 local procession_graphic_catalogue_types = require("__base__/prototypes/planet/procession-graphic-catalogue-types")
 local asteroid_util = require("__space-age__.prototypes.planet.asteroid-spawn-definitions")
@@ -52,8 +52,8 @@ data:extend(
   {
     type = "planet",
     name = "castra",
-    icon = "__castra-prime__/graphics/icons/castra.png",
-    starmap_icon = "__castra-prime__/graphics/icons/starmap-planet-castra.png",
+    icon = "__castra-prime-assets__/graphics/icons/castra.png",
+    starmap_icon = "__castra-prime-assets__/graphics/icons/starmap-planet-castra.png",
     starmap_icon_size = 512,
     gravity_pull = 15,
     distance = 21,

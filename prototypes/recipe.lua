@@ -1,4 +1,4 @@
-data:extend({    
+﻿data:extend({    
   {
     type = "recipe-category",
     name = "castra-crafting"
@@ -33,7 +33,7 @@ data:extend(
       icons =
       {
         {
-          icon = "__castra-prime__/graphics/icons/nickel-plate.png",
+          icon = "__castra-prime-assets__/graphics/icons/nickel-plate.png",
           scale = 0.7,
           shift = {0, -10}
         },
@@ -69,7 +69,7 @@ data:extend(
       icons =
       {
         {
-          icon = "__castra-prime__/graphics/icons/fluid/hydrogen-sulfide.png",
+          icon = "__castra-prime-assets__/graphics/icons/fluid/hydrogen-sulfide.png",
           scale = 0.7,
           shift = {0, -10}
         },
@@ -109,7 +109,7 @@ data:extend(
           shift = {0, -10}
         },
         {
-          icon = "__castra-prime__/graphics/icons/nickel-plate.png",
+          icon = "__castra-prime-assets__/graphics/icons/nickel-plate.png",
           scale = 0.5,
           shift = {-10, 10}
         }
@@ -141,7 +141,7 @@ data:extend(
           shift = {0, -10}
         },
         {
-          icon = "__castra-prime__/graphics/icons/millerite.png",
+          icon = "__castra-prime-assets__/graphics/icons/millerite.png",
           scale = 0.5,
           shift = {-10, 10}
         }
@@ -177,7 +177,7 @@ data:extend(
           shift = {0, -10}
         },
         {
-          icon = "__castra-prime__/graphics/icons/fluid/hydrogen-sulfide.png",
+          icon = "__castra-prime-assets__/graphics/icons/fluid/hydrogen-sulfide.png",
           scale = 0.5,
           shift = {-10, 10}
         },
@@ -216,7 +216,7 @@ data:extend(
           shift = {0, -10}
         },
         {
-          icon = "__castra-prime__/graphics/icons/gunpowder.png",
+          icon = "__castra-prime-assets__/graphics/icons/gunpowder.png",
           scale = 0.5,
           shift = {-10, 10}
         }
@@ -248,7 +248,7 @@ data:extend(
           shift = {0, -10}
         },
         {
-          icon = "__castra-prime__/graphics/icons/gunpowder.png",
+          icon = "__castra-prime-assets__/graphics/icons/gunpowder.png",
           scale = 0.5,
           shift = {-10, 10}
         }
@@ -281,7 +281,7 @@ data:extend(
           shift = {0, -10}
         },
         {
-          icon = "__castra-prime__/graphics/icons/gunpowder.png",
+          icon = "__castra-prime-assets__/graphics/icons/gunpowder.png",
           scale = 0.5,
           shift = {-10, 10}
         }
@@ -320,7 +320,7 @@ data:extend(
           shift = {-10, 10}
         },
         {
-          icon = "__castra-prime__/graphics/icons/fluid/hydrogen-sulfide.png",
+          icon = "__castra-prime-assets__/graphics/icons/fluid/hydrogen-sulfide.png",
           scale = 0.5,
           shift = {10, 10}
         }
@@ -355,7 +355,7 @@ data:extend(
           shift = {0, -10}
         },
         {
-          icon = "__castra-prime__/graphics/icons/nickel-plate.png",
+          icon = "__castra-prime-assets__/graphics/icons/nickel-plate.png",
           scale = 0.5,
           shift = {-10, 10}
         }
@@ -449,7 +449,7 @@ data:extend(
           shift = { 10, -10 }
         },
         {
-          icon = "__castra-prime__/graphics/icons/millerite.png",
+          icon = "__castra-prime-assets__/graphics/icons/millerite.png",
           scale = 0.5,
           shift = { -10, -10 }
         },
@@ -493,7 +493,7 @@ data:extend(
           shift = {0, -10}
         },
         {
-          icon = "__castra-prime__/graphics/icons/nickel-plate.png",
+          icon = "__castra-prime-assets__/graphics/icons/nickel-plate.png",
           scale = 0.5,
           shift = {-10, 10}
         }
@@ -527,7 +527,7 @@ data:extend(
       icons =
       {
         {
-          icon = "__castra-prime__/graphics/icons/nickel-plate.png",
+          icon = "__castra-prime-assets__/graphics/icons/nickel-plate.png",
           scale = 0.7,
           shift = {0, -10}
         },
@@ -577,7 +577,7 @@ data:extend(
         {type="item", name="millerite", amount=1}
       },
       results = {{type="item", name="holmium-plate", amount=2}},
-      icon = "__castra-prime__/graphics/icons/holmium-catalyzing.png",
+      icon = "__castra-prime-assets__/graphics/icons/holmium-catalyzing.png",
       allow_productivity = true,
       auto_recycle = false,
       hide_from_signal_gui = false,
@@ -631,7 +631,7 @@ data:extend(
           shift = {0, -10}
         },
         {
-          icon = "__castra-prime__/graphics/icons/gunpowder.png",
+          icon = "__castra-prime-assets__/graphics/icons/gunpowder.png",
           scale = 0.5,
           shift = {-10, 10}
         }
@@ -666,7 +666,7 @@ data:extend(
           shift = {0, -10}
         },
         {
-          icon = "__castra-prime__/graphics/icons/nickel-plate.png",
+          icon = "__castra-prime-assets__/graphics/icons/nickel-plate.png",
           scale = 0.5,
           shift = {-10, 10}
         },
@@ -704,7 +704,7 @@ data:extend(
           shift = {0, -10}
         },
         {
-          icon = "__castra-prime__/graphics/icons/nickel-plate.png",
+          icon = "__castra-prime-assets__/graphics/icons/nickel-plate.png",
           scale = 0.5,
           shift = {-10, 10}
         },
@@ -742,7 +742,7 @@ data:extend(
           shift = {0, -10}
         },
         {
-          icon = "__castra-prime__/graphics/icons/castra-data.png",
+          icon = "__castra-prime-assets__/graphics/icons/castra-data.png",
           scale = 0.5,
           shift = {-10, 10}
         }
@@ -775,7 +775,7 @@ data:extend(
           shift = {0, -10}
         },
         {
-          icon = "__castra-prime__/graphics/icons/castra-data.png",
+          icon = "__castra-prime-assets__/graphics/icons/castra-data.png",
           scale = 0.5,
           shift = {-10, 10}
         }
@@ -808,7 +808,7 @@ data:extend(
           shift = {0, -10}
         },
         {
-          icon = "__castra-prime__/graphics/icons/castra-data.png",
+          icon = "__castra-prime-assets__/graphics/icons/castra-data.png",
           scale = 0.5,
           shift = {-10, 10}
         }
@@ -841,7 +841,7 @@ data:extend(
           shift = {0, -10}
         },
         {
-          icon = "__castra-prime__/graphics/icons/castra-data.png",
+          icon = "__castra-prime-assets__/graphics/icons/castra-data.png",
           scale = 0.5,
           shift = {-10, 10}
         }
@@ -875,7 +875,7 @@ data:extend(
           shift = {0, -10}
         },
         {
-          icon = "__castra-prime__/graphics/icons/castra-data.png",
+          icon = "__castra-prime-assets__/graphics/icons/castra-data.png",
           scale = 0.5,
           shift = {-10, 10}
         }
@@ -909,7 +909,7 @@ data:extend(
           shift = {0, -10}
         },
         {
-          icon = "__castra-prime__/graphics/icons/castra-data.png",
+          icon = "__castra-prime-assets__/graphics/icons/castra-data.png",
           scale = 0.5,
           shift = {-10, 10}
         }
@@ -947,7 +947,7 @@ data:extend(
           shift = {0, -10}
         },
         {
-          icon = "__castra-prime__/graphics/icons/millerite.png",
+          icon = "__castra-prime-assets__/graphics/icons/millerite.png",
           scale = 0.5,
           shift = {-10, 10}
         },
@@ -1104,7 +1104,7 @@ data:extend(
     {
       type = "recipe",
       name = "jammed-data-collector-process",
-      icon = "__castra-prime__/graphics/icons/castra-data.png",
+      icon = "__castra-prime-assets__/graphics/icons/castra-data.png",
       hide_from_player_crafting = true,
       auto_recycle = false,
       preserve_products_in_machine_output = true,

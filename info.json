@@ -5,6 +5,6 @@
   "author": "erronius",
   "factorio_version": "2.0",
   "space_travel_required": true,
-  "dependencies": ["base >= 2.0.30", "space-age", "? alien-biomes", "? landing-pad-research", "? maraxsis", "? planet-muluna", "? Cerys-Moon-of-Fulgora", "? modules-t4", "! castra"],
+  "dependencies": ["base >= 2.0.30", "space-age", "castra-prime-assets", "? alien-biomes", "? landing-pad-research", "? maraxsis", "? planet-muluna", "? Cerys-Moon-of-Fulgora", "? modules-t4", "! castra"],
   "description": "Fork of Castra, originally by Bartz24 and LogicDolphin, to fix balance issues."
 }

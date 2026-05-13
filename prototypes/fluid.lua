@@ -1,8 +1,8 @@
-data:extend({
+﻿data:extend({
     {
         type = "fluid",
         name = "hydrogen-sulfide",
-        icon = "__castra-prime__/graphics/icons/fluid/hydrogen-sulfide.png",
+        icon = "__castra-prime-assets__/graphics/icons/fluid/hydrogen-sulfide.png",
         subgroup = "fluid",
         order = "b[new-fluid]-g[castra]-c[hydrogen-sulfide]",
         default_temperature = 25,
