@@ -22,6 +22,10 @@ Date: 2026-05-13
     - Battlefield data packets (castra-data) can now be requested through the logistic network
       and set as logistic filters. Previously the item was invisible to filter UIs because it
       has no unlocked producing recipe.
+    - Data collectors now spawn items and tanks in peaceful mode. The planet is intended to be
+      a combat challenge regardless of map settings.
+    - Mod authors can set recipe.castra_prime_ignore = true to prevent Castra Prime from
+      re-categorizing their recipes for the Forge.
 
   Code:
     - Extracted shared constants (radii, turret list, hyphen_to_underscore) to castra-config.lua

@@ -45,6 +45,10 @@ Big disclaimer: this mod is not gonna be for everyone, and I'm not promising to 
 - Factorio **2.0+** with **Space Age**
 - Designed to be save-compatible with existing Planet Castra saves, provided prototype names are unchanged (see migration notes below). Right now this is very hopeful and not tested.
 
+### Mod Author Opt-Out
+
+Castra Prime re-categorizes recipes for all ammo, weapons, armor, turrets, walls, and equipment to make them craftable in the Forge. If your mod has recipes you don't want touched, set `recipe.castra_prime_ignore = true` on them (e.g. in `data-final-fixes.lua`) and Castra Prime will skip them.
+
 ### Upgrading from Planet Castra
 
 As of 2026/05/10 this mod is still HIGHLY WIP. You are welcome to try it out if you're really struggling on Castra, but I am making NO promises. This may not be the best time to "buy in" to my mod. 

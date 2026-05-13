@@ -25,8 +25,8 @@ end
 function change_to_category(item)
     for _, recipe in pairs(data.raw["recipe"]) do
         if recipe.results then
-            -- Ignore hidden or recycling recipes
-            if recipe.hidden or (recipe.category and string.find(recipe.category, "recycling")) then
+            -- Ignore hidden, recycling, or explicitly opted-out recipes
+            if recipe.hidden or (recipe.category and string.find(recipe.category, "recycling")) or recipe.castra_prime_ignore then
                 goto continueRecipe
             end
             for _, result in pairs(recipe.results) do

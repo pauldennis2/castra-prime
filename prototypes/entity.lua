@@ -289,6 +289,7 @@ data:extend({
             },
             reset_animation_when_frozen = true
         },
+        peaceful_unit_spawn_factor = 1,
         spawning_cooldown = { 480, 960 },
         spawning_radius = 6,
         spawning_spacing = 2,
