@@ -170,7 +170,8 @@ local function update_castra_enemy_data()
         enemy_storage[capability.key] = disabled and false or capability.check_fn()
     end
 
-    -- Block disabled capabilities at the source: prevent enemy from researching or keeping the tech
+    -- BELT AND SUSPENDERS (primary block): disable the tech entirely so the enemy never researches it.
+    -- The cache check above is a secondary fallback in case tech_name is missing or a modded variant slips through.
     for _, capability in ipairs(enemy_capabilities) do
         if capability.disabled_setting and capability.tech_name then
             local disabled = capability.disabled_setting and
