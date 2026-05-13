@@ -1,5 +1,32 @@
 -- data-final-fixes.lua
 
+-- Recycling recipes are auto-generated before our data-updates.lua ingredient changes take
+-- effect, so we patch them here after everything else has run.
+
+-- battery-mk3-equipment: we replaced supercapacitor with lithium-battery in the recipe
+local battery_recycling = data.raw["recipe"]["battery-mk3-equipment-recycling"]
+if battery_recycling and battery_recycling.results then
+    for _, result in ipairs(battery_recycling.results) do
+        if result.name == "supercapacitor" then
+            result.name = "lithium-battery"
+            break
+        end
+    end
+end
+
+-- railgun and railgun-turret: we added lithium-battery when gates-progression is ON
+if settings.startup["castra-prime-gates-progression"].value then
+    local railgun_recycling = data.raw["recipe"]["railgun-recycling"]
+    if railgun_recycling and railgun_recycling.results then
+        table.insert(railgun_recycling.results, {type="item", name="lithium-battery", amount=1}) -- 25% of 5
+    end
+
+    local turret_recycling = data.raw["recipe"]["railgun-turret-recycling"]
+    if turret_recycling and turret_recycling.results then
+        table.insert(turret_recycling.results, {type="item", name="lithium-battery", amount=5}) -- 25% of 20
+    end
+end
+
 if settings.startup["castra-prime-buffed-forge"].value then
     local forge = data.raw["assembling-machine"]["forge"]
     if forge then

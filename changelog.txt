@@ -32,6 +32,10 @@ Date: 2026-05-13
     - Battlefield data packets (castra-data) can now be requested through the logistic network
       and set as logistic filters. Previously the item was invisible to filter UIs because it
       has no unlocked producing recipe.
+    - Added option to remove battlefield science pack requirement from atomic bomb technology,
+      allowing nuclear weapons to be researched without visiting Castra.
+    - Fixed recycling recipes for battery-mk3-equipment, railgun, and railgun-turret to return
+      lithium batteries, matching the ingredient changes made by this mod.
     - Data collectors now spawn items and tanks in peaceful mode. The planet is intended to be
       a combat challenge regardless of map settings.
     - Mod authors can set recipe.castra_prime_ignore = true to prevent Castra Prime from

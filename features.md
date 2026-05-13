@@ -253,3 +253,25 @@ Update: investigated, nothing obvious found. Hope to circle back.
 ### Enemy Tanks
 
 I always thought this looked a little weird/placeholder-y. Maybe switching to a mini spidertron would be cooler and more thematic? Or a massive UPS headache because of legs?
+
+## Further reported issues/requests
+
+### Recycling
+https://mods.factorio.com/mod/castra/discussion/67eae7f661a2101131b53cfa
+Mk3 battery and railgun recycling don't return nickel batteries appropriately
+
+https://mods.factorio.com/mod/castra/discussion/680ee3da3a334caf7ac1d62d
+"Armory" likely is a translation of Forge; incorrectly recycles to tungsten instead of nickel
+
+### Recipe Issues?
+https://mods.factorio.com/mod/castra/discussion/67e319a341b2567b60f42863
+"Unknown recipe-category name: castra-crafting-with-fluid"
+I got this error with latest version when I try to load a save-game with a previous version.
+
+EDIT: castra-basic-crafting recipe category is missing when I disable or uninstall the mod.
+
+Update: inactionable
+
+### Request to return nuke back to Nauvis
+
+From Samario on Foundry

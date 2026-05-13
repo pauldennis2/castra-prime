@@ -40,12 +40,14 @@ if settings.startup["castra-prime-gates-progression"].value then
     end
 end
 
--- Move atomic bomb and flamethrowers to battlefield-science-pack
-if data.raw["technology"]["atomic-bomb"] then
-    if data.raw["technology"]["atomic-bomb"].unit and data.raw["technology"]["atomic-bomb"].unit.ingredients then
-        table.insert(data.raw["technology"]["atomic-bomb"].unit.ingredients, { "battlefield-science-pack", 1 })
+-- Move atomic bomb to battlefield-science-pack (skipped if nauvis-nukes setting is on)
+if not settings.startup["castra-prime-nauvis-nukes"].value then
+    if data.raw["technology"]["atomic-bomb"] then
+        if data.raw["technology"]["atomic-bomb"].unit and data.raw["technology"]["atomic-bomb"].unit.ingredients then
+            table.insert(data.raw["technology"]["atomic-bomb"].unit.ingredients, { "battlefield-science-pack", 1 })
+        end
+        table.insert(data.raw["technology"]["atomic-bomb"].prerequisites, "battlefield-science-pack")
     end
-    table.insert(data.raw["technology"]["atomic-bomb"].prerequisites, "battlefield-science-pack")
 end
 
 -- Add battlefield-science-pack to all refined flammables techs and remove agricultural from any of them

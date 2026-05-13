@@ -61,6 +61,13 @@ data:extend({
     },
     {
         type = "bool-setting",
+        name = "castra-prime-nauvis-nukes",
+        setting_type = "startup",
+        default_value = false,
+        order = "d"
+    },
+    {
+        type = "bool-setting",
         name = "castra-prime-buff-equipment",
         setting_type = "startup",
         default_value = false,

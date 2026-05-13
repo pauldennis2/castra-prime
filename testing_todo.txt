@@ -5,3 +5,10 @@ Test starting area resource gen
 Add note about research speed limits
 Test no enemies is ignored
 Test landing animation
+
+"when placed the combat roboport makes the sound effect when opening a regular roboport. however its a rapid continuous idle sound. im not sure if this is intended or a bug of some sort but it quickly becomes grating."
+-> test
+
+Test recycling fix
+
+Test setting of changing nuclear tech req

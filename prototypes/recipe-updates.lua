@@ -196,7 +196,11 @@ local function get_surface_condition(recipe, condition_type)
     return new_condition
 end
 
--- Limit rocket-fuel-sulfur recipe to >= 255 K if cerys is installed
+-- Limit rocket-fuel-sulfur recipe to >= 255 K if cerys is installed.
+-- NOTE: "temperature" is a Cerys-defined surface property, not vanilla. If Castra's temperature
+-- defaults below 255 (because we don't define it), this condition could block the recipe on
+-- Castra itself. Unconfirmed in practice — if reports emerge, fix is to add a temperature
+-- surface property to Castra's planet definition when Cerys is installed.
 if mods["Cerys-Moon-of-Fulgora"] then
     local recipe = data.raw["recipe"]["rocket-fuel-sulfur"]
     if recipe then
