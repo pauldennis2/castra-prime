@@ -66,6 +66,11 @@ data:extend(
     solar_power_in_space = 150,
     asteroid_spawn_influence = 1,
     asteroid_spawn_definitions = asteroid_util.spawn_definitions(asteroid_util.vulcanus_castra, 0.9),
+  platform_procession_set =
+    {
+      arrival = {"planet-to-platform-b"},
+      departure = {"platform-to-planet-a"}
+    },
   planet_procession_set =
     {
       arrival = {"platform-to-planet-b"},
