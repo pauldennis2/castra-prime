@@ -269,6 +269,8 @@ local function get_castra_research_speed()
     end
 
     -- Include les a bonus based on productivity module tier: 1 = 2%, 2 = 4%, 3 = 8%
+    -- TODO: bug - reads speed_module_tier instead of productivity_module_tier
+    -- fix: replace speed_module_tier with productivity_module_tier on the line below
     if storage.castra.enemy.productivity_module_tier then
         research_speed = research_speed * (1 + math.pow(2, storage.castra.enemy.speed_module_tier - 1) * 0.02)
     end
@@ -690,6 +692,7 @@ local function destroyed_event(event)
             storage.castra.data_collectors_jammers[event.entity.unit_number] = nil
 
             -- Clear pollution storage for this entity
+            -- TODO: typo "caectorsPollution" should be "dataCollectorsPollution" - may reset entire pollution cache on each destroy
             storage.castra.dataCollectorsPollution = storage.caectorsPollution or {}
             storage.castra.dataCollectorsPollution[event.entity.unit_number] = nil
         end
@@ -965,4 +968,21 @@ script.on_event(defines.events.on_selected_entity_changed, function(event)
         local color = { r = 0.5, g = 0, b = 0.5, a = 0.7 }
         draw_rect_range(player, entity.position, entity.surface, range, color)
     end
+end)
+
+-- Usage: /castra-debug
+commands.add_command("castra-debug", "Print Castra Prime debug info", function(event)
+    local player = game.players[event.player_index]
+    if not storage.castra then
+        player.print("storage.castra is nil - mod not yet initialized")
+        return
+    end
+    if not storage.castra.enemy then
+        player.print("storage.castra.enemy is nil - cache not yet built")
+        return
+    end
+    player.print("=== Castra enemy capabilities ===")
+    player.print(serpent.block(storage.castra.enemy))
+    player.print("Data collectors tracked: " .. #(storage.castra.dataCollectors or {}))
+    player.print("Research speed: " .. math.floor(get_castra_research_speed() * 100) / 100 .. "/m")
 end)
