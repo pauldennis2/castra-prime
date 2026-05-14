@@ -763,3 +763,25 @@ data:extend({
     create_enemy_version(data.raw["fluid-turret"]["flamethrower-turret"]),
     create_enemy_version(data.raw["electric-turret"]["tesla-turret"]),
 })
+
+-- Enemy infrastructure variants with is_military_target = true so personal laser
+-- defenses can target them. No energy reduction needed (solar/poles don't consume).
+local infrastructure_types = {
+    { type = "roboport",      name = "roboport" },
+    { type = "solar-panel",   name = "solar-panel" },
+    { type = "electric-pole", name = "small-electric-pole" },
+    { type = "electric-pole", name = "medium-electric-pole" },
+    { type = "electric-pole", name = "big-electric-pole" },
+}
+local enemy_infrastructure = {}
+for _, entry in ipairs(infrastructure_types) do
+    local entity = data.raw[entry.type][entry.name]
+    if entity then
+        local e = table.deepcopy(entity)
+        e.name = "castra-enemy-" .. entry.name
+        if e.minable then e.minable.result = nil end
+        e.is_military_target = true
+        table.insert(enemy_infrastructure, e)
+    end
+end
+data:extend(enemy_infrastructure)

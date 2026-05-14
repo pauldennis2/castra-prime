@@ -135,13 +135,13 @@ local function place_roboport(chunk_area, data_collector_pos)
 
     local surface = game.surfaces["castra"]
     local enemy_force = game.forces["enemy"]
-    local otherRoboports = surface.find_entities_filtered { name = "roboport", force = enemy_force, area = { { chunk_area.left_top.x - 45, chunk_area.left_top.y - 45 }, { chunk_area.right_bottom.x + 45, chunk_area.right_bottom.y + 45 } } }
+    local otherRoboports = surface.find_entities_filtered { type = "roboport", force = enemy_force, area = { { chunk_area.left_top.x - 45, chunk_area.left_top.y - 45 }, { chunk_area.right_bottom.x + 45, chunk_area.right_bottom.y + 45 } } }
 
     -- Create a roboport if there is another roboport nearby or a 50% chance
     if #otherRoboports > 0 or math.random() < 0.8 then
-        local pos = surface.find_non_colliding_position("roboport", data_collector_pos, 16, 0.5, true)
+        local pos = surface.find_non_colliding_position("castra-enemy-roboport", data_collector_pos, 16, 0.5, true)
         if pos then
-            local roboport = surface.create_entity { name = "roboport", position = pos, force = enemy_force, quality = select_random_quality(), raise_built = true }
+            local roboport = surface.create_entity { name = "castra-enemy-roboport", position = pos, force = enemy_force, quality = select_random_quality(), raise_built = true }
 
             -- Add a few construction bots and repair packs to the roboport
             if roboport then
@@ -175,13 +175,14 @@ local function place_solar(chunk_area)
     if not power_type then
         return
     end
+    local enemy_power_type = "castra-enemy-" .. power_type
 
-    local pole_pos = surface.find_non_colliding_position(power_type,
+    local pole_pos = surface.find_non_colliding_position(enemy_power_type,
         { math.random(chunk_area.left_top.x, chunk_area.right_bottom.x), math.random(chunk_area.left_top.y,
             chunk_area.right_bottom.y) }, 8, 0.5, true)
 
     if pole_pos then
-        local power_pole = surface.create_entity { name = power_type, position = pole_pos, force = enemy_force, quality = select_random_quality(), raise_built = true }
+        local power_pole = surface.create_entity { name = enemy_power_type, position = pole_pos, force = enemy_force, quality = select_random_quality(), raise_built = true }
 
         if not power_pole then
             return
@@ -193,19 +194,19 @@ local function place_solar(chunk_area)
 
         local created = false
         for i = 1, math.random(2, 5) do
-            local solar_panel_pos = surface.find_non_colliding_position("solar-panel",
+            local solar_panel_pos = surface.find_non_colliding_position("castra-enemy-solar-panel",
                 { pole_pos.x + math.random(-pole_range - 2, pole_range + 2), pole_pos.y +
                 math.random(-pole_range - 2, pole_range + 2) }, 8, 0.5, true)
             if solar_panel_pos then
-                local solar = surface.create_entity { name = "solar-panel", position = solar_panel_pos, force = enemy_force, quality = quality, raise_built = true }
+                local solar = surface.create_entity { name = "castra-enemy-solar-panel", position = solar_panel_pos, force = enemy_force, quality = quality, raise_built = true }
                 if solar then
                     created = true
 
                     -- If the solar panel isn't connected to a power network, try to add a power pole
                     if not solar.is_connected_to_electric_network() then
-                        local power_pole_pos = surface.find_non_colliding_position(power_type, solar.position, pole_range + 2, 0.5, true)
+                        local power_pole_pos = surface.find_non_colliding_position(enemy_power_type, solar.position, pole_range + 2, 0.5, true)
                         if power_pole_pos then
-                            surface.create_entity { name = power_type, position = power_pole_pos, force = enemy_force, quality = quality, raise_built = true }
+                            surface.create_entity { name = enemy_power_type, position = power_pole_pos, force = enemy_force, quality = quality, raise_built = true }
                         end
                     end
                 end
@@ -253,10 +254,11 @@ local function place_power_poles(chunk_area, powered_entities)
     if not power_type then
         return
     end
+    local enemy_power_type = "castra-enemy-" .. power_type
 
     local quality = select_random_quality()
 
-    local pole_supply_area = prototypes.entity[power_type].get_supply_area_distance(quality)
+    local pole_supply_area = prototypes.entity[enemy_power_type].get_supply_area_distance(quality)
 
     local surface = game.surfaces["castra"]
     local enemy_force = game.forces["enemy"]
@@ -268,18 +270,18 @@ local function place_power_poles(chunk_area, powered_entities)
             goto continue_pole
         end
 
-        local power_pole_pos = surface.find_non_colliding_position(power_type, entity.position, pole_supply_area + 2, 0.5, true)
+        local power_pole_pos = surface.find_non_colliding_position(enemy_power_type, entity.position, pole_supply_area + 2, 0.5, true)
         if not power_pole_pos then
             goto continue_pole
         end
-        surface.create_entity { name = power_type, position = power_pole_pos, force = enemy_force, quality = quality, raise_built = true }
+        surface.create_entity { name = enemy_power_type, position = power_pole_pos, force = enemy_force, quality = quality, raise_built = true }
 
         -- Check if it's now connected to power
         if entity.is_connected_to_electric_network() then
             goto continue_pole
         end
 
-        local pole_reach = prototypes.entity[power_type].get_max_wire_distance(quality)
+        local pole_reach = prototypes.entity[enemy_power_type].get_max_wire_distance(quality)
         
         -- Find where the solar panels are and add power poles to connect them
         local solar_panel = find_closest_entity({ area = { top_left = { entity.position.x - 50, entity.position.y - 50 }, bottom_right = { entity.position.x + 50, entity.position.y + 50 } }, type = "solar-panel" }, power_pole_pos)
@@ -293,9 +295,9 @@ local function place_power_poles(chunk_area, powered_entities)
 
             for i = 1, pole_count do
                 local pole_pos_test = { x = power_pole_pos.x + pole_step.x * i, y = power_pole_pos.y + pole_step.y * i }
-                local pole_pos = surface.find_non_colliding_position(power_type, pole_pos_test, 3, 0.5, true)
+                local pole_pos = surface.find_non_colliding_position(enemy_power_type, pole_pos_test, 3, 0.5, true)
                 if pole_pos then
-                    surface.create_entity { name = power_type, position = pole_pos, force = enemy_force, quality = quality, raise_built = true }
+                    surface.create_entity { name = enemy_power_type, position = pole_pos, force = enemy_force, quality = quality, raise_built = true }
                 end
             end
         end
