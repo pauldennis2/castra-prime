@@ -8,10 +8,6 @@ Licensed under [GPL 3.0](LICENSE.md) in accordance with the original mod.
 
 Note: re-wrote and moved discussion of specific features
 
-## Working Notes
-
-Buffed forge option is just for easy testing, but it does feel a little underwhelming for its size.
-
 ---
 
 ## What is Castra (Originally)?
@@ -51,11 +47,11 @@ Castra Prime re-categorizes recipes for all ammo, weapons, armor, turrets, walls
 
 ### Upgrading from Planet Castra
 
-As of 2026/05/10 this mod is still HIGHLY WIP. You are welcome to try it out if you're really struggling on Castra, but I am making NO promises. This may not be the best time to "buy in" to my mod. 
+As of 2026/05/10 this mod is still HIGHLY WIP. You are welcome to try it out if you're really struggling on Castra, but I am making NO promises. This may not be the best time to "buy in" to my mod. 05/13 feeling better about it.
 
 **Eventual goal**:
 
-If you are mid-playthrough on the original Castra mod, you should be able to swap in Castra Prime without losing save progress The enemy faction's already-researched technologies will remain researched, but future research will be subject to the new caps and rate limits.
+If you are mid-playthrough on the original Castra mod, you should be able to swap in Castra Prime without losing save progress. The enemy faction's already-researched technologies will remain researched, but future research will be subject to the new caps and rate limits.
 
 > **Note:** Always back up your save before switching mods mid-playthrough.
 
@@ -74,3 +70,53 @@ Community feedback sourced from the Factorio mod portal and Discord.
 As of 2026/05/10 I'm just trying to get a handle on basics of modding and document the existing requests, but eventual goal:
 
 Issues, suggestions, and pull requests are welcome. If you are interested in collaborating on balancing, Lua scripting, or localization, please open an issue or reach out on the Factorio Discord - I'm erronius on there.
+
+## Mod Features
+
+A lot of what I've done in this mod is add toggle-able settings for various issues users have complained about in the original mod. I'll describe those settings and the other features here.
+
+### Settings
+
+All default settings match the original Castra mod.
+
+#### Enemy Nerfs
+
+1. Disable artillery. Does what it says (I think). Enemy should no longer be able to spawn artillery turrets. Does not remove existing turrets. Default off.
+2. Disable enemy land mines. Same as above; existing land mines aren't removed, but no new ones will be created. Default off.
+3. Prevent enemy use of nukes. The enemy faction will not load rocket turrets with atomic weapons. DOES NOT unload existing nukes. Default off.
+4. Reduce data collector toughness - a 50% decrease to base health, regen rate, all resistances, both flat and percentage (I'm halving the percentage so for example, 60% resistance becomes 30%). It really depends on your mods, but I've seen these things get up to ~150k health, and they have some pretty high resistances. Default off.
+
+#### Enemy Research
+
+1. Suppress messages about research. Does what it says, turn it on and off as you like. Default off.
+2. Research rate - value from 0.01 to 100. This will be a multiplier on the enemy's research rate, so if you set it to 100 they will be researching 100 times as fast. Sort of. There's currently some limitations with how often the engine checks for new techs, so in practice this increase might not be obvious; primarily this is meant for long games where you want to slow down the enemy. Default 1.
+
+#### Tech Tree
+
+1. Castra gates progression. If on, Castra research and materials will be required for a lot of late-game techs. This all comes as a bundle, but breaks down as follows:
+    a. Promethium science research will require Battlefield science
+    b. Creating a promethium science pack will require a lithium battery (as well as other materials)
+    c. Lithium batteries will be part of the recipe for rail guns
+Default: on.
+2. Nauvis Nukes. If on, Battlefield science will NOT be required to research the atomic bomb. You can now become death on Nauvis. Default: off.
+
+#### Buffs
+
+1. Buff equipment. If enabled, the Mk3 battery from Castra will go from 250 to 300MJ. The Mk3 energy shield from Castra has its shield HP increased from 275 to 450, shield regen from 16 to 18, and power consumption from 800 to 300kW. My goal was to make these a little bit more exciting as upgrades. I plan to tinker a bit more with the shield and possibly give it a special role (different size, regens faster but less HP, we'll see). Balance wise I was trying to make them notably better than the Bob's Mods Mk3 versions but still nothing compared to the Bob's Mk6. Default: off.
+2. Buff Forge. If enabled, Forge crafting speed increased from 2 to 3, energy consumption from 3.65 to 2.5MW, and productivity bonus increased from 25 to 50%. The Forge just feels a bit underwhelming for its size, especially when compared with just the basic "planetary buildings" like the Foundry and EM Plant. Default: off.
+
+### Other Features
+
+#### Starting Area
+
+The starting area for new games should now be much friendlier, with small starter patches of all planetary resources except uranium (you'll have to hunt for that). I believe this may well have been an unintentional bug. I do have to acknowledge this as a real balance change though that is not configurable. It should be substantially easier to get started resource-wise.
+
+#### No Enemies/Peaceful Mode
+
+This is a military planet! You can take that hippie nonsense elsewhere. Kidding. Mostly.
+
+My goal is to have Castra basically ignore these settings. That means if you started your game with one of these, you can still experience Castra, but you will have to do the work of protecting your base. Previously, players were getting locked out of being able to use Castra at all.
+
+#### Various
+
+A bunch of bug fixes, code cleanup and documentation, splitting out of assets and general convenience/QOL things.

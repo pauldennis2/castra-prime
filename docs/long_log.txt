@@ -1,0 +1,49 @@
+File for Claude's overlong changelog
+
+---------------------------------------------------------------------------------------------------
+Version: 0.7.0
+Date: 2026-05-13
+  Fixed issue with starting area resource gen? 
+  Bugfixes:
+    - Fixed crash when placing a jammer radar while jammed data collectors already existed in
+      storage; jammed_data_collectors_jammers table was not initialized in the jammer built handler
+    - Fixed pollution cache variable typo that wiped data collector pollution readings on every
+      collector destroyed, causing data drop rates to be permanently suppressed
+    - Fixed turret upgrade filtering: enemy turrets were always skipped due to checking the wrong
+      table, so upgrades never actually placed new turrets
+    - Fixed productivity module tier: enemy research speed bonus for productivity modules was
+      reading the speed module tier instead of the productivity module tier
+    - Fixed find_closest_entity: distance was calculated from the world origin instead of the
+      reference position, causing power poles to connect to wrong entities
+    - Fixed place_turrets: a double-remove bug could skip entities when filtering turret lists
+
+  Balance changes:
+    - Removed quality-module-2 as a prerequisite for the forge technology. The built-in quality
+      bonus on the forge made requiring quality research a soft circular dependency, and blocked
+      the craft-item research trigger entirely for players without quality techs unlocked.
+    - Added option to prevent enemy rocket turrets from loading nuclear ammo (atomic/hydrogen
+      bombs). Existing nuclear ammo in turrets will remain until fired.
+    - Replaced "Include Battlefield in Research Prod" setting with "Castra Gates Late-Game
+      Progression" (on by default). When disabled, lithium batteries are no longer required
+      for railgun and promethium science pack recipes, and battlefield science is not required
+      for promethium science or research productivity research.
+    - Fixed: lithium battery was always required in the promethium-science-pack recipe even
+      when the old include-promsci setting was off.
+
+  Ease of use:
+    - Battlefield data packets (castra-data) can now be requested through the logistic network
+      and set as logistic filters. Previously the item was invisible to filter UIs because it
+      has no unlocked producing recipe.
+    - Added option to remove battlefield science pack requirement from atomic bomb technology,
+      allowing nuclear weapons to be researched without visiting Castra.
+    - Fixed recycling recipes for battery-mk3-equipment, railgun, and railgun-turret to return
+      lithium batteries, matching the ingredient changes made by this mod.
+    - Data collectors now spawn items and tanks in peaceful mode. The planet is intended to be
+      a combat challenge regardless of map settings.
+    - Mod authors can set recipe.castra_prime_ignore = true to prevent Castra Prime from
+      re-categorizing their recipes for the Forge.
+
+  Code:
+    - Extracted shared constants (radii, turret list, hyphen_to_underscore) to castra-config.lua
+    - Extracted convex hull and wall geometry math to wall-geometry.lua
+    - Added documented TODOs for two known architectural issues in base-upgrades.lua
