@@ -10,6 +10,8 @@ Date: 2026-05-14
     - Fixed disable-enemy-nukes not applying to artillery turrets; nuclear artillery shells
       (cerys-neutron-bomb, maraxsis-fat-man) are now capped to standard artillery-shell when
       the setting is enabled.
+    - Added localization for castra-enemy-* infrastructure prototypes (roboport, solar panel,
+      power poles) — these now display as "SIMULAC [Entity]" instead of an unknown key error.
 
 ---------------------------------------------------------------------------------------------------
 Version: 0.7.0

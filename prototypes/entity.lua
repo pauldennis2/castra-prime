@@ -772,6 +772,7 @@ local infrastructure_types = {
     { type = "electric-pole", name = "small-electric-pole" },
     { type = "electric-pole", name = "medium-electric-pole" },
     { type = "electric-pole", name = "big-electric-pole" },
+    { type = "electric-pole", name = "substation" },
 }
 local enemy_infrastructure = {}
 for _, entry in ipairs(infrastructure_types) do
