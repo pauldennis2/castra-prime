@@ -1,4 +1,14 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.7.1
+Date: 2026-05-14
+  Bugfixes:
+    - Fixed personal laser defenses not targeting enemy carbon fiber walls; the prototype was
+      missing is_military_target = true
+    - Fixed personal laser defenses not targeting enemy roboports, solar panels, and power poles;
+      enemy entity variants now always have is_military_target = true. Manual targeting was
+      unaffected — only automatic weapons were skipping these structures.
+
+---------------------------------------------------------------------------------------------------
 Version: 0.7.0
 Date: 2026-05-13
 

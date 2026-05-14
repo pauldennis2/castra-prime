@@ -7,6 +7,7 @@ data:extend({
         name = "carbon-fiber-wall",
         icon = "__castra-prime-assets__/graphics/icons/carbon-fiber-wall.png",
         flags = { "placeable-neutral", "player-creation" },
+        is_military_target = true,
         collision_box = { { -0.29, -0.29 }, { 0.29, 0.29 } },
         selection_box = { { -0.5, -0.5 }, { 0.5, 0.5 } },
         damaged_trigger_effect = hit_effects.wall(),
