@@ -323,7 +323,13 @@ local function get_corresponding_ammo(turret_type)
     elseif turret_type == "railgun-turret" then
         return storage.castra.enemy.railgun_tier
     elseif turret_type == "artillery-turret" then
-        return storage.castra.enemy.artillery_tier
+        local artillery_tier = storage.castra.enemy.artillery_tier
+        if artillery_tier and settings.startup["castra-prime-disable-enemy-nukes"].value then
+            if artillery_tier == "cerys-neutron-bomb" or artillery_tier == "maraxsis-fat-man" then
+                return "artillery-shell"
+            end
+        end
+        return artillery_tier
     elseif turret_type == "tesla-turret" then
         return "N_A"
     elseif turret_type == "combat-roboport" then

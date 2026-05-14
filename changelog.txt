@@ -7,6 +7,9 @@ Date: 2026-05-14
     - Fixed personal laser defenses not targeting enemy roboports, solar panels, and power poles;
       enemy entity variants now always have is_military_target = true. Manual targeting was
       unaffected — only automatic weapons were skipping these structures.
+    - Fixed disable-enemy-nukes not applying to artillery turrets; nuclear artillery shells
+      (cerys-neutron-bomb, maraxsis-fat-man) are now capped to standard artillery-shell when
+      the setting is enabled.
 
 ---------------------------------------------------------------------------------------------------
 Version: 0.7.0
