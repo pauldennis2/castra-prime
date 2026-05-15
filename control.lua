@@ -779,6 +779,7 @@ local function get_available_upgrades()
     end
     if storage.castra.enemy.roboport then
         table.insert(upgrades, base_upgrades.add_roboport)
+        table.insert(upgrades, base_upgrades.spawn_satellite_base)
     end
     if storage.castra.enemy.land_mine then
         table.insert(upgrades, base_upgrades.add_land_mines)

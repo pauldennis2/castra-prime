@@ -166,6 +166,18 @@ local function add_roboport(data_collector)
     base_gen.place_power_poles(get_search_area_size(data_collector, config.BASE_CHECK_RADIUS), find_missing_powered_entities(data_collector))
 end
 
+local function spawn_satellite_base(data_collector)
+    -- Only expand from mature bases: must have at least one roboport on-site
+    local area = get_search_area_size(data_collector, config.BASE_CHECK_RADIUS)
+    if #data_collector.surface.find_entities_filtered { area = area, type = "roboport", force = "enemy" } < 1 then
+        return
+    end
+
+    -- Spawn a new base close-in, replicating the tight "city" clustering seen in the wild.
+    -- Uses the same placement area as regular entity placement (BASE_PLACE_RADIUS).
+    base_gen.create_enemy_base(get_search_area(data_collector))
+end
+
 local function containsValue(array, value)
     if not value then
         return false
@@ -225,5 +237,6 @@ return {
     add_land_mines = add_land_mines,
     add_solar = add_solar,
     add_roboport = add_roboport,
-    upgrade_quality = upgrade_quality
+    upgrade_quality = upgrade_quality,
+    spawn_satellite_base = spawn_satellite_base
 }
