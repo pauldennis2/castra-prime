@@ -372,6 +372,15 @@ local function update_castra_research_progress(event)
                 item_cache.update_castra_enemy_data()
             end
 
+            -- Techs to exclude from enemy research queue.
+            -- Igrys defines two mutually exclusive techs at runtime: researching either
+            -- one un-researches the other, so the enemy would bounce between them forever.
+            local excluded = {}
+            if mods["Igrys"] then
+                excluded["igrys-magic-speed"] = true
+                excluded["igrys-magic-reach"] = true
+            end
+
             -- Find any researches that have not been fully researched and have all prerequisites
             local valid = {}
             for _, research in pairs(enemy_force.technologies) do
@@ -393,7 +402,7 @@ local function update_castra_research_progress(event)
                         end
                     end
 
-                    if allPrereqs and allSciencePacks then
+                    if allPrereqs and allSciencePacks and not excluded[research.name] then
                         table.insert(valid, research)
                     end
                 end
@@ -996,6 +1005,37 @@ commands.add_command("castra-spawn-base", "[DEBUG] Spawn an enemy base at your p
     end
 
     player.print("Spawned enemy base with power at current position.")
+end)
+
+-- Usage: /castra-research-status (admin only)
+commands.add_command("castra-research-status", "[DEBUG] Show enemy military research levels", function(event)
+    local player = game.players[event.player_index]
+    if not player.admin then
+        player.print("This command requires admin privileges.")
+        return
+    end
+    local force = game.forces["enemy"]
+    local entries = {
+        { name = "physical-projectile-damage", label = "Gun turret damage" },
+        { name = "stronger-explosives",        label = "Explosives damage (rockets/artillery shells)" },
+        { name = "laser-weapons-damage",       label = "Laser damage" },
+        { name = "tesla-weapons-damage",       label = "Tesla damage" },
+        { name = "refined-flammables",         label = "Flamethrower damage" },
+        { name = "railgun-damage",             label = "Railgun damage" },
+        { name = "artillery-shell-range",      label = "Artillery range" },
+        { name = "artillery-shell-speed",      label = "Artillery shell speed" },
+    }
+    local lines = {"[SIMULAC] Military research levels:"}
+    for _, entry in ipairs(entries) do
+        local tech = force.technologies[entry.name]
+        if tech then
+            local level = tech.researched and (tech.level - 1) or 0
+            table.insert(lines, string.format("  %s: Lv %d", entry.label, level))
+        else
+            table.insert(lines, string.format("  %s: (not in this modset)", entry.label))
+        end
+    end
+    player.print(table.concat(lines, "\n"))
 end)
 
 -- Usage: /castra-debug

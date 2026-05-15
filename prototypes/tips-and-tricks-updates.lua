@@ -44,5 +44,16 @@ data:extend(
           }
         }
       }
+    },
+    {
+      type = "tips-and-tricks-item",
+      name = "castra-briefing-2",
+      category = "castra",
+      order = "b",
+      trigger =
+      {
+        type = "research",
+        technology = "planet-discovery-castra"
+      }
     }
   })

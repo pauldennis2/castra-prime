@@ -40,6 +40,7 @@ Big disclaimer: this mod is not gonna be for everyone, and I'm not promising to 
 
 - Factorio **2.0+** with **Space Age**
 - Designed to be save-compatible with existing Planet Castra saves, provided prototype names are unchanged (see migration notes below). Right now this is very hopeful and not tested.
+- If you are using Bob's Warfare mod, this will make producing Battlefield science a lot more complicated because of the new recipe for uranium magazines
 
 ### Mod Author Opt-Out
 

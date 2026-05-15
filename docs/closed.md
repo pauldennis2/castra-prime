@@ -229,3 +229,9 @@ https://mods.factorio.com/mod/castra/discussion/69c3dfe7b88d320fa3d0e412
 https://mods.factorio.com/mod/castra/discussion/69b52c99f3cedd8c3319bb84
 
 Enemy artillery, land mines, and nukes are generally seen as the most problematic. I'm not sure what the original mod author intended, but it's unclear how you're supposed to defend your base in the long term (potentially over 100s of hours of play) against enemies that can keep getting range and damage upgrades, even out-ranging modded Radar.
+
+### Weird lasers wont target buildings
+
+Fix so personal lasers will target all enemy buildings
+
+### Planet symbol in-game menu

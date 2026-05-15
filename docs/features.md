@@ -2,6 +2,8 @@
 
 Document to describe potential changes (features and bug fixes) of the mod.
 
+This is really "working notes" and not necessarily meant to be public facing. Feel free to read if you want to get into my thinking =).
+
 ## Non-Configurable Balance/Behavior Changes
 
 Changes made from the original mod that affect gameplay and are not toggleable by settings.
@@ -33,10 +35,6 @@ In general the concept of blanket tech-copy presents intractable balance problem
 
 Add screenshot/animation, perhaps be a little more expositive, maybe with spoiler tags. Multiple pages.
 
-### German Localization
-
-There was a PR for this from Schlumpf and he created his own mod. If this mod is taken up, it would make sense to merge that in.
-
 ### Other localizations?
 
 
@@ -50,8 +48,51 @@ https://mods.factorio.com/mod/castra/discussion/686eae4105d87e3cab4b6a59
 
 Distant possibility: add a settings flag to change battlefield data not to spoil.
 
+### Request to split out "castra gates"
+
+Needs clarification on exactly what to split out
+
+### Note about importing lithium?
+
+### Death debug
+
+show how you died?
+
+### remove quality from enemy bases
+
+### restore clustering of data c cities
+
+### stun issue
+
+
+### separate "Castra Prime Cleanup" mod
+
+### allow forge to craft tanks... potentially spiders?
+
+### Erro's opinionated balance change
+
+Artillery range restrictions
+No mines
+No enemy nukes? Or no explosive damage research
+Buffed forge
+Buffed equip
+Harder jammer recipe?
+Allow machining assembler to produce Forge, jammer
+Generally be more permissive with things currently Forge only, like, assembler CAN make them but why would you when you have the Forge
+Reduce forge to a 5x5 or 4x4? Breaking change
+Allow beacons to impact speed of data collectors
+Allow data collectors to be picked up? Player version is special?
+
+Which setting wins?
+
+### Deathworld settings
+
+
+
+### Some use for lithium batteries
 
 ## Bug Fixes
+
 
 
 ### Igrys
