@@ -375,7 +375,7 @@ local function update_castra_research_progress(event)
             -- Find any researches that have not been fully researched and have all prerequisites
             local valid = {}
             for _, research in pairs(enemy_force.technologies) do
-                if (not research.researched or research.level < research.prototype.max_level) and research.enabled then
+                if (not research.researched or research.level < research.prototype.max_level) and research.enabled and not research.prototype.castra_prime_ignore then
                     local allPrereqs = true
                     for _, prereq in pairs(research.prerequisites) do
                         if not prereq.researched then

@@ -46,6 +46,8 @@ Big disclaimer: this mod is not gonna be for everyone, and I'm not promising to 
 
 Castra Prime re-categorizes recipes for all ammo, weapons, armor, turrets, walls, and equipment to make them craftable in the Forge. If your mod has recipes you don't want touched, set `recipe.castra_prime_ignore = true` on them (e.g. in `data-final-fixes.lua`) and Castra Prime will skip them.
 
+Castra Prime also drives the enemy force's technology research queue. If your mod adds technologies that should not be researched by the enemy (e.g. mutually exclusive techs that would cause research to loop), set `technology.castra_prime_ignore = true` on them and Castra Prime will exclude them.
+
 ### Upgrading from Planet Castra
 
 As of 2026/05/10 this mod is still HIGHLY WIP. You are welcome to try it out if you're really struggling on Castra, but I am making NO promises. This may not be the best time to "buy in" to my mod. 05/13 feeling better about it.
