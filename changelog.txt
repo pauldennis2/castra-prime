@@ -12,6 +12,9 @@ Date: 2026-05-14
       the setting is enabled.
     - Added localization for castra-enemy-* infrastructure prototypes (roboport, solar panel,
       power poles) — these now display as "SIMULAC [Entity]" instead of an unknown key error.
+  Known incompatibilities:
+    - Igrys: that mod's mutually exclusive tech paths cause Castra's enemy AI to bounce
+      between the two techs indefinitely. No fix planned.
 
 ---------------------------------------------------------------------------------------------------
 Version: 0.7.0

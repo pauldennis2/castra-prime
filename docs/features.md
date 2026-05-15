@@ -98,9 +98,10 @@ Which setting wins?
 ### Igrys
 
 https://mods.factorio.com/mod/castra/discussion/698c369e258fc50a00824e83
-Sounds like a weird potential interaction because Igrys has exclusive tech paths? Low prio but on the list.
-
-Update: loaded Igrys, no immediate crash (expected). Hope to circle back soon.
+Known incompatibility: Igrys uses mutually exclusive tech paths at runtime. Castra's enemy
+research AI will bounce between the two techs indefinitely. Both mods do non-standard things
+with the technology system and a clean fix would require deeper changes to one or both mods.
+No fix planned; document as known incompatibility.
 
 ## Ideas
 
