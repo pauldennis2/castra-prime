@@ -372,15 +372,6 @@ local function update_castra_research_progress(event)
                 item_cache.update_castra_enemy_data()
             end
 
-            -- Techs to exclude from enemy research queue.
-            -- Igrys defines two mutually exclusive techs at runtime: researching either
-            -- one un-researches the other, so the enemy would bounce between them forever.
-            local excluded = {}
-            if mods["Igrys"] then
-                excluded["igrys-magic-speed"] = true
-                excluded["igrys-magic-reach"] = true
-            end
-
             -- Find any researches that have not been fully researched and have all prerequisites
             local valid = {}
             for _, research in pairs(enemy_force.technologies) do
@@ -402,7 +393,7 @@ local function update_castra_research_progress(event)
                         end
                     end
 
-                    if allPrereqs and allSciencePacks and not excluded[research.name] then
+                    if allPrereqs and allSciencePacks then
                         table.insert(valid, research)
                     end
                 end
