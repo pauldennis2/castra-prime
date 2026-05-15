@@ -1,4 +1,14 @@
 ---------------------------------------------------------------------------------------------------
+Version: (unreleased - base-clustering-fix branch)
+  Bugfixes:
+    - Fixed add_walls calling create_enemy_base instead of build_enemy_wall, which was
+      accidentally spawning full new bases when upgrading walls on existing bases.
+  Changes:
+    - Added intentional satellite base spawning: mature bases (those with a roboport) can
+      now explicitly spawn a new nearby base as an upgrade step, preserving the "city"
+      clustering effect by design rather than by accident.
+
+---------------------------------------------------------------------------------------------------
 Version: 0.7.1
 Date: 2026-05-14
   Bugfixes:
