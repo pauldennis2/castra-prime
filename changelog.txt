@@ -1,51 +1,22 @@
----------------------------------------------------------------------------------------------------
-Version: 0.7.3
+Version: 0.8.0
 Date: 2026-05-19
-  Bugfixes:
-    - Fixed on_tick crash: LuaTechnologyPrototype does not expose custom data-stage fields in
-      Factorio 2.x. Removed the technology.castra_prime_ignore mod-author API; the recipe
-      equivalent (recipe.castra_prime_ignore for the Forge) is unaffected.
-    - Fixed Forge entity description incorrectly advertising a quality bonus that was removed
-      in this version.
-    - Fixed mining a player-crafted jammed data collector returning the internal
-      jammer-interference fuel item to the player's inventory.
-  Features:
-    - Added "Forge glow" setting (on by default): enables the light emission layer on the Forge.
-    - Added "Extend data packet spoilage time" setting: increases battlefield data packet
-      spoilage from 1 minute to 5 minutes.
-    - Player-crafted jammed data collectors are now minable and deconstructable. Jammer-converted
-      enemy data collectors remain permanent as before.
-  Balance changes:
-    - Buffed Forge setting: removed the 10% quality bonus (productivity bonus unchanged at +50%).
-    - Buffed Forge setting: tanks and spider vehicles can now be crafted in the Forge.
 
----------------------------------------------------------------------------------------------------
-Version: 0.7.2
-Date: 2026-05-19
+  Introducing the SIMULAC! The enemy faction now has a name. Will we learn more about these mysterious
+  entities in the future?
+
+  Numerous bug fixes; see long_log in docs folder for details.
+
   Bugfixes:
-    - Fixed periodic lag spikes (~every 33 seconds) caused by stale data collector references
-      accumulating in storage when entities were destroyed during quality upgrades without
-      raising the destroy event. Also fixed a hard freeze that could occur if all data
-      collectors were destroyed while stale references remained in the list.
-    - Fixed mod-name locale key (castra -> castra-prime) so the planet symbol displays
-      correctly in the mod list.
----------------------------------------------------------------------------------------------------
-Version: 0.7.1
-Date: 2026-05-14
-  Bugfixes:
-    - Fixed personal laser defenses not targeting enemy carbon fiber walls; the prototype was
-      missing is_military_target = true
-    - Fixed personal laser defenses not targeting enemy roboports, solar panels, and power poles;
-      these are now placed as castra-enemy-* prototype variants with is_military_target = true.
-      Manual targeting was unaffected — only automatic weapons were skipping these structures.
-    - Fixed disable-enemy-nukes not applying to artillery turrets; nuclear artillery shells
-      (cerys-neutron-bomb, maraxsis-fat-man) are now capped to standard artillery-shell when
-      the setting is enabled.
-    - Added localization for castra-enemy-* infrastructure prototypes (roboport, solar panel,
-      power poles) — these now display as "SIMULAC [Entity]" instead of an unknown key error.
-  Known incompatibilities:
-    - Igrys: that mod's mutually exclusive tech paths cause Castra's enemy AI to bounce
-      between the two techs indefinitely. No fix planned.
+    - Enemy structures should now be targetable, including by personal laser defenses
+    - Restored the original "glow" of the Forge; added setting to disable it if undesired
+    - Fixed lag spike/potential crash from data collectors not being properly removed 
+      from tracking after being destroyed
+
+  Balance changes:
+    - "Buffed Forge": If this setting is enabled, Forge no longer has 10% quality boost.
+      Buffed Forge can now also craft vehicles (tanks, spidertrons).
+    - Player-created Jammed Data Collectors can now be mined (picked up).
+    - Added setting to extend battlefield data packet spoilage time from 1 minute to 5 minutes.
 
 ---------------------------------------------------------------------------------------------------
 Version: 0.7.0

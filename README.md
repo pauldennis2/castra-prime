@@ -121,7 +121,8 @@ Default: on.
 #### Buffs
 
 1. Buff equipment. If enabled, the Mk3 battery from Castra will go from 250 to 300MJ. The Mk3 energy shield from Castra has its shield HP increased from 275 to 450, shield regen from 16 to 18, and power consumption from 800 to 300kW. My goal was to make these a little bit more exciting as upgrades. I plan to tinker a bit more with the shield and possibly give it a special role (different size, regens faster but less HP, we'll see). Balance wise I was trying to make them notably better than the Bob's Mods Mk3 versions but still nothing compared to the Bob's Mk6. Default: off.
-2. Buff Forge. If enabled, Forge crafting speed increased from 2 to 3, energy consumption from 3.65 to 2.5MW, and productivity bonus increased from 25 to 50%. The Forge just feels a bit underwhelming for its size, especially when compared with just the basic "planetary buildings" like the Foundry and EM Plant. Default: off.
+2. Buff Forge. If enabled, Forge crafting speed increased from 2 to 3, energy consumption from 3.65 to 2.5MW, and productivity bonus increased from 25 to 50%, while removing the 10% quality boost. Additionally the "buffed Forge" can craft spidertrons and tanks. The Forge just felt a bit underwhelming for its size, especially when compared with the basic "planetary buildings" like the Foundry and EM Plant. Default: off.
+3. Extend Battlefield data spoilage. Option to change spoilage time from 1m to 5m. Default: 1m (off).
 
 ### Other Features
 
