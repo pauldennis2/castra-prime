@@ -133,16 +133,19 @@ local function on_tick_update_data_collectors(event)
         storage.castra = storage.castra or {}
         storage.castra.dataCollectors = storage.castra.dataCollectors or {}
 
+        -- Prune destroyed collectors so the list never contains stale references
+        for i = #storage.castra.dataCollectors, 1, -1 do
+            if not storage.castra.dataCollectors[i].valid then
+                table.remove(storage.castra.dataCollectors, i)
+            end
+        end
+
         if #storage.castra.dataCollectors == 0 then
             return
         end
 
         local surface = game.surfaces["castra"]
-        -- Select random valid data collector
-        local collector = nil
-        while not collector or not collector.valid do
-            collector = storage.castra.dataCollectors[math.random(1, #storage.castra.dataCollectors)]
-        end
+        local collector = storage.castra.dataCollectors[math.random(1, #storage.castra.dataCollectors)]
 
         local tanks = surface.find_entities_filtered { name = "castra-enemy-tank", area = { { collector.position.x - 100, collector.position.y - 100 }, { collector.position.x + 100, collector.position.y + 100 } } }
         for _, tank in pairs(tanks) do

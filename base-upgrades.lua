@@ -217,8 +217,9 @@ local function upgrade_quality(data_collector)
             local orientation = entity.orientation
             surface.create_entity { name = entity_name, position = position, force = "enemy", quality = random_quality, raise_built = true, direction = direction, orientation = orientation }
 
-            -- Delete the old one
-            entity.destroy()
+            -- raise_destroy fires script_raised_destroy so the storage cleanup handler
+            -- removes the stale reference from storage.castra.dataCollectors
+            entity.destroy({raise_destroy = true})
         end
         ::continue::
     end
