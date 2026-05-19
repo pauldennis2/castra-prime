@@ -5,6 +5,10 @@ Date: 2026-05-19
     - Fixed on_tick crash: LuaTechnologyPrototype does not expose custom data-stage fields in
       Factorio 2.x. Removed the technology.castra_prime_ignore mod-author API; the recipe
       equivalent (recipe.castra_prime_ignore for the Forge) is unaffected.
+    - Fixed Forge entity description incorrectly advertising a quality bonus that was removed
+      in this version.
+    - Fixed mining a player-crafted jammed data collector returning the internal
+      jammer-interference fuel item to the player's inventory.
   Features:
     - Added "Forge glow" setting (on by default): enables the light emission layer on the Forge.
     - Added "Extend data packet spoilage time" setting: increases battlefield data packet

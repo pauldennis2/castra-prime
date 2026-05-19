@@ -713,6 +713,13 @@ local function destroyed_event(event)
             -- Clear other data collector storage for this entity
             storage.castra.jammed_data_collectors_jammers = storage.castra.jammed_data_collectors_jammers or {}
             storage.castra.jammed_data_collectors_jammers[event.entity.unit_number] = nil
+
+            if event.buffer then
+                local count = event.buffer.get_item_count("jammer-interference")
+                if count > 0 then
+                    event.buffer.remove { name = "jammer-interference", count = count }
+                end
+            end
         end
 
         if event.entity.name == "jammer-radar" and event.entity.force.name == "player" then
