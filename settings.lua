@@ -17,6 +17,13 @@ data:extend({
     },
     {
         type = "bool-setting",
+        name = "castra-prime-forge-glow",
+        setting_type = "startup",
+        default_value = true,
+        order = "b"
+    },
+    {
+        type = "bool-setting",
         name = "castra-prime-gates-progression",
         setting_type = "startup",
         default_value = true,
@@ -48,6 +55,13 @@ data:extend({
     {
         type = "bool-setting",
         name = "castra-prime-disable-land-mines",
+        setting_type = "startup",
+        default_value = false,
+        order = "c"
+    },
+    {
+        type = "bool-setting",
+        name = "castra-prime-extend-data-spoilage",
         setting_type = "startup",
         default_value = false,
         order = "c"

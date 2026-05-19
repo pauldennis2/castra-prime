@@ -3,27 +3,8 @@
 Document to describe potential changes (features and bug fixes) of the mod.
 
 This is really "working notes" and not necessarily meant to be public facing. Feel free to read if you want to get into my thinking =).
-
-## Non-Configurable Balance/Behavior Changes
-
-Changes made from the original mod that affect gameplay and are not toggleable by settings.
-Listed here so they can be documented, justified, or reverted if needed.
-
-- **Forge prerequisites**: Removed `quality-module-2` requirement. The forge grants a built-in
-  quality bonus, so this might have been the reasoning. Requiring quality modules does not seem balance-crucial, and may have created issues with the trigger tech.
-- **Starting Area**: Properly giving the player a starter area on new maps with all resources except Uranium.
-
-## Known Limitations / Won't Fix
-
-- **Third-party achievement popups from enemy research**: When Castra enemies research a
-  technology, this may trigger achievements and planetary briefings. So far, this seems like an inherent limitation of the Castra concept that cannot be fixed without compromising the mod.
-- **Current Gamestate**: There are a few issues of current game-state I'm not ready to tackle, including resource generation and potential removal of existing artillery and land mines (e.g.). These features should be improved for fresh games.
   
 ## Features
-
-### Forge Quality
-
-Consider removing the 10% quality boost of the Forge. It seems actively bad, not sure the intent.
 
 ### Enemy Research Fixes
 
@@ -34,40 +15,23 @@ In general the concept of blanket tech-copy presents intractable balance problem
 ### Expand Planet Briefing
 
 Add screenshot/animation, perhaps be a little more expositive, maybe with spoiler tags. Multiple pages.
+-> update screenshot not supported, animation would be cool but requires some work, can't animate some important things
 
 ### Other localizations?
 
-
 ### Visuals of tech tree
 
-### Spoilability of Battlefield Data
-
-OK first, I hate spoiling, and I've installed Freezer mods to cheese it. I'm a little hesitant to mess with this because this was clearly part of the original author's intent for the challenge, and most planet mods that add some kind of spoilable resource do NOT give you this option. 
-
-https://mods.factorio.com/mod/castra/discussion/686eae4105d87e3cab4b6a59
-
-Distant possibility: add a settings flag to change battlefield data not to spoil.
-
-### Request to split out "castra gates"
-
-Needs clarification on exactly what to split out
-
-### Note about importing lithium?
-
-### Death debug
-
-show how you died?
+For the mod portal rather than the mod itself; visual overview of the tech tree would be nice.
 
 ### remove quality from enemy bases
 
-### restore clustering of data c cities
-
-### stun issue
-
+This would be a potential user config setting that rebalances the planet. Enemy bases would no longer drop quality ingredients, but also would not themselves benefit from quality. 
 
 ### separate "Castra Prime Cleanup" mod
 
-### allow forge to craft tanks... potentially spiders?
+Possibly create a separate mod to have "destructive" buttons to clear all existing enemy artillery/nukes/mines.
+
+
 
 ### Erro's opinionated balance change
 
@@ -91,9 +55,13 @@ Which setting wins?
 
 ### Some use for lithium batteries
 
+Right now if the player disables lithium batteries being used for late-game stuff, they become pretty useless. Maybe consider just allowing user to remove them entirely? If not, possibly change so that there are other uses added?
+
 ## Bug Fixes
 
+### clustering of data c cities
 
+Currently there's what seems to be a bug that spawns extra enemy bases within existing ones. However, fixing this would get rid of enemy "cities" which might be a cool feature to some players.
 
 ### Igrys
 

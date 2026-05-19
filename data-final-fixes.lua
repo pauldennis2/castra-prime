@@ -27,11 +27,34 @@ if settings.startup["castra-prime-gates-progression"].value then
     end
 end
 
+if settings.startup["castra-prime-extend-data-spoilage"].value then
+    data.raw["item"]["castra-data"].spoil_ticks = 5 * 60 * 60
+end
+
+if settings.startup["castra-prime-forge-glow"].value then
+    local forge = data.raw["assembling-machine"]["forge"]
+    if forge then
+        table.insert(forge.graphics_set.animation.layers, {
+            priority = "high",
+            width = 400,
+            height = 480,
+            animation_speed = 0.3,
+            scale = 0.5,
+            filename = "__castra-prime-assets__/graphics/atom-forge/atom-forge-hr-emission-1.png",
+            frame_count = 64,
+            line_length = 8,
+            shift = { 0, -1 },
+            draw_as_glow = true,
+            blend_mode = "additive"
+        })
+    end
+end
+
 if settings.startup["castra-prime-buffed-forge"].value then
     local forge = data.raw["assembling-machine"]["forge"]
     if forge then
         forge.crafting_speed = 3.0
-        forge.effect_receiver = { base_effect = { productivity = 0.5, quality = 1 } }
+        forge.effect_receiver = { base_effect = { productivity = 0.5 } }
         forge.energy_usage = "2.5MW"
     end
 end

@@ -1,4 +1,31 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.7.3
+Date: 2026-05-19
+  Bugfixes:
+    - Fixed on_tick crash: LuaTechnologyPrototype does not expose custom data-stage fields in
+      Factorio 2.x. Removed the technology.castra_prime_ignore mod-author API; the recipe
+      equivalent (recipe.castra_prime_ignore for the Forge) is unaffected.
+  Features:
+    - Added "Forge glow" setting (on by default): enables the light emission layer on the Forge.
+    - Added "Extend data packet spoilage time" setting: increases battlefield data packet
+      spoilage from 1 minute to 5 minutes.
+    - Player-crafted jammed data collectors are now minable and deconstructable. Jammer-converted
+      enemy data collectors remain permanent as before.
+  Balance changes:
+    - Buffed Forge setting: removed the 10% quality bonus (productivity bonus unchanged at +50%).
+    - Buffed Forge setting: tanks and spider vehicles can now be crafted in the Forge.
+
+---------------------------------------------------------------------------------------------------
+Version: 0.7.2
+Date: 2026-05-19
+  Bugfixes:
+    - Fixed periodic lag spikes (~every 33 seconds) caused by stale data collector references
+      accumulating in storage when entities were destroyed during quality upgrades without
+      raising the destroy event. Also fixed a hard freeze that could occur if all data
+      collectors were destroyed while stale references remained in the list.
+    - Fixed mod-name locale key (castra -> castra-prime) so the planet symbol displays
+      correctly in the mod list.
+---------------------------------------------------------------------------------------------------
 Version: 0.7.1
 Date: 2026-05-14
   Bugfixes:

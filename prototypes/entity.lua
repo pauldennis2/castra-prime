@@ -161,7 +161,7 @@ data:extend({
                         frame_count = 64,
                         line_length = 8,
                         shift = { 0, -1 }
-                    }
+                    },
                 }
             },
             reset_animation_when_frozen = true
@@ -603,6 +603,14 @@ data:extend({
         },
     }
 })
+
+-- Player-placed variant: identical to jammed-data-collector but minable and deconstructable.
+-- The jammer-conversion script still creates jammed-data-collector (non-minable).
+local player_jammed_dc = table.deepcopy(data.raw["assembling-machine"]["jammed-data-collector"])
+player_jammed_dc.name = "player-jammed-data-collector"
+player_jammed_dc.flags = { "placeable-neutral", "placeable-player", "player-creation", "not-repairable" }
+player_jammed_dc.minable = { mining_time = 2, result = "jammed-data-collector" }
+data:extend({ player_jammed_dc })
 
 -- Create a tank enemy based on the medium-spitter
 local tank = table.deepcopy(data.raw["unit"]["medium-spitter"])

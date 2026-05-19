@@ -92,6 +92,19 @@ for _, item in pairs(data.raw["item"]) do
     ::continueItem::
 end
 
+if settings.startup["castra-prime-buffed-forge"].value then
+    for _, item_table in ipairs({data.raw["item"], data.raw["item-with-entity-data"]}) do
+        for _, item in pairs(item_table) do
+            if item.place_result then
+                local entity = get_prototype("entity", item.place_result)
+                if entity and (entity.type == "car" or entity.type == "spider-vehicle") then
+                    change_to_category(item)
+                end
+            end
+        end
+    end
+end
+
 change_to_category(data.raw["tool"]["military-science-pack"])
 
 -- Update the character's crafting categories

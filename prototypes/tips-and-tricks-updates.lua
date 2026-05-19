@@ -47,9 +47,10 @@ data:extend(
     },
     {
       type = "tips-and-tricks-item",
-      name = "castra-briefing-2",
+      name = "castra-lithium-supply",
       category = "castra",
       order = "b",
+      indent = 1,
       trigger =
       {
         type = "research",

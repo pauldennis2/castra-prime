@@ -378,7 +378,7 @@ local function update_castra_research_progress(event)
             -- Find any researches that have not been fully researched and have all prerequisites
             local valid = {}
             for _, research in pairs(enemy_force.technologies) do
-                if (not research.researched or research.level < research.prototype.max_level) and research.enabled and not research.prototype.castra_prime_ignore then
+                if (not research.researched or research.level < research.prototype.max_level) and research.enabled then
                     local allPrereqs = true
                     for _, prereq in pairs(research.prerequisites) do
                         if not prereq.researched then
@@ -573,7 +573,7 @@ local function add_jammer_to_data_collector(data_collector, jammer)
         return
     end
 
-    local is_jammer_data_collector = data_collector.name == "jammed-data-collector"
+    local is_jammer_data_collector = data_collector.name == "jammed-data-collector" or data_collector.name == "player-jammed-data-collector"
     
     -- Account for data collector's size
     local range = get_jamming_range(jammer.quality) + 3
@@ -616,7 +616,7 @@ local function built_event(event)
             end
         end
 
-        if event.entity.name == "jammed-data-collector" and event.entity.force.name == "player" then
+        if (event.entity.name == "jammed-data-collector" or event.entity.name == "player-jammed-data-collector") and event.entity.force.name == "player" then
             storage.castra.jammed_data_collectors = storage.castra.jammed_data_collectors or {}
             table.insert(storage.castra.jammed_data_collectors, event.entity)
 
@@ -702,7 +702,7 @@ local function destroyed_event(event)
             storage.castra.dataCollectorsPollution[event.entity.unit_number] = nil
         end
 
-        if event.entity.name == "jammed-data-collector" and event.entity.force.name == "player" then
+        if (event.entity.name == "jammed-data-collector" or event.entity.name == "player-jammed-data-collector") and event.entity.force.name == "player" then
             storage.castra.jammed_data_collectors = storage.castra.jammed_data_collectors or {}
             for i = #storage.castra.jammed_data_collectors, 1, -1 do
                 if storage.castra.jammed_data_collectors[i] == event.entity then

@@ -235,3 +235,25 @@ Enemy artillery, land mines, and nukes are generally seen as the most problemati
 Fix so personal lasers will target all enemy buildings
 
 ### Planet symbol in-game menu
+
+### Forge Quality
+
+Consider removing the 10% quality boost of the Forge. It seems actively bad, not sure the intent.
+
+### Spoilability of Battlefield Data
+
+OK first, I hate spoiling, and I've installed Freezer mods to cheese it. I'm a little hesitant to mess with this because this was clearly part of the original author's intent for the challenge, and most planet mods that add some kind of spoilable resource do NOT give you this option. 
+
+https://mods.factorio.com/mod/castra/discussion/686eae4105d87e3cab4b6a59
+
+Distant possibility: add a settings flag to change battlefield data not to spoil.
+
+Update: added setting to change to 5 minutes. No intent ATM to offer option to extend past this or completely remove spoiling factor; if you don't like spoilage generally there are other mods that fix this.
+
+### stun issue
+
+Mines stack, creating abusively long "stun" (root) debuff duration. Fixed by disabling enemy mines.
+
+### allow forge to craft tanks... potentially spiders
+
+Done, added to "buff forge" setting.

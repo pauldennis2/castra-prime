@@ -46,8 +46,6 @@ Big disclaimer: this mod is not gonna be for everyone, and I'm not promising to 
 
 Castra Prime re-categorizes recipes for all ammo, weapons, armor, turrets, walls, and equipment to make them craftable in the Forge. If your mod has recipes you don't want touched, set `recipe.castra_prime_ignore = true` on them (e.g. in `data-final-fixes.lua`) and Castra Prime will skip them.
 
-Castra Prime also drives the enemy force's technology research queue. If your mod adds technologies that should not be researched by the enemy (e.g. mutually exclusive techs that would cause research to loop), set `technology.castra_prime_ignore = true` on them and Castra Prime will exclude them.
-
 ### Upgrading from Planet Castra
 
 As of 2026/05/10 this mod is still HIGHLY WIP. You are welcome to try it out if you're really struggling on Castra, but I am making NO promises. This may not be the best time to "buy in" to my mod. 05/13 feeling better about it.
@@ -57,6 +55,23 @@ As of 2026/05/10 this mod is still HIGHLY WIP. You are welcome to try it out if 
 If you are mid-playthrough on the original Castra mod, you should be able to swap in Castra Prime without losing save progress. The enemy faction's already-researched technologies will remain researched, but future research will be subject to the new caps and rate limits.
 
 > **Note:** Always back up your save before switching mods mid-playthrough.
+
+---
+
+## Non-Configurable Balance/Behavior Changes
+
+Changes made from the original mod that affect gameplay and are not toggleable by settings.
+Listed here so they can be documented, justified, or reverted if needed.
+
+- **Forge prerequisites**: Removed `quality-module-2` requirement. The forge grants a built-in
+  quality bonus, so this might have been the reasoning. Requiring quality modules does not seem balance-crucial, and may have created issues with the trigger tech.
+- **Starting Area**: Properly giving the player a starter area on new maps with all resources except Uranium.
+
+## Known Limitations / Won't Fix
+
+- **Third-party achievement popups from enemy research**: When Castra enemies research a
+  technology, this may trigger achievements and planetary briefings. So far, this seems like an inherent limitation of the Castra concept that cannot be fixed without compromising the mod.
+- **Current Gamestate**: There are a few issues of current game-state I'm not ready to tackle, including resource generation and potential removal of existing artillery and land mines (e.g.). These features should be improved for fresh games.
 
 ---
 
@@ -80,7 +95,7 @@ A lot of what I've done in this mod is add toggle-able settings for various issu
 
 ### Settings
 
-All default settings match the original Castra mod.
+All balance settings default to match the original Castra mod.
 
 #### Enemy Nerfs
 

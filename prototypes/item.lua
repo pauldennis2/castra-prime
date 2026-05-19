@@ -44,7 +44,7 @@ data:extend({
         inventory_move_sound = item_sounds.steam_inventory_move,
         pick_sound = item_sounds.steam_inventory_pickup,
         drop_sound = item_sounds.steam_inventory_move,
-        place_result = "jammed-data-collector",
+        place_result = "player-jammed-data-collector",
         stack_size = 10,
         default_import_location = "castra",
         weight = 200 * kg
