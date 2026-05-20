@@ -81,6 +81,14 @@ Original mod by **Bartz24**. **LogicDolphin** is also credited in the info file.
 
 Community feedback sourced from the Factorio mod portal and Discord.
 
+Addtional credits (original mod):
+- [Hurricane](https://mods.factorio.com/user/Hurricane046) for the Atom forge and Fusion reactor assets
+for machine graphics
+- Google Material Design for enemy research shortcut icon - Apache License ver 2.0
+- Fr-dae for French translation
+- rlcyyg1108 for Chinese translation
+- Gencris for higher definition technology icons and higher quality item icons
+
 ---
 
 ## Contributing
