@@ -1,3 +1,12 @@
+---------------------------------------------------------------------------------------------------
+Version: 0.8.1
+Date: 2026-05-20
+  Bugfixes:
+    - Fixed mod compatibility crash: enemy entity prototypes no longer inherit next_upgrade from
+      their vanilla counterparts, which could cause a collision mask mismatch error when another
+      mod added an upgrade target with a different footprint.
+
+---------------------------------------------------------------------------------------------------
 Version: 0.8.0
 Date: 2026-05-19
 

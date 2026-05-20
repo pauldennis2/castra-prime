@@ -730,6 +730,7 @@ local function create_enemy_version(entity)
     enemy_entity.name = "castra-enemy-" .. entity.name
     enemy_entity.minable.result = nil
     enemy_entity.is_military_target = true
+    enemy_entity.next_upgrade = nil
     local source = enemy_entity.energy_source
     if source and source.type == "electric" then
         if source.buffer_capacity then
@@ -790,6 +791,7 @@ for _, entry in ipairs(infrastructure_types) do
         e.name = "castra-enemy-" .. entry.name
         if e.minable then e.minable.result = nil end
         e.is_military_target = true
+        e.next_upgrade = nil
         table.insert(enemy_infrastructure, e)
     end
 end
