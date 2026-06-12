@@ -542,12 +542,14 @@ local function update_combat_roboports(event)
                         }
                         local robot = roboport.surface.create_entity { name = combat_robot, position = pos, force = roboport.force, raise_built = true, quality = robot_quality }
 
-                        -- Pick a random enemy to be their "owner"
-                        local enemy = enemies[math.random(1, #enemies)]
-                        if enemy.valid then
-                            robot.combat_robot_owner = enemy
-                        else
-                            robot.combat_robot_owner = roboport
+                        if robot then
+                            -- Pick a random enemy to be their "owner"
+                            local enemy = enemies[math.random(1, #enemies)]
+                            if enemy.valid then
+                                robot.combat_robot_owner = enemy
+                            else
+                                robot.combat_robot_owner = roboport
+                            end
                         end
                     end
                     -- Remove 1 combat robot from the inventory
