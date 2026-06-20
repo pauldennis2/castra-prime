@@ -68,12 +68,30 @@ end
 -- List order defines tier: get_best_tier() walks forward and returns the last match,
 -- so items must be ordered weakest → strongest. Reordering silently breaks tier caps
 -- (e.g. the disable-enemy-nukes setting relies on atomic-bomb and hydrogen-bomb being last).
-local sorted_ammo_types = {
+local default_sorted_ammo_types = {
     bullet = {"firearm-magazine", "piercing-rounds-magazine", "uranium-rounds-magazine", "plutonium-rounds-magazine"},
     rocket = {"rocket", "explosive-rocket", "atomic-bomb", "hydrogen-bomb"},
     railgun = {"railgun-ammo" },
     artillery_shell = {"artillery-shell", "cerys-neutron-bomb", "maraxsis-fat-man" },
 }
+
+local function get_sorted_ammo_types(category)
+    local overrides = storage.castra
+        and storage.castra.compatibility
+        and storage.castra.compatibility.sorted_ammo_types
+
+    return overrides and overrides[category] or default_sorted_ammo_types[category]
+end
+
+local function set_sorted_ammo_types(category, ammo_list)
+    storage.castra = storage.castra or {}
+    storage.castra.compatibility = storage.castra.compatibility or {}
+    storage.castra.compatibility.sorted_ammo_types = storage.castra.compatibility.sorted_ammo_types or {}
+
+    storage.castra.compatibility.sorted_ammo_types[category] = ammo_list
+
+    return true
+end
 
 -- Returns the highest tier of a module type the enemy has researched
 local function get_module_tier(module_type)
@@ -126,10 +144,10 @@ local enemy_capabilities = {
     { key = "wall_tier", check_fn = function() return get_best_tier(wall_tiers) end },
 
     -- Ammo
-    { key = "ammo_tier",      check_fn = function() return get_best_tier(sorted_ammo_types.bullet) end },
-    { key = "rocket_tier",    check_fn = function() return get_best_tier(sorted_ammo_types.rocket) end },
-    { key = "railgun_tier",   check_fn = function() return get_best_tier(sorted_ammo_types.railgun) end },
-    { key = "artillery_tier", check_fn = function() return get_best_tier(sorted_ammo_types.artillery_shell) end },
+    { key = "ammo_tier",      check_fn = function() return get_best_tier(get_sorted_ammo_types("bullet")) end },
+    { key = "rocket_tier",    check_fn = function() return get_best_tier(get_sorted_ammo_types("rocket")) end },
+    { key = "railgun_tier",   check_fn = function() return get_best_tier(get_sorted_ammo_types("railgun")) end },
+    { key = "artillery_tier", check_fn = function() return get_best_tier(get_sorted_ammo_types("artillery_shell")) end },
 
     -- Combat robots
     { key = "combat_robot", check_fn = function() return get_best_tier(combat_robot_tiers) end },
@@ -250,4 +268,7 @@ return {
     build_cache_if_needed = build_cache_if_needed,
     castra_exists = castra_exists,
     build_pollution_cache = build_pollution_cache,
+
+    set_sorted_ammo_types = set_sorted_ammo_types,
+    get_sorted_ammo_types = get_sorted_ammo_types,
 }
