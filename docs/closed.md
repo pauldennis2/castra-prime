@@ -24,9 +24,8 @@ Update: both of these should be fixed
 
 ### Enemy Tanks
 
-I always thought this looked a little weird/placeholder-y. Maybe switching to a mini spidertron would be cooler and more thematic? Or a massive UPS headache because of legs?
-
-### Castra landing animation feels different
+I always thought this looked a little weird/placeholder-y. Maybe switching to a mini spidertron would be cooler and more thematic? Or a massive UPS headache because of legs? 
+Update: Spidertron is right out. No easy win, closed.
 
 ### Lag Situation?
 Translated from simple Chinese by google translate: 
@@ -197,12 +196,6 @@ Honestly this was an easy change to make early, but I think this brings it more 
 
 Note: Partly for balance, might also be inclined to remove the 10% quality base buff. I'm not sure how this was intended, but in practice unless you have speed mods to offset this,it can actually make things more challenging. Quality was clearly *meant* to be part of the challenge on Maraxsis. Less clear here.
 
-### Enemy Railgun Nerfs
-
-Also mentioned as a problem. Fundamentally the players defenses have no way of scaling infinitely but the enemy damage does. The long range and projectile travel speed make these a dangerous obstacle.
-Possible cap on damage research.
-
-Update: leaving this alone for now. Plenty of enemy nerfs so far 
 
 ### Enemy Nukes Nerfs
 
