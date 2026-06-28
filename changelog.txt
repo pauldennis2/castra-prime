@@ -1,6 +1,9 @@
 ---------------------------------------------------------------------------------------------------
 Version: 0.8.3
 Date: 2026-06-28
+  Bugfixes:
+    - Fixed recipes with multiple ammo results (seen with mods like Ultimate Fusion Power) getting
+      a doubled "castra-castra-" recipe category prefix, which made them uncraftable anywhere.
   Localization:
     - Add Russian translation from neuro1984.
   Compatibility:

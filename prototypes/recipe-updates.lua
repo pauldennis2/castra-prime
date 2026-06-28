@@ -34,9 +34,11 @@ function change_to_category(item)
                     if not recipe.category or recipe.category == "crafting" then
                         recipe.category = "castra-crafting"
                         break
-                    else
+                    elseif string.sub(recipe.category, 1, 7) ~= "castra-" then
                         create_category_if_not_exists("castra-" .. recipe.category)
                         recipe.category = "castra-" .. recipe.category
+                        break
+                    else
                         break
                     end
                 end
