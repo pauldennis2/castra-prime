@@ -2,6 +2,23 @@ local item_cache = require("castra-cache")
 local base_gen = require("base-generator")
 local base_upgrades = require("base-upgrades")
 
+remote.add_interface("castra-prime", {
+    set_enemy_ammo_types = function(category, ammo_list)
+        if type(category) ~= "string" then
+            return false
+        end
+
+        if type(ammo_list) ~= "table" then
+            return false
+        end
+
+        item_cache.set_sorted_ammo_types(category, ammo_list)
+        item_cache.update_castra_enemy_data()
+
+        return true
+    end
+})
+
 -- **Research Speed Explanation, by Claude**
 -- TODO verify
 -- Calculates the enemy research speed in research units per minute.

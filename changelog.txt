@@ -1,4 +1,15 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.8.3
+Date: 2026-06-28
+  Localization:
+    - Add Russian translation from neuro1984.
+  Compatibility:
+    - Added a remote interface (castra-prime.set_enemy_ammo_types) allowing other mods to override
+      which ammo items count toward enemy turret tiers. Intended for mods that replace vanilla
+      ammo entirely, where enemy turrets would otherwise never find ammo to load. Thanks to
+      timzyxel for the contribution (PR #3).
+
+---------------------------------------------------------------------------------------------------
 Version: 0.8.2
 Date: 2026-06-12
   Bugfixes:
