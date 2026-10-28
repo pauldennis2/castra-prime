@@ -1,10 +1,10 @@
 {
   "name": "castra-prime",
-  "version": "0.9.4",
+  "version": "0.9.5",
   "title": "Castra Prime",
   "author": "erronius",
   "factorio_version": "2.1",
   "space_travel_required": true,
-  "dependencies": ["base >= 2.0.30", "space-age", "castra-prime-assets", "? alien-biomes", "? landing-pad-research", "? maraxsis", "? planet-muluna", "? Cerys-Moon-of-Fulgora", "? modules-t4", "! castra"],
+  "dependencies": ["base >= 2.0.30", "space-age", "PlanetsLib >= 1.10.7", "castra-prime-assets", "? alien-biomes", "? landing-pad-research", "? maraxsis", "? planet-muluna", "? Cerys-Moon-of-Fulgora", "? modules-t4", "! castra"],
   "description": "Fork of Castra, originally by Bartz24 and LogicDolphin, to fix balance issues."
 }

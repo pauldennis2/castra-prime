@@ -3,7 +3,7 @@
     {
       type = "technology",
       name = "planet-discovery-castra",
-      icons = util.technology_icon_constant_planet("__castra-prime-assets__/graphics/icons/technology-castra.png"),
+      icons = PlanetsLib.technology_icon_planet("__castra-prime-assets__/graphics/icons/technology-castra.png", 256, 0.86),
       icon_size = 256,
       essential = true,
       effects =
