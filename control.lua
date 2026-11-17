@@ -268,6 +268,35 @@ script.on_event(defines.events.on_entity_spawned, function(event)
     end
 end)
 
+-- Tanks are ordinary units, so the engine's enemy expansion takes them into settler groups, and a group that arrives
+-- builds a vanilla base (biter spawners and worms) on Castra. Break such a group up before it builds and send its
+-- units back to wandering, which the tank loop picks up again.
+script.on_event(defines.events.on_build_base_arrived, function(event)
+    local group = event.group
+    if group and group.valid and group.is_unit_group then
+        if group.surface.name ~= "castra" then
+            return
+        end
+        local members = group.members
+        group.destroy()
+        for _, unit in pairs(members) do
+            if unit.valid and unit.commandable then
+                unit.commandable.set_command { type = defines.command.wander, distraction = defines.distraction.by_anything, ticks_to_wait = math.random(600, 5000) }
+            end
+        end
+    elseif event.unit and event.unit.valid and event.unit.surface.name == "castra" and event.unit.commandable then
+        event.unit.commandable.set_command { type = defines.command.wander, distraction = defines.distraction.by_anything, ticks_to_wait = math.random(600, 5000) }
+    end
+end)
+
+-- In case a base gets built all the same, remove it: Castra's own bases are only placed by script.
+script.on_event(defines.events.on_biter_base_built, function(event)
+    local entity = event.entity
+    if entity and entity.valid and entity.surface.name == "castra" and entity.name ~= "data-collector" then
+        entity.destroy()
+    end
+end)
+
 local function get_castra_research_speed()
     item_cache.build_cache_if_needed()
 
