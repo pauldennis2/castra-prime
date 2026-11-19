@@ -1,4 +1,12 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.9.5
+Date: 2026-11-19
+  Bugfixes:
+    - UNTESTED: This is a PR from GreenTech-Solutions that aims to fix enemy tank groups 
+    spawning Nauvis biters. I have not been able to reproduce the problem but given the severity,
+    I want to get the fix out. Please be careful and revert to 0.9.4 if this breaks something.
+    
+---------------------------------------------------------------------------------------------------
 Version: 0.9.4
 Date: 2026-10-12
   Bugfixes:
